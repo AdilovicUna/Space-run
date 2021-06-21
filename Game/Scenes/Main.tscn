@@ -8,7 +8,7 @@
 [node name="Main" type="Node"]
 
 [node name="ground" type="CSGBox" parent="."]
-transform = Transform( 150, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
+transform = Transform( 200, 0, 0, 0, 1, 0, 0, 0, 50, 0, 0, 0 )
 
 [node name="Lights" type="Spatial" parent="."]
 
@@ -25,34 +25,34 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -300, 100, 0 )
 omni_range = 1268.1
 
 [node name="Hans" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 120, 0, 0 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 165.149, 2, 0 )
 
 [node name="CameraPivot" type="Spatial" parent="Hans"]
-transform = Transform( 0.5, -2.40383e-09, -3.54703e-11, 2.40383e-09, 0.499782, 0.0147546, -3.54703e-11, -0.0147546, 0.499782, -7.56154e-07, 6.70705, -4.64124 )
+transform = Transform( 0.5, -2.40383e-09, -3.54703e-11, 2.40383e-09, 0.499782, 0.0147546, -3.54703e-11, -0.0147546, 0.499782, -7.56152e-07, 8.47716, -4.64124 )
 
 [node name="Camera" type="Camera" parent="Hans/CameraPivot"]
-transform = Transform( -1, 2.05989e-07, -1.97916e-07, 1.40423e-07, 0.957817, 0.287377, 2.48764e-07, 0.287377, -0.957817, -2.02016e-06, 13.4078, -12.3997 )
+transform = Transform( -2, 4.11977e-07, -3.95832e-07, 2.80846e-07, 1.91564, 0.574755, 4.97528e-07, 0.574755, -1.91564, -2.63459e-06, 11.0817, -16.1711 )
 far = 184.9
 
 [node name="Tunnels" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 
 [node name="level1" type="CSGTorus" parent="Tunnels"]
-transform = Transform( -8.14603e-07, 75, -2.18557e-07, 0, -3.27835e-06, -5, -5, -1.22191e-05, 3.56074e-14, 75, 15, 0 )
+transform = Transform( -1.30337e-06, 100, -3.49691e-07, 0, -4.37114e-06, -8, -8, -1.62921e-05, 5.69719e-14, 100, 22, 0 )
 use_collision = true
 sides = 6
 smooth_faces = false
 material = ExtResource( 1 )
 
 [node name="level2" type="CSGTorus" parent="Tunnels"]
-transform = Transform( -8.14603e-07, 75, -2.18557e-07, 0, -3.27835e-06, -5, -5, -1.22191e-05, 3.56074e-14, 0, 15, 0 )
+transform = Transform( -1.30337e-06, 100, -3.49691e-07, 0, -4.37114e-06, -8, -8, -1.62921e-05, 5.69719e-14, 0, 22, 0 )
 use_collision = true
 sides = 6
 smooth_faces = false
 material = ExtResource( 2 )
 
 [node name="level3" type="CSGTorus" parent="Tunnels"]
-transform = Transform( -0.00207565, 75, -2.18557e-07, 0, -3.27835e-06, -5, -5, -0.0311348, 9.07296e-11, -75, 15, 0 )
+transform = Transform( -0.00332104, 100, -3.49691e-07, 0, -4.37114e-06, -8, -8, -0.041513, 1.45167e-10, -100, 22, 0 )
 use_collision = true
 sides = 6
 smooth_faces = false
