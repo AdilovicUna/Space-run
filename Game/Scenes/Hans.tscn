@@ -3,23 +3,30 @@
 [ext_resource path="res://Characters/Hans/Hans.gltf" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Hans/HansRunning.tres" type="Animation" id=2]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
-export var speed = 25.0
+onready var tunnels = get_node(\"../Tunnels\").get_children()
+onready var score = get_node(\"../UI/Score\")
+var cur_tunnel = 0
 
+export var speed = 25.0
 var velocity = Vector3.ZERO
 
 func _physics_process(_delta):
+	var tunnel = tunnels[cur_tunnel]
+	if translation.x < tunnel.translation.x - 50:
+		tunnel.translation.x -= 450    # move tunnel ahead
+		cur_tunnel = (cur_tunnel + 1) % tunnels.size()
+	score._on_Meter_Passed()
 	var velocity = Vector3.LEFT * speed
 	move_and_slide(velocity)
-	
 "
 
-[sub_resource type="CapsuleShape" id=1]
+[sub_resource type="CapsuleShape" id=2]
 
 [node name="Hans" type="KinematicBody"]
-script = SubResource( 2 )
+script = SubResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
@@ -31,4 +38,4 @@ anims/HansRunning = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 2.98112, 0, 0, 0, -0.07764, 4.00904, 0, -2.51225, -0.182664, 0, 6.87551, 1.04777 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
