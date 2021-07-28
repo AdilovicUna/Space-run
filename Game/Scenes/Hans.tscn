@@ -16,12 +16,13 @@ var velocity = Vector3.ZERO
 
 func _physics_process(_delta):
 	var tunnel = tunnels[cur_tunnel]
-	if translation.x < tunnel.translation.x - 50:
-		tunnel.translation.x -= 450    # move tunnel ahead
+	if translation.x < tunnel.translation.x - 150:
+		tunnel.translation.x -= 750    # move tunnel ahead
 		cur_tunnel = (cur_tunnel + 1) % tunnels.size()
-	if translation.x < ground.translation.x - 50:
+	if translation.x < ground.translation.x - 150:
 		ground.translation.x -= 500
 	score._on_Meter_Passed()
+	
 	var velocity = Vector3.LEFT * speed
 	move_and_slide(velocity)
 "

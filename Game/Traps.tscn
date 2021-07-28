@@ -1,0 +1,39 @@
+[gd_scene format=2]
+
+[node name="Traps" type="Node"]
+
+[node name="xTrap" type="Spatial" parent="."]
+
+[node name="CSGBox" type="CSGBox" parent="xTrap"]
+transform = Transform( 1.3727, 0.218181, 0, -1.45454, 0.205905, 0, 0, 0, 0.2, 0, 0, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="xTrap/CSGBox"]
+transform = Transform( -1.08601e-06, 0.150798, 0, -6.66587, -2.45681e-08, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="ITrap" type="Spatial" parent="."]
+
+[node name="CSGBox" type="CSGBox" parent="ITrap"]
+transform = Transform( 1.3727, 0.218181, 0, -1.45454, 0.205905, 0, 0, 0, 0.2, 0, 0, 2.06762 )
+
+[node name="OTrap" type="Spatial" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="OTrap"]
+transform = Transform( 1, 0, 0, 0, -3.25841e-08, -1, 0, 0.2, -1.62921e-07, 0, 0, -2.43951 )
+operation = 2
+sides = 30
+
+[node name="CSGCylinder" type="CSGCylinder" parent="OTrap/CSGCylinder"]
+transform = Transform( 0.5, 0, 0, 0, 1.2, 0, 0, 0, 0.5, -0.633947, 0, -0.0325918 )
+operation = 2
+sides = 30
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="OTrap/CSGCylinder"]
+transform = Transform( 0.5, 0, 0, 0, 1.2, 0, 0, 0, 0.5, 0.3271, -9.53674e-07, 0.595264 )
+operation = 2
+sides = 30
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="OTrap/CSGCylinder"]
+transform = Transform( 0.5, 0, 0, 0, 1.2, 0, 0, 0, 0.5, 0.353483, -0.0391388, -0.571256 )
+operation = 2
+sides = 30
