@@ -6,23 +6,41 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
+onready var traps = get_node(\"res://Scenes/Traps.tscn/Traps\").get_children()
 onready var tunnels = get_node(\"../Tunnels\").get_children()
 onready var score = get_node(\"../UI/Score\")
 onready var ground = get_node(\"../Ground\")
+
+var rand = RandomNumberGenerator.new()
+var traps_count = 3
+
 var cur_tunnel = 0
+var prev_trap = rand.randi_range(0,traps_count)
+var cur_trap = rand.randi_range(0,traps_count)
 
 export var speed = 25.0
-var velocity = Vector3.ZERO
 
 func _physics_process(_delta):
+	# making sure one trap doesn't appear twice in a row
+	while prev_trap == cur_trap:
+		cur_trap = rand.randi_range(0,traps_count)
+	
+	# add a trap on a certian position
+	traps[cur_trap].translation = Vector3(0,0,0)
+	
+	# making tunnels (and ground) infinite by moving them forward
+	# after Hans passes them	
 	var tunnel = tunnels[cur_tunnel]
 	if translation.x < tunnel.translation.x - 150:
 		tunnel.translation.x -= 750    # move tunnel ahead
 		cur_tunnel = (cur_tunnel + 1) % tunnels.size()
 	if translation.x < ground.translation.x - 150:
 		ground.translation.x -= 500
+	
+	# updating score
 	score._on_Meter_Passed()
 	
+	# Hans's movement
 	var velocity = Vector3.LEFT * speed
 	move_and_slide(velocity)
 "
