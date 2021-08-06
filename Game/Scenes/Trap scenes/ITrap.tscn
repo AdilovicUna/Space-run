@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="ITrap" type="Spatial"]
+transform = Transform( -2.30405e-06, 1.15202e-07, 1, 14.1421, 0.707107, 0, -14.1421, 0.707107, -1.62921e-07, 0, 0, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
