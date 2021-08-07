@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
+
+[node name="ITrap" type="Spatial"]
+transform = Transform( -2.30405e-06, 3.45606e-07, 1, 14.1421, 2.12132, 5.87843e-13, -14.1421, 2.12132, -1.62921e-07, 0, 0, 0 )
+
+[node name="CSGBox" type="CSGBox" parent="."]
+use_collision = true
+material = SubResource( 1 )
