@@ -62,6 +62,7 @@ func _on_Main_ready():
 [sub_resource type="CapsuleShape" id=2]
 
 [node name="Hans" type="KinematicBody"]
+collision_mask = 2
 script = SubResource( 1 )
 
 [node name="Pivot" type="Spatial" parent="."]

@@ -32,6 +32,13 @@ right={
  ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Hans"
+3d_physics/layer_2="Traps"
+3d_physics/layer_3="Tunnels"
+3d_physics/Hans=false
+
 [rendering]
 
 environment/default_environment="res://Other/default_env.tres"

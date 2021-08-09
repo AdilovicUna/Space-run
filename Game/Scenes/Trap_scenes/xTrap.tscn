@@ -10,9 +10,13 @@ albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0, 0, 0 )
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 20, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 22, 0, 0, 0, 5, 0, 0, 0 )
+use_collision = true
+collision_layer = 2
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, -8.74228e-07, -2, 0, 20, -8.74228e-08, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -9.61651e-07, -5, 0, 22, -2.18557e-07, 0, 0, 0 )
+use_collision = true
+collision_layer = 2
 material = SubResource( 2 )
