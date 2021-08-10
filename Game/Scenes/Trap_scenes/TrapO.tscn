@@ -3,10 +3,11 @@
 [sub_resource type="SpatialMaterial" id=1]
 albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 
-[node name="OTrap" type="Spatial"]
+[node name="TrapO" type="Spatial"]
 transform = Transform( -3.58426e-06, 1, -9.61651e-07, 0, -4.37114e-08, -22, -22, -1.62921e-07, 1.56673e-13, 0, 0, 0 )
 
 [node name="CSGCylinder" type="CSGCylinder" parent="."]
+transform = Transform( 1, -4.44089e-16, 0, 2.27374e-13, 1, 1.13687e-13, 0, -5.27383e-23, 1, 0, 0, 0 )
 operation = 2
 use_collision = true
 collision_layer = 2

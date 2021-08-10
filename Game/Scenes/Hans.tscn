@@ -30,10 +30,16 @@ func _physics_process(_delta):
 	# Hans's movement
 	var velocity = Vector3.LEFT * speed
 	move_and_slide(velocity)
+	
+	# End game if Hans touches the trap
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		if collision.collider.name.begins_with(\"Trap\"):
+			print(\"collided with\" + collision.collider.name)
 
 func _on_Main_ready():
 	var trap_scenes = []
-	for name in [\"ITrap\", \"OTrap\", \"xTrap\"]:
+	for name in [\"TrapI\", \"TrapO\", \"TrapX\"]:
 		trap_scenes.append(load(\"res://Scenes/Trap_scenes/\" + name + \".tscn\"))
 	
 	# Add num_of_traps random traps to each tunnel.
