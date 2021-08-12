@@ -19,6 +19,10 @@ config/name="Game"
 run/main_scene="res://Scenes/Main.tscn"
 config/icon="res://Other/icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "CSGExporter" )
+
 [input]
 
 left={
