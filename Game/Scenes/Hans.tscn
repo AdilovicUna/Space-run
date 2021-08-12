@@ -35,7 +35,7 @@ func _physics_process(_delta):
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		if collision.collider.name.begins_with(\"Trap\"):
-			print(\"collided with\" + collision.collider.name)
+			game_over()
 
 func _on_Main_ready():
 	var trap_scenes = []
@@ -52,17 +52,25 @@ func _on_Main_ready():
 		# the last trap will still be inside of the tunnel
 		
 		# pick number of traps to be added
-		var num_of_traps = rand.randi_range(3,5)
+		var num_of_traps = 4
+		#var div = tunnel.scale.y / num_of_traps
+		var div = 50
 		# pick x for the first trap
-		var x = rand.randi_range(150,170)
+		var x = 200 - div
 		
 		for n in num_of_traps:
 			var i = rand.randi_range(0, len(trap_scenes) - 1)
 			var trap = trap_scenes[i].instance()
 			trap.translation.x = x
 			# add space between traps
-			x += rand.randi_range(-50,-70)
+			x -= div
 			tunnel.add_child(trap)
+			# rotate the trap under some angle
+			var r = rand.randf_range(0,360)
+			trap.rotate_x(r)
+
+func game_over():
+	queue_free()
 "
 
 [sub_resource type="CapsuleShape" id=2]

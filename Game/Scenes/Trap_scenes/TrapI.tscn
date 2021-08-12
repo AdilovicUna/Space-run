@@ -6,7 +6,7 @@ albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 [sub_resource type="BoxShape" id=2]
 
 [node name="TrapI" type="KinematicBody"]
-transform = Transform( -2.53446e-06, 6.91212e-07, 1, 15.5564, 4.24264, 5.376e-13, -15.5564, 4.24264, -1.62921e-07, 0, 0, 0 )
+transform = Transform( -2.53445e-06, 5.76011e-07, 1, 15.5564, 3.53553, 2.26094e-13, -15.5564, 3.53553, -1.62921e-07, 0, 0, 0 )
 collision_layer = 2
 
 [node name="CSGBox" type="CSGBox" parent="."]

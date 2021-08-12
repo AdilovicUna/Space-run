@@ -15,21 +15,21 @@ transform = Transform( 1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, 0
 collision_layer = 2
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, 22, 0, 0, 0, 5, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 22, 0, 0, 0, 4, 0, 0, 0 )
 use_collision = true
 collision_layer = 2
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="."]
-transform = Transform( 1, 0, 0, 0, -9.61651e-07, -5, 0, 22, -2.18557e-07, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -9.61651e-07, -4, 0, 22, -1.74846e-07, 0, 0, 0 )
 use_collision = true
 collision_layer = 2
 material = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 22, 0, 0, 0, 5, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 22, 0, 0, 0, 4, 0, 0, 0 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -1.90735e-06, -5, 0, 22, -2.38419e-07, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, -9.61651e-07, -4, 0, 22, -1.74846e-07, 0, 0, 0 )
 shape = SubResource( 4 )
