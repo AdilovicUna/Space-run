@@ -14,5 +14,5 @@ ao_light_affect = 0.0
 ao_texture = ExtResource( 3 )
 ao_on_uv2 = false
 ao_texture_channel = 0
-uv1_scale = Vector3( 0.75, 1, 1 )
+uv1_scale = Vector3( 0.75, 15, 1 )
 uv1_triplanar_sharpness = 0.999999
