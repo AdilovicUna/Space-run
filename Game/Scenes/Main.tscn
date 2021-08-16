@@ -34,10 +34,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
 script = ExtResource( 7 )
 
 [node name="level1" type="Spatial" parent="Tunnels"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2700, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2500, 0, 0 )
 
 [node name="torus1" type="CSGTorus" parent="Tunnels/level1"]
-transform = Transform( -1.95505e-06, 2800, -5.24537e-07, 0, -0.000122392, -12, -12, -0.000456178, 8.54579e-14, -171.203, -0.569969, -0.327972 )
+transform = Transform( -1.95505e-06, 2800, -5.24537e-07, 0, -0.000122392, -12, -12, -0.000456178, 8.54579e-14, 0, 0, 0 )
 use_collision = true
 collision_layer = 2147483652
 sides = 6
@@ -45,7 +45,7 @@ smooth_faces = false
 material = ExtResource( 1 )
 
 [node name="light1" type="OmniLight" parent="Tunnels/level1/torus1"]
-transform = Transform( -7.27325e-10, -5.91752e-16, -0.0833333, 0.000357143, -8.36315e-13, -3.1171e-12, -1.95141e-10, -0.0833333, 5.93455e-16, 0, 0.39, -0.605 )
+transform = Transform( -7.27325e-10, -5.91752e-16, -0.0833333, 0.000357143, -8.36312e-13, -3.11714e-12, -1.95141e-10, -0.0833333, 5.93456e-16, -3.63798e-12, 0.39, 0 )
 omni_range = 500.0
 
 [node name="light2" type="OmniLight" parent="Tunnels/level1/torus1"]
@@ -111,11 +111,11 @@ transform = Transform( -0.00019513, -3.5373e-10, -0.0833331, 0.000357142, -8.383
 omni_range = 600.0
 
 [node name="light15" type="OmniLight" parent="Tunnels/level2/torus2"]
-transform = Transform( -0.00019513, -3.5373e-10, -0.0833331, 0.000357142, -8.38377e-13, -8.36272e-07, -1.94793e-10, -0.0833333, 3.54187e-10, 1.24892e-06, -0.422853, 3.57628e-07 )
+transform = Transform( -0.00019513, -3.5373e-10, -0.0833331, 0.000357142, -8.38373e-13, -8.36271e-07, -1.94793e-10, -0.0833333, 3.54187e-10, 1.35094e-06, -0.425536, 3.8743e-07 )
 omni_range = 600.0
 
 [node name="level3" type="Spatial" parent="Tunnels"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2600, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2500, 0, 0 )
 
 [node name="torus3" type="CSGTorus" parent="Tunnels/level3"]
 transform = Transform( -1.95505e-06, 2800, -5.24537e-07, 0, -0.000122392, -12, -12, -0.000456178, 8.54579e-14, 0, 0, 0 )
@@ -126,35 +126,31 @@ smooth_faces = false
 material = ExtResource( 3 )
 
 [node name="light15" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -7.27325e-10, -5.91753e-16, -0.0833333, 0.000357143, -8.36338e-13, -3.1171e-12, -1.95146e-10, -0.0833333, 5.93456e-16, -6.24605e-08, 0.391642, -5.96046e-08 )
+transform = Transform( -7.2734e-10, -5.91754e-16, -0.0833333, 0.000357143, -8.36334e-13, -3.11721e-12, -1.95146e-10, -0.0833333, 5.93458e-16, 2.74404e-06, 0.317817, 6.85453e-07 )
 omni_range = 500.0
 
 [node name="light16" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -7.27325e-10, -5.91754e-16, -0.0833333, 0.000357143, -8.36347e-13, -3.1171e-12, -1.95148e-10, -0.0833333, 5.93457e-16, -1.1919e-06, 0.291353, -3.27826e-07 )
+transform = Transform( -7.27344e-10, -5.91754e-16, -0.0833333, 0.000357143, -8.36341e-13, -3.11723e-12, -1.95148e-10, -0.0833333, 5.93458e-16, 2.13433e-06, 0.203855, 5.06639e-07 )
 omni_range = 500.0
 
 [node name="light17" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -7.27325e-10, -5.95511e-16, -0.0833333, 0.000357143, -8.36329e-13, -3.1171e-12, -1.95144e-10, -0.0833333, 5.97214e-16, -3.56091e-06, 0.223671, -9.83477e-07 )
+transform = Transform( -7.27346e-10, -5.95513e-16, -0.0833333, 0.000357143, -8.36326e-13, -3.11724e-12, -1.95144e-10, -0.0833333, 5.97217e-16, 7.82475e-07, 0.109417, 1.49012e-07 )
 omni_range = 500.0
 
 [node name="light18" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -7.27325e-10, -5.95511e-16, -0.0833333, 0.000357143, -8.36328e-13, -3.1171e-12, -1.95144e-10, -0.0833333, 5.97214e-16, -3.63007e-06, 0.0954909, -9.83477e-07 )
+transform = Transform( -7.2734e-10, -5.95513e-16, -0.0833333, 0.000357143, -8.36326e-13, -3.11721e-12, -1.95144e-10, -0.0833333, 5.97217e-16, 3.14836e-06, -0.0828189, 6.85453e-07 )
 omni_range = 500.0
 
 [node name="light19" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -1.85325e-06, -1.50782e-12, -0.0833333, 0.000357143, -8.36322e-13, -7.94252e-09, -1.95142e-10, -0.0833333, 1.51216e-12, -1.16136e-06, -0.0994497, -3.27826e-07 )
+transform = Transform( -1.85325e-06, -1.50782e-12, -0.0833333, 0.000357143, -8.36317e-13, -7.94249e-09, -1.95142e-10, -0.0833333, 1.51216e-12, 2.95221e-06, -0.207659, 7.7486e-07 )
 omni_range = 500.0
 
 [node name="light20" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -0.000195128, 0.000325794, -0.0833324, 0.000357142, -6.10767e-13, -8.36272e-07, -7.63008e-07, -0.0833327, -0.000325793, -1.16136e-06, -0.22945, -3.27826e-07 )
+transform = Transform( -0.000195128, 0.000325794, -0.0833325, 0.000357142, -6.16614e-13, -8.36269e-07, -7.63008e-07, -0.0833327, -0.000325793, 9.96984e-07, -0.326226, 1.78814e-07 )
 omni_range = 500.0
 
 [node name="light21" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -0.00019513, -3.5373e-10, -0.0833331, 0.000357142, -8.38377e-13, -8.36272e-07, -1.94793e-10, -0.0833333, 3.54187e-10, -2.49652e-06, -0.324328, -6.55651e-07 )
-omni_range = 500.0
-
-[node name="light22" type="OmniLight" parent="Tunnels/level3/torus3"]
-transform = Transform( -0.00019513, -3.5373e-10, -0.0833331, 0.000357142, -8.3838e-13, -8.36271e-07, -1.94794e-10, -0.0833333, 3.54187e-10, 6.03475e-07, -0.405875, 1.78814e-07 )
+transform = Transform( -0.000195128, 0.000325794, -0.0833325, 0.000357142, -6.16614e-13, -8.36269e-07, -7.63008e-07, -0.0833327, -0.000325793, 5.36109e-06, -0.441026, 1.37091e-06 )
 omni_range = 500.0
 
 [node name="UI" type="Control" parent="."]

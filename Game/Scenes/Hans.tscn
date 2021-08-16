@@ -18,11 +18,11 @@ func _physics_process(_delta):
 	# making tunnels (and ground) infinite by moving them forward
 	# after Hans passes them	
 	var tunnel = tunnels[cur_tunnel]
-	if translation.x < tunnel.translation.x - 300:
-		tunnel.translation.x -= 1200    # move tunnel ahead
+	if translation.x < tunnel.translation.x - 2000:
+		tunnel.translation.x -= 7500    # move tunnel ahead
 		cur_tunnel = (cur_tunnel + 1) % tunnels.size()
-	if translation.x < ground.translation.x - 300:
-		ground.translation.x -= 500
+	if translation.x < ground.translation.x - 2000:
+		ground.translation.x -= 3000
 	
 	# updating score
 	score._on_Meter_Passed()
