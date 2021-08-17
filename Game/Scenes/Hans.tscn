@@ -6,10 +6,10 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
+onready var ground = get_node(\"../Ground\")
 onready var tunnels = get_node(\"../Tunnels\").get_children()
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
-onready var ground = get_node(\"../Ground\")
 
 var cur_tunnel = 0
 var rand = RandomNumberGenerator.new()
@@ -25,7 +25,7 @@ func _physics_process(_delta):
 	if translation.x < ground.translation.x - 2000:
 		ground.translation.x -= 3000
 	
-	# updating score
+	# updating score 
 	score._on_Meter_Passed()
 	
 	# Hans's movement
@@ -69,18 +69,19 @@ func _on_Main_ready():
 			trap.rotate_x(r)
 
 func game_over():
-	var timer = Timer.new()
-	timer.set_wait_time(2.0)
 	end.show()
-	var end_children = end.get_children()
-	end_children[0].show()
-	timer.start()
-	end_children[0].hide()
 	score._display_Final_Score()
-	timer.set_wait_time(2.0)
+	var end_children = end.get_children()
+	
+	end_children[0].show()
+	yield(get_tree().create_timer(2.0), \"timeout\")	
+	end_children[0].hide()
 	end_children[1].show()
-	timer.set_wait_time(2.0)
+	yield(get_tree().create_timer(2.0), \"timeout\")
+	end_children[1].hide()
+	yield(get_tree().create_timer(2.0), \"timeout\")
 	end_children[2].show()
+	
 	queue_free()
 "
 
