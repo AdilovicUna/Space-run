@@ -12,7 +12,7 @@ onready var ground = get_node(\"../Ground\")
 
 var cur_tunnel = 0
 var rand = RandomNumberGenerator.new()
-export var speed = 25.0
+export var speed = 35.0
 
 func _physics_process(_delta):
 	# making tunnels (and ground) infinite by moving them forward
@@ -33,8 +33,8 @@ func _physics_process(_delta):
 	
 	# End game if Hans touches the trap
 	for index in get_slide_count():
-		var collision = get_slide_collision(index)
-		if collision.collider.name.begins_with(\"Trap\"):
+		var collision = get_slide_collision(index)	
+		if collision.collider is KinematicBody:
 			game_over()
 
 func _on_Main_ready():
@@ -48,16 +48,16 @@ func _on_Main_ready():
 	# add num_of_traps random traps to each tunnel.
 	for tunnel in tunnels:	
 		# pick number of traps to be added
-		var num_of_traps = rand.randi_range(25,45)
+		var num_of_traps = rand.randi_range(50,65)
 		# pick x for the first trap
-		var x = rand.randi_range(1100,1190)
+		var x = rand.randi_range(1120,1190)
 		
 		for n in num_of_traps:
 			var i = rand.randi_range(0, len(trap_scenes) - 1)
 			var trap = trap_scenes[i].instance()
 			trap.translation.x = x
 			# add space between traps
-			x -= rand.randi_range(70,100)
+			x -= rand.randi_range(40,80)
 			# check if the trap will be inside the tunnel
 			# if not, break
 			if x < -1200:
@@ -68,7 +68,7 @@ func _on_Main_ready():
 			trap.rotate_x(r)
 
 func game_over():
-	queue_free()
+	$Hans.queue_free()
 "
 
 [sub_resource type="CapsuleShape" id=2]
