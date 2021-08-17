@@ -8,6 +8,7 @@ script/source = "extends KinematicBody
 
 onready var tunnels = get_node(\"../Tunnels\").get_children()
 onready var score = get_node(\"../UI/Score\")
+onready var end = get_node(\"../UI/End\")
 onready var ground = get_node(\"../Ground\")
 
 var cur_tunnel = 0
@@ -34,7 +35,7 @@ func _physics_process(_delta):
 	# End game if Hans touches the trap
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)	
-		if collision.collider is KinematicBody:
+		if collision.collider is KinematicBody:	
 			game_over()
 
 func _on_Main_ready():
@@ -68,7 +69,19 @@ func _on_Main_ready():
 			trap.rotate_x(r)
 
 func game_over():
-	$Hans.queue_free()
+	var timer = Timer.new()
+	timer.set_wait_time(2.0)
+	end.show()
+	var end_children = end.get_children()
+	end_children[0].show()
+	timer.start()
+	end_children[0].hide()
+	score._display_Final_Score()
+	timer.set_wait_time(2.0)
+	end_children[1].show()
+	timer.set_wait_time(2.0)
+	end_children[2].show()
+	queue_free()
 "
 
 [sub_resource type="CapsuleShape" id=2]
