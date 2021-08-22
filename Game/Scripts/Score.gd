@@ -12,4 +12,4 @@ func _display_Final_Score():
 	game_over = true
 	text = "Final Score: %.1f" % score
 	set_align(ALIGN_CENTER)
-	rect_position = Vector2(32,100)
+	rect_position = Vector2(32,120)

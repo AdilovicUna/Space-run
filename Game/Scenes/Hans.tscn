@@ -37,6 +37,7 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(index)	
 		if collision.collider is KinematicBody:	
 			game_over()
+			return
 
 func _on_Main_ready():
 	rand.randomize()
@@ -69,6 +70,7 @@ func _on_Main_ready():
 			trap.rotate_x(r)
 
 func game_over():
+	get_tree().paused = true
 	end.show()
 	score._display_Final_Score()
 	var end_children = end.get_children()
@@ -78,11 +80,7 @@ func game_over():
 	end_children[0].hide()
 	end_children[1].show()
 	yield(get_tree().create_timer(2.0), \"timeout\")
-	end_children[1].hide()
-	yield(get_tree().create_timer(2.0), \"timeout\")
 	end_children[2].show()
-	
-	queue_free()
 "
 
 [sub_resource type="CapsuleShape" id=2]
