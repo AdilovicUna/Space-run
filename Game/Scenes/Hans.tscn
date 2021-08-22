@@ -6,13 +6,13 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
+onready var main = get_parent()
 onready var ground = get_node(\"../Ground\")
 onready var tunnels = get_node(\"../Tunnels\").get_children()
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
 
 var cur_tunnel = 0
-var rand = RandomNumberGenerator.new()
 export var speed = 35.0
 
 func _physics_process(_delta):
@@ -36,51 +36,8 @@ func _physics_process(_delta):
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)	
 		if collision.collider is KinematicBody:	
-			game_over()
+			main._game_over()
 			return
-
-func _on_Main_ready():
-	rand.randomize()
-	
-	# load traps
-	var trap_scenes = []
-	for name in [\"TrapI\", \"TrapO\", \"TrapX\"]:
-		trap_scenes.append(load(\"res://Scenes/Trap_scenes/\" + name + \".tscn\"))
-	
-	# add num_of_traps random traps to each tunnel.
-	for tunnel in tunnels:	
-		# pick number of traps to be added
-		var num_of_traps = rand.randi_range(50,65)
-		# pick x for the first trap
-		var x = rand.randi_range(1120,1190)
-		
-		for n in num_of_traps:
-			var i = rand.randi_range(0, len(trap_scenes) - 1)
-			var trap = trap_scenes[i].instance()
-			trap.translation.x = x
-			# add space between traps
-			x -= rand.randi_range(40,80)
-			# check if the trap will be inside the tunnel
-			# if not, break
-			if x < -1200:
-				break
-			tunnel.add_child(trap)
-			# rotate the trap under some angle
-			var r = rand.randf_range(0,360)
-			trap.rotate_x(r)
-
-func game_over():
-	get_tree().paused = true
-	end.show()
-	score._display_Final_Score()
-	var end_children = end.get_children()
-	
-	end_children[0].show()
-	yield(get_tree().create_timer(2.0), \"timeout\")	
-	end_children[0].hide()
-	end_children[1].show()
-	yield(get_tree().create_timer(2.0), \"timeout\")
-	end_children[2].show()
 "
 
 [sub_resource type="CapsuleShape" id=2]
