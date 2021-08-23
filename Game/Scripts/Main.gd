@@ -27,6 +27,18 @@ func _reload_game():
 	hans.translation = Vector3(3750,-32,0)
 	var x = 2500
 	for tunnel in tunnels.get_children():
+		
+		# remove traps from all of the tunnels
+		var isTorus = true 
+		for trap in tunnel.get_children():
+			# make sure the torus doesnt get removed
+			# by skipping the first child
+			if(isTorus): 
+				isTorus = false
+			else:
+				trap.queue_free()
+		
+		# get tunnels to the starting position
 		tunnel.translation = Vector3(x,0,0)
 		x -= 2500
 	
@@ -36,5 +48,5 @@ func _reload_game():
 		node.hide()
 	score._reset()
 	
-	# delete traps and generate new ones
+	# generate new traps
 	tunnels._on_Main_ready()
