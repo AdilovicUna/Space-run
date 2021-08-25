@@ -1,5 +1,7 @@
 extends Spatial
 
+# load traps
+var trap_scenes = []
 var rand = RandomNumberGenerator.new()
 
 
@@ -11,11 +13,6 @@ func _physics_process(_delta):
 
 func _on_Main_ready():
 	rand.randomize()
-	
-	# load traps
-	var trap_scenes = []
-	for name in ["TrapI", "TrapO", "TrapX"]:
-		trap_scenes.append(load("res://Scenes/Trap_scenes/" + name + ".tscn"))
 		
 	# add num_of_traps random traps to each tunnel.
 	for tunnel in get_children():	
