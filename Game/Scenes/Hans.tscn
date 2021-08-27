@@ -8,23 +8,45 @@ script/source = "extends KinematicBody
 
 onready var main = get_parent()
 onready var ground = get_node(\"../Ground\")
-onready var tunnels = get_node(\"../Tunnels\").get_children()
+onready var tunnels = get_node(\"../Tunnels\")
+onready var tunnels_children = get_node(\"../Tunnels\").get_children()
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
 
-var cur_tunnel = 0
-export var speed = 35.0
+var rand = RandomNumberGenerator.new()
+
+var move_tunnel = 0
+var next_tunnel = 1
+var speed = 35.0
+var total_translation = 1250 # original entrence to the level2 tunnel
+var x = rand.randi_range(1120,1190) # first trap for the next level will be here
+var new_trap = 3650 # start producing traps for the next level at this point
 
 func _physics_process(_delta):
 	# making tunnels (and ground) infinite by moving them forward
 	# after Hans passes them	
-	var tunnel = tunnels[cur_tunnel]
+	var tunnel = tunnels_children[move_tunnel]
 	if translation.x < tunnel.translation.x - 2000:
-		tunnel.translation.x -= 7500    # move tunnel ahead
-		cur_tunnel = (cur_tunnel + 1) % tunnels.size()
+		tunnel.translation.x -= 7500    # move tunnel ahead (3x2500)
+		move_tunnel = (move_tunnel + 1) % tunnels_children.size()
 	if translation.x < ground.translation.x - 2000:
-		ground.translation.x -= 3000
+		ground.translation.x -= 3000 # move ground ahead
 	
+	if translation.x < total_translation:
+		# update cur_tunnel Hans is running through
+		total_translation -= 2500
+		next_tunnel = (next_tunnel + 1) % tunnels_children.size()
+		
+		rand.randomize()
+		x = rand.randi_range(1120,1190)
+	
+	# create a trap in the next tunnel every 50 meters
+	if translation.x < new_trap:
+		new_trap -= 50
+		if x > -1200:
+			tunnels.create_one_trap(next_tunnel,x)
+		x -= rand.randi_range(40,80)
+		
 	# updating score 
 	score._on_Meter_Passed()
 	
