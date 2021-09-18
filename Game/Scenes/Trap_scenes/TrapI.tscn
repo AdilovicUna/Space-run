@@ -10,7 +10,6 @@ transform = Transform( -2.53445e-06, 5.76011e-07, 1, 15.5564, 3.53553, 2.26094e-
 collision_layer = 2
 
 [node name="CSGBox" type="CSGBox" parent="."]
-use_collision = true
 collision_layer = 2
 material = SubResource( 1 )
 

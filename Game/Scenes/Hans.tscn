@@ -57,6 +57,7 @@ func _physics_process(_delta):
 	# End game if Hans touches the trap
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)	
+		print(collision)
 		if collision.collider is KinematicBody:	
 			main._game_over()
 			return
