@@ -3,6 +3,7 @@ extends Spatial
 # load traps
 var trap_scenes = []
 var rand = RandomNumberGenerator.new()
+var angle = 0
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("right"):
@@ -47,5 +48,8 @@ func create_one_trap(level,x):
 	tunnel.add_child(trap)
 	
 	# rotate the trap under some angle
-	var r = rand.randf_range(0,360)
-	trap.rotate_x(r)
+	if(trap.name == "TrapHex"):
+		angle = 120 * rand.randf_range(0,6)
+	else:
+		angle = rand.randf_range(0,360)
+	trap.rotate_x(angle)
