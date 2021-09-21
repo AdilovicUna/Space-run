@@ -6,7 +6,7 @@ onready var score = get_node("UI/Score")
 onready var end = get_node("UI/End")
 
 func _ready():
-	for name in ["TrapI", "TrapO", "TrapX", "TrapHex"]:
+	for name in ["TrapI", "TrapO", "TrapX", "TrapHex", "TrapWalls"]:
 		tunnels.trap_scenes.append(load("res://Scenes/Trap_scenes/" + name + ".tscn"))
 	tunnels.create_first_level_traps()
 

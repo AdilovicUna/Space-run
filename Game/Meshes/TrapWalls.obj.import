@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/TrapWalls.obj-ee6b50689b4a00931f6cb0d244b85dfc.mesh"
+
+[deps]
+
+files=[ "res://.import/TrapWalls.obj-ee6b50689b4a00931f6cb0d244b85dfc.mesh" ]
+
+source_file="res://Meshes/TrapWalls.obj"
+dest_files=[ "res://.import/TrapWalls.obj-ee6b50689b4a00931f6cb0d244b85dfc.mesh", "res://.import/TrapWalls.obj-ee6b50689b4a00931f6cb0d244b85dfc.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

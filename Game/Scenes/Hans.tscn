@@ -73,7 +73,7 @@ script = SubResource( 1 )
 
 [node name="Hans" parent="Pivot" instance=ExtResource( 1 )]
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="Pivot/Hans"]
+[node name="Running" type="AnimationPlayer" parent="Pivot/Hans"]
 autoplay = "HansRunning"
 anims/HansRunning = ExtResource( 2 )
 
