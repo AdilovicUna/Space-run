@@ -54,3 +54,16 @@ func rotateTrap(trap):
 	else:
 		angle = rand.randf_range(0,360)
 	trap.rotate_x(angle)
+
+func deleteTrapsUntilX(level,x):
+	var tunnel = get_child(level)
+	var torus = true
+	#print(tunnel.get_children().size())
+	for trap in tunnel.get_children():
+		if(torus):
+			torus = false
+		else:
+			if(trap.translation.x > x):
+				trap.queue_free()
+	#print(tunnel.get_children().size())
+		

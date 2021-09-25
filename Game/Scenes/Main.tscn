@@ -40,7 +40,7 @@ transform = Transform( 0.5, -2.40383e-09, -3.54703e-11, 2.40383e-09, 0.499782, 0
 
 [node name="Camera" type="Camera" parent="Hans/CameraPivot"]
 transform = Transform( -2, 3.75003e-07, -4.04612e-07, 2.98925e-07, 1.96953, 0.34781, 4.63662e-07, 0.34781, -1.96953, -3.54834e-06, 11.652, -21.7788 )
-far = 1000.0
+far = 500.0
 
 [node name="Tunnels" type="Spatial" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0 )
@@ -66,7 +66,7 @@ transform = Transform( -7.27325e-10, -5.91753e-16, -0.0833333, 0.000357143, -8.3
 omni_range = 500.0
 
 [node name="light3" type="OmniLight" parent="Tunnels/level1/torus1"]
-transform = Transform( -7.27325e-10, -5.95511e-16, -0.0833333, 0.000357143, -8.36315e-13, -3.1171e-12, -1.95141e-10, -0.0833333, 5.97214e-16, 0, 0.13, 0 )
+transform = Transform( -7.27326e-10, -5.95511e-16, -0.0833333, 0.000357143, -8.36314e-13, -3.11715e-12, -1.95141e-10, -0.0833333, 5.97215e-16, 2.38419e-07, 0.13, 0 )
 omni_range = 500.0
 
 [node name="light4" type="OmniLight" parent="Tunnels/level1/torus1"]

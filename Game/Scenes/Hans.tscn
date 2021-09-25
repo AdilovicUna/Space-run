@@ -17,16 +17,18 @@ var rand = RandomNumberGenerator.new()
 
 var move_tunnel = 0
 var next_tunnel = 1
+var cur_tunnel = 0
 var speed = 35.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
+var difference = 2500
 
 func _physics_process(_delta):
 	# making tunnels (and ground) infinite by moving them forward
 	# after Hans passes them	
 	var tunnel = tunnels_children[move_tunnel]
-	if translation.x < tunnel.translation.x - 2000:
+	if translation.x < tunnel.translation.x - 2000:				
 		tunnel.translation.x -= 7500    # move tunnel ahead (3x2500)
 		move_tunnel = (move_tunnel + 1) % tunnels_children.size()
 	if translation.x < ground.translation.x - 2000:
@@ -36,9 +38,15 @@ func _physics_process(_delta):
 		# update cur_tunnel Hans is running through
 		total_translation -= 2500
 		next_tunnel = (next_tunnel + 1) % tunnels_children.size()
+		cur_tunnel = (cur_tunnel + 1) % tunnels_children.size()
 		
 		rand.randomize()
+		# restart x
 		x = rand.randi_range(1120,1190)
+		
+		difference -= 2500
+	
+	tunnels.deleteTrapsUntilX(cur_tunnel,translation.x - difference + 50)
 	
 	# create a trap in the next tunnel every 50 meters
 	if translation.x < new_trap:
@@ -46,7 +54,7 @@ func _physics_process(_delta):
 		if x > -1200:
 			tunnels.create_one_trap(next_tunnel,x)
 		x -= rand.randi_range(40,80)
-		
+	
 	# updating score 
 	score._on_Meter_Passed()
 	
@@ -57,7 +65,6 @@ func _physics_process(_delta):
 	# End game if Hans touches the trap
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)	
-		print(collision)
 		if collision.collider is KinematicBody:	
 			main._game_over()
 			return
