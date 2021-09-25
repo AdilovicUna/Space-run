@@ -58,12 +58,14 @@ func rotateTrap(trap):
 func deleteTrapsUntilX(level,x):
 	var tunnel = get_child(level)
 	var torus = true
-	#print(tunnel.get_children().size())
+	print(tunnel.get_children().size())
 	for trap in tunnel.get_children():
 		if(torus):
 			torus = false
 		else:
 			if(trap.translation.x > x):
 				trap.queue_free()
-	#print(tunnel.get_children().size())
+			else:
+				return;
+	print(tunnel.get_children().size())
 		
