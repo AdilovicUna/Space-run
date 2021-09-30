@@ -49,8 +49,8 @@ func create_one_trap(level,x):
 
 func rotateTrap(trap):
 	# rotate the trap under some angle
-	if(trap.name == "TrapHex"):
-		angle = 120 * rand.randf_range(0,6)
+	if "Hex" in trap.name:
+		angle = 120 * rand.randi_range(0,6)
 	else:
 		angle = rand.randf_range(0,360)
 	trap.rotate_x(angle)
@@ -58,7 +58,6 @@ func rotateTrap(trap):
 func deleteTrapsUntilX(level,x):
 	var tunnel = get_child(level)
 	var torus = true
-	print(tunnel.get_children().size())
 	for trap in tunnel.get_children():
 		if(torus):
 			torus = false
@@ -67,5 +66,4 @@ func deleteTrapsUntilX(level,x):
 				trap.queue_free()
 			else:
 				return;
-	print(tunnel.get_children().size())
 		

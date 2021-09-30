@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/TrapHexO.obj-97ac81e521d8fee02d438ab19fc47086.mesh"
+
+[deps]
+
+files=[ "res://.import/TrapHexO.obj-97ac81e521d8fee02d438ab19fc47086.mesh" ]
+
+source_file="res://Meshes/TrapHexO.obj"
+dest_files=[ "res://.import/TrapHexO.obj-97ac81e521d8fee02d438ab19fc47086.mesh", "res://.import/TrapHexO.obj-97ac81e521d8fee02d438ab19fc47086.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
