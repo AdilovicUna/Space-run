@@ -10,7 +10,7 @@ func _physics_process(_delta):
 		rotate_object_local(Vector3.RIGHT,-PI/90)
 	if Input.is_action_pressed("left"):
 		rotate_object_local(Vector3.LEFT,-PI/90)
-
+		
 func create_first_level_traps():
 	rand.randomize()
 	# get the level we are making traps for

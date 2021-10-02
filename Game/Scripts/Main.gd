@@ -23,3 +23,17 @@ func _game_over():
 	end_children[1].show()
 	yield(get_tree().create_timer(1.2), "timeout")
 	end_children[2].show()
+
+
+func _on_Resume_pressed():
+	$PauseAndResume/Pause.show()
+	$UI/Score.show()
+	$PauseAndResume/Pause_popup.hide()
+	get_tree().paused = false
+
+func _on_Pause_pressed():
+	$PauseAndResume/Pause_popup.show()
+	$PauseAndResume/Pause.hide()
+	$UI/Score.hide()
+	get_tree().paused = true
+	

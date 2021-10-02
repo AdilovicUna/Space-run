@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Tunnels/level1.tres" type="Material" id=1]
 [ext_resource path="res://Tunnels/level2.tres" type="Material" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Other/fonts/BASKVILL.TTF" type="DynamicFontData" id=9]
 [ext_resource path="res://Scenes/End.gd" type="Script" id=10]
+[ext_resource path="res://Other/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -23,6 +24,37 @@ size = 40
 outline_size = 1
 use_filter = true
 font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 11 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.439216 )
+
+[sub_resource type="DynamicFont" id=12]
+font_data = ExtResource( 11 )
+
+[sub_resource type="Theme" id=13]
+default_font = SubResource( 12 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.466667 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.278431 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 8 )
@@ -251,3 +283,87 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="PauseAndResume" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause_popup" type="Popup" parent="PauseAndResume"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="PauseAndResume/Pause_popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.737255, 0.807843, 0.878431, 0.541176 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Paused" type="Label" parent="PauseAndResume/Pause_popup/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -51.5
+margin_right = 100.0
+margin_bottom = 51.5
+custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+custom_colors/font_outline_modulate = Color( 0.0784314, 0.188235, 0.454902, 1 )
+text = "Game Paused"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="Button" parent="PauseAndResume/Pause_popup"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -160.0
+margin_top = -216.0
+margin_right = 160.0
+margin_bottom = -152.0
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/normal = SubResource( 8 )
+custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
+text = "Resume"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Pause" type="Button" parent="PauseAndResume"]
+margin_left = 968.0
+margin_top = 16.0
+margin_right = 1000.0
+margin_bottom = 48.0
+theme = SubResource( 13 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/normal = SubResource( 11 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
+text = "||"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="PauseAndResume/Pause_popup/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="PauseAndResume/Pause" to="." method="_on_Pause_pressed"]
