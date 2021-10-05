@@ -17,23 +17,16 @@ func create_first_level_traps():
 	var tunnel = get_child(0)
 	# pick number of traps to be added
 	var num_of_traps = rand.randi_range(50,65)
-	# pick x for the first trap
-	var x = rand.randi_range(1120,1190)
-	
+	var x = 1200
+			
 	for n in num_of_traps:
-		# pick a trap
-		var i = rand.randi_range(0, len(trap_scenes) - 1)
-		var trap = trap_scenes[i].instance()
-		trap.translation.x = x
 		# add space between traps
 		x -= rand.randi_range(50,80)
 		# check if the trap will be inside the tunnel
 		# if not, break
 		if x < -1200:
 			break
-			
-		tunnel.add_child(trap)
-		rotateTrap(trap)
+		create_one_trap(0, x) 
 
 func create_one_trap(level,x):
 	# get the level we are making traps for
@@ -50,9 +43,9 @@ func create_one_trap(level,x):
 func rotateTrap(trap):
 	# rotate the trap under some angle
 	if "Hex" in trap.name:
-		angle = 120 * rand.randi_range(0,6)
+		angle = rand.randi_range(0,5) * (PI / 3)
 	else:
-		angle = rand.randf_range(0,360)
+		angle = rand.randf_range(0,2 * PI)
 	trap.rotate_x(angle)
 
 func deleteTrapsUntilX(level,x):

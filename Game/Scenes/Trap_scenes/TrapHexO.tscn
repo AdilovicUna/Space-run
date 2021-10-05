@@ -9,8 +9,8 @@ points = PoolVector3Array( -0.94647, -0.485934, -0.0927143, -0.94647, 0.477663, 
 [sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 
-[node name="Spatial" type="KinematicBody"]
-transform = Transform( -3.58426e-06, -1, 0, 22, -1.62921e-07, 0, 0, 0, 22, 0, 0, 0 )
+[node name="TrapHexO" type="KinematicBody"]
+transform = Transform( -3.58425e-06, -1, 0, 19.0526, -1.41093e-07, -11, 11, -8.14603e-08, 19.0526, 0, 0, 0 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
 transform = Transform( 1, 1.77636e-15, 0, -2.27374e-12, 1, 0, 0, 0, 0.886167, 0, 0, 0.0880151 )

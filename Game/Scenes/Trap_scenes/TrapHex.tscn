@@ -13,6 +13,7 @@ points = PoolVector3Array( -0.979568, -0.461405, 0.0353884, -0.979568, 0.477278,
 transform = Transform( -3.58425e-06, -1, 3.58425e-06, 0, -1.62921e-07, -22, 22, -1.62921e-07, 5.83949e-13, 0, 0, 0 )
 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 4.44089e-16, 0, 0, 1, -9.51372e-20, -1.69407e-21, -4.44089e-16, 1, 0, 0, 0 )
 
 [node name="CSGPolygon" type="CSGCylinder" parent="CSGCombiner"]
 sides = 6

@@ -41,19 +41,19 @@ bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
 [sub_resource type="StyleBoxFlat" id=8]
 bg_color = Color( 0.411765, 0.764706, 0.941176, 0.439216 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=9]
 font_data = ExtResource( 11 )
 
-[sub_resource type="Theme" id=13]
-default_font = SubResource( 12 )
-
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.411765, 0.764706, 0.941176, 0.466667 )
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+[sub_resource type="Theme" id=10]
+default_font = SubResource( 9 )
 
 [sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.466667 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.411765, 0.764706, 0.941176, 0.278431 )
 
 [node name="Main" type="Node"]
@@ -353,10 +353,10 @@ margin_left = 968.0
 margin_top = 16.0
 margin_right = 1000.0
 margin_bottom = 48.0
-theme = SubResource( 13 )
-custom_styles/hover = SubResource( 9 )
-custom_styles/pressed = SubResource( 10 )
-custom_styles/normal = SubResource( 11 )
+theme = SubResource( 10 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/normal = SubResource( 13 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
