@@ -42,10 +42,7 @@ func create_one_trap(level,x):
 
 func rotateTrap(trap):
 	# rotate the trap under some angle
-	if "Hex" in trap.name:
-		angle = rand.randi_range(0,5) * (PI / 3)
-	else:
-		angle = rand.randf_range(0,2 * PI)
+	angle = rand.randi_range(0,5) * (PI / 3)
 	trap.rotate_x(angle)
 
 func deleteTrapsUntilX(level,x):
