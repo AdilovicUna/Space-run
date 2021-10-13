@@ -13,12 +13,18 @@ onready var tunnels_children = get_node(\"../Tunnels\").get_children()
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
 
+#every piece of code that is changed by this line has the 
+#\"TESTING\" 
+#indicator above it
+var TESTING = true
+
 var rand = RandomNumberGenerator.new()
 
 var move_tunnel = 0
 var next_tunnel = 1
 var cur_tunnel = 0
-var speed = 35.0
+#TESTING
+var speed = 35.0 if !TESTING else 50.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
@@ -65,7 +71,8 @@ func _physics_process(_delta):
 	# End game if Hans touches the trap
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)	
-		if collision.collider is KinematicBody:	
+		#TESTING
+		if collision.collider is KinematicBody and !TESTING:	
 			main._game_over()
 			return
 "
