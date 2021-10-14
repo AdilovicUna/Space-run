@@ -1,0 +1,141 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
+
+[sub_resource type="SphereShape" id=2]
+
+[sub_resource type="SphereShape" id=3]
+
+[sub_resource type="SphereShape" id=4]
+
+[sub_resource type="SphereShape" id=5]
+
+[sub_resource type="SphereShape" id=6]
+
+[sub_resource type="Animation" id=7]
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CSGBox/CSGSphere:translation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -15, 0 ), Vector3( 0, -11, 11 ), Vector3( 0, 0, 16 ), Vector3( 0, 11, 11 ), Vector3( 0, 15, 0 ), Vector3( 0, 11, -11 ), Vector3( 0, 0, -16 ), Vector3( 0, -11, -11 ), Vector3( 0, -15, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CSGBox/CSGSphere2:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -7, -11, 11 ), Vector3( -7, 0, 16 ), Vector3( -7, 11, 11 ), Vector3( -7, 15, 0 ), Vector3( -7, 11, -11 ), Vector3( -7, 0, -16 ), Vector3( -7, -11, -11 ), Vector3( -7, -15, 0 ), Vector3( -7, -11, 11 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CSGBox/CSGSphere3:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -14, 0, 16 ), Vector3( -14, 11, 11 ), Vector3( -14, 15, 0 ), Vector3( -14, 11, -11 ), Vector3( -14, 0, -16 ), Vector3( -14, -11, -11 ), Vector3( -14, -15, 0 ), Vector3( -14, -11, 11 ), Vector3( -14, 0, 16 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CSGBox/CSGSphere4:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -21, 11, 11 ), Vector3( -21, 15, 0 ), Vector3( -21, 11, -11 ), Vector3( -21, 0, -16 ), Vector3( -21, -11, -11 ), Vector3( -21, -15, 0 ), Vector3( -21, -11, 11 ), Vector3( -21, 0, 16 ), Vector3( -21, 11, 11 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CSGBox/CSGSphere5:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -28, 15, 0 ), Vector3( -28, 11, -11 ), Vector3( -28, 0, -16 ), Vector3( -28, -11, -11 ), Vector3( -28, -15, 0 ), Vector3( -28, -11, 11 ), Vector3( -28, 0, 16 ), Vector3( -28, 11, 11 ), Vector3( -28, 15, 0 ) ]
+}
+
+[node name="TrapBalls" type="KinematicBody"]
+
+[node name="CSGBox" type="CSGCombiner" parent="."]
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGBox"]
+transform = Transform( -3.58425e-06, -1, 3.58425e-06, 0, -1.62921e-07, -22, 22, -1.62921e-07, 5.83949e-13, -35, 0, 0 )
+visible = false
+sides = 6
+
+[node name="CSGSphere" type="CSGSphere" parent="CSGBox"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -6.05178, 13.2492 )
+radial_segments = 100
+rings = 10
+material = SubResource( 1 )
+
+[node name="CSGSphere2" type="CSGSphere" parent="CSGBox"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -7, 4.94822, 13.7508 )
+radial_segments = 100
+rings = 10
+material = SubResource( 1 )
+
+[node name="CSGSphere3" type="CSGSphere" parent="CSGBox"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -14, 12.7994, 6.05178 )
+radial_segments = 100
+rings = 10
+material = SubResource( 1 )
+
+[node name="CSGSphere4" type="CSGSphere" parent="CSGBox"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -21, 13.2006, -4.94822 )
+radial_segments = 100
+rings = 10
+material = SubResource( 1 )
+
+[node name="CSGSphere5" type="CSGSphere" parent="CSGBox"]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -28, 6.05178, -13.2492 )
+radial_segments = 100
+rings = 10
+material = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -7, 0, 0 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -14, 0, 0 )
+shape = SubResource( 4 )
+
+[node name="CollisionShape4" type="CollisionShape" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -21, 0, 0 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape5" type="CollisionShape" parent="."]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -28, 0, 0 )
+shape = SubResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Rotation"
+anims/Rotation = SubResource( 7 )
