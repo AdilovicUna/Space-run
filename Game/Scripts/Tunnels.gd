@@ -21,7 +21,7 @@ func create_first_level_traps():
 			
 	for n in num_of_traps:
 		# add space between traps
-		x -= rand.randi_range(50,80)
+		x -= rand.randi_range(70,90)
 		# check if the trap will be inside the tunnel
 		# if not, break
 		if x < -1200:

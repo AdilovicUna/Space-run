@@ -16,7 +16,7 @@ onready var end = get_node(\"../UI/End\")
 #every piece of code that is changed by this line has the 
 #\"TESTING\" 
 #indicator above it
-var TESTING = true
+var TESTING = false
 
 var rand = RandomNumberGenerator.new()
 
@@ -59,7 +59,7 @@ func _physics_process(_delta):
 		new_trap -= 50
 		if x > -1200:
 			tunnels.create_one_trap(next_tunnel,x)
-		x -= rand.randi_range(40,80)
+		x -= rand.randi_range(70,90)
 	
 	# updating score 
 	score._on_Meter_Passed()

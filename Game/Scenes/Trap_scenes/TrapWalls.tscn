@@ -274,43 +274,43 @@ transform = Transform( -3.25841e-07, 0, 1, 0, 22, 0, -2, 0, -1.62921e-07, 0, 0, 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, -7.96653, 0, -5 )
+transform = Transform( 1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, -10.1041, 0, -5 )
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox2"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9331, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2082, 0, 0 )
 material = SubResource( 1 )
 
 [node name="CSGBox3" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96653, 0, -10 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1041, 0, -10 )
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9331, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.2082, 0, 0 )
 material = SubResource( 1 )
 
 [node name="CSGBox4" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9665, 0, -15 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11.8959, 0, -15 )
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox4"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.9331, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7918, 0, 0 )
 material = SubResource( 1 )
 
 [node name="CSGBox5" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0335, 0, -20 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.89588, 0, -20 )
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox5"]
-transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 24.0669, 0, 0 )
+transform = Transform( 1, 0, -1.42109e-14, 0, 1, 0, 1.42109e-14, 0, 1, 19.7918, 0, 0 )
 material = SubResource( 1 )
 
 [node name="CSGBox6" type="CSGBox" parent="CSGCombiner"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0335, 0, -25 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.89588, 0, -25 )
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox6"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0669, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7918, 0, 0 )
 material = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -319,43 +319,43 @@ playback_speed = 0.2
 anims/Wave = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -3.55271e-14, 0, 1, 0, 5.68434e-14, 0, 1, -7.96653, 0, -5 )
+transform = Transform( 1, 0, -3.55271e-14, 0, 1, 0, 5.68434e-14, 0, 1, -10.1041, 0, -5 )
 shape = SubResource( 3 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -3.55271e-14, 0, 1, 0, 5.68434e-14, 0, 1, 7.96653, 0, -5 )
+transform = Transform( 1, 0, -3.55271e-14, 0, 1, 0, 5.68434e-14, 0, 1, 10.1041, 0, -5 )
 shape = SubResource( 4 )
 disabled = true
 
 [node name="CollisionShape3" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, 9.96653, 0, -10 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, 12.1041, 0, -10 )
 shape = SubResource( 5 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -9.96653, 0, -10 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -12.1041, 0, -10 )
 shape = SubResource( 6 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, 11.9665, 0, -15 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, 11.8959, 0, -15 )
 shape = SubResource( 7 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -11.9665, 0, -15 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -11.8959, 0, -15 )
 shape = SubResource( 8 )
 disabled = true
 
 [node name="CollisionShape7" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -2.13163e-14, 0, 1, 0, 5.68434e-14, 0, 1, 12.0335, 0, -20 )
+transform = Transform( 1, 0, -2.13163e-14, 0, 1, 0, 5.68434e-14, 0, 1, 9.89588, 0, -20 )
 shape = SubResource( 9 )
 
 [node name="CollisionShape8" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -12.0335, 0, -20 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -9.89588, 0, -20 )
 shape = SubResource( 10 )
 
 [node name="CollisionShape9" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, 10.0335, 0, -25 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, 7.89588, 0, -25 )
 shape = SubResource( 11 )
 
 [node name="CollisionShape10" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -10.0335, 0, -25 )
+transform = Transform( 1, 0, -7.10543e-15, 0, 1, 0, 2.84217e-14, 0, 1, -7.89588, 0, -25 )
 shape = SubResource( 12 )
