@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/TrapTriangles.obj-210e12e2c449a2bb725285a93e6fce61.mesh"
+
+[deps]
+
+files=[ "res://.import/TrapTriangles.obj-210e12e2c449a2bb725285a93e6fce61.mesh" ]
+
+source_file="res://Meshes/TrapTriangles.obj"
+dest_files=[ "res://.import/TrapTriangles.obj-210e12e2c449a2bb725285a93e6fce61.mesh", "res://.import/TrapTriangles.obj-210e12e2c449a2bb725285a93e6fce61.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

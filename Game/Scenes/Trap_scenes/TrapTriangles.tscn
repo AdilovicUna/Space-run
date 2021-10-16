@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 0.215555, -0.20729, -0.143143, 0.215555, 0.200959, -0.143143, 0.230171, -0.20729, -0.172275, 0.230171, 0.200959, -0.172275, 0.566154, -0.190714, -0.716027, 0.566154, 0.184383, -0.716027, 0.592119, -0.184163, -0.706199, 0.592119, 0.177831, -0.706199, 0.917232, -0.2, -0.139452, 0.921368, 0.196032, -0.135908, 0.92999, -0.20729, -0.157709, 0.92999, 0.200959, -0.157709 )
+
+[sub_resource type="ConvexPolygonShape" id=3]
+points = PoolVector3Array( -0.93629, -0.20729, -0.157709, -0.93629, 0.200959, -0.157709, -0.927439, 0.195901, -0.136103, -0.923532, -0.2, -0.139452, -0.598407, -0.184044, -0.706021, -0.598407, 0.177713, -0.706021, -0.572459, -0.190586, -0.715834, -0.572459, 0.184255, -0.715834, -0.236471, -0.20729, -0.172275, -0.236471, 0.200959, -0.172275, -0.221855, -0.20729, -0.143143, -0.221855, 0.200959, -0.143143 )
+
+[sub_resource type="ConvexPolygonShape" id=4]
+points = PoolVector3Array( -0.341505, 0.194208, 0.8674, -0.34058, -0.2, 0.866591, -0.320455, -0.18826, 0.82246, -0.320455, 0.181929, 0.82246, -0.0162354, -0.187082, 0.295521, -0.0162354, 0.18075, 0.295521, 0.0104138, -0.193805, 0.285438, 0.0104138, 0.187473, 0.285438, 0.311819, -0.186898, 0.807503, 0.311819, 0.180566, 0.807503, 0.33428, -0.2, 0.866591, 0.335205, 0.194208, 0.8674 )
+
+[node name="TrapTriangles" type="KinematicBody"]
+transform = Transform( -3.58426e-06, -1, 0, 19.0526, -1.41093e-07, 11, -11, 8.14603e-08, 19.0526, 0, 0, 0 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 4.44089e-16, 0, 0, 1, -9.51372e-20, -1.69407e-21, -4.44089e-16, 1, 0, 0, 0 )
+
+[node name="CSGCylinder" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( -7.45058e-08, -4.44089e-16, 0.4, -1.7053e-12, 0.4, -1.13687e-13, -0.4, -1.58495e-12, -7.45058e-08, 0.576274, -3.18415e-06, -0.33356 )
+sides = 3
+material = SubResource( 1 )
+
+[node name="CSGCylinder2" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( -6.51683e-08, 2.22045e-16, 0.4, -2.21168e-13, 0.4, 0, -0.4, -2.21378e-13, -6.51683e-08, 1.1105e-20, 2.39218e-06, 0.667413 )
+sides = 3
+material = SubResource( 1 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="CSGCombiner"]
+transform = Transform( -8.9407e-08, 3.33067e-16, 0.4, -1.81899e-12, 0.4, -1.27898e-12, -0.4, -2.20712e-13, -8.9407e-08, -0.582614, 8.93312e-07, -0.333382 )
+sides = 3
+material = SubResource( 1 )
+
+[node name="CollisionShape3" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, -1.7053e-12, 1, 0, 0, 2.22045e-16, 1, -0.00256624, 9.19808e-09, 0.00444487 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2" type="CollisionShape" parent="."]
+transform = Transform( 1, 2.22045e-16, 0, -7.95808e-13, 1, 0, 0, 0, 1, -0.00364107, 1.30506e-08, 0.00630654 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, -1.7053e-12, 1, 0, 0, 2.22045e-16, 1, 0.00125082, -4.48328e-09, -0.00216645 )
+shape = SubResource( 4 )

@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( 5.35513e-05, -0.5, -0.857608, 5.35513e-05, -0.5, 0.857608, 0.0103863, 0.5, -0.840066, 0.0103863, 0.5, 0.840066, 0.516586, -0.488021, -0.837272, 0.516586, -0.488021, 0.837272, 0.516586, 0.498355, -0.837272, 0.516586, 0.498355, 0.837272, 0.941873, -0.476413, 0.100675, 0.941873, 0.486746, 0.100675, 0.993534, -0.483199, -0.0111995, 0.993534, 0.493532, -0.0111995 )
+
+[node name="TrapHalfHex" type="KinematicBody"]
+transform = Transform( -3.58425e-06, -1, 3.58425e-06, 0, -1.62921e-07, -22, 22, -1.62921e-07, 5.83949e-13, 0, 0, 0 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+transform = Transform( 1, 4.44089e-16, 0, 0, 1, -9.51372e-20, -1.69407e-21, -4.44089e-16, 1, 0, 0, 0 )
+
+[node name="CSGPolygon" type="CSGCylinder" parent="CSGCombiner"]
+sides = 6
+material = SubResource( 1 )
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner/CSGPolygon"]
+transform = Transform( 1, 4.44089e-16, -6.77626e-21, -4.54747e-13, 1, 4.54747e-13, -3.38813e-21, -4.44089e-16, 1, -1, 0, 0 )
+operation = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 2 )

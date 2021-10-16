@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/TrapHalfHex.obj-6f23210cafa8eb2d74c0d2719b46269a.mesh"
+
+[deps]
+
+files=[ "res://.import/TrapHalfHex.obj-6f23210cafa8eb2d74c0d2719b46269a.mesh" ]
+
+source_file="res://Meshes/TrapHalfHex.obj"
+dest_files=[ "res://.import/TrapHalfHex.obj-6f23210cafa8eb2d74c0d2719b46269a.mesh", "res://.import/TrapHalfHex.obj-6f23210cafa8eb2d74c0d2719b46269a.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
