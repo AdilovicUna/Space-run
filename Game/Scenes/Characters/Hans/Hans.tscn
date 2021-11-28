@@ -52,14 +52,34 @@ func _physics_process(_delta):
 		
 		difference -= 2500
 	
-	tunnels.deleteTrapsUntilX(cur_tunnel,translation.x - difference + 50)
+	tunnels.deleteObsticleUntilX(cur_tunnel,translation.x - difference + 50)
 	
 	# create a trap in the next tunnel every 50 meters
 	if translation.x < new_trap:
 		new_trap -= 50
 		if x > -1200:
-			tunnels.create_one_trap(next_tunnel,x)
-		x -= rand.randi_range(70,90)
+			tunnels.create_one_obstacle(next_tunnel,x)
+		
+		# FINAL
+		# UNCOMMENT AFTER IMPLEMENTING SHOOTING
+		# choose a place for the next obsticle
+		# NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+		# a) we need more time to shoot down a bug or a virus
+		# b) bugs and viruses are longer than traps thus take more space along x-axis
+		# x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(170,190)
+		
+		# NEXT
+		# UNCOMMENT AFTER IMPLEMENTING VIRUSES
+		##choose a place for the next obsticle
+		## NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+		## bugs and viruses are longer than traps thus take more space along x-axis
+		#x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(120,140)
+		
+		# CURRENT
+		# choose a place for the next obsticle
+		# NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+		# bugs are longer than traps thus take more space along x-axis
+		x -= rand.randi_range(120,140) if next_tunnel == 1 else rand.randi_range(70,90)
 	
 	# updating score 
 	score._on_Meter_Passed()

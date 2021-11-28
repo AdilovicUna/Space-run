@@ -8,6 +8,7 @@
 [sub_resource type="CapsuleShape" id=2]
 
 [node name="Ladybug" type="KinematicBody"]
+transform = Transform( -3.25841e-07, 0, -2, 0, 2, 0, 2, 0, -3.25841e-07, 0, -17, 0 )
 
 [node name="Pivot" type="Spatial" parent="."]
 

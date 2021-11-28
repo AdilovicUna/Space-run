@@ -10,6 +10,10 @@ func _ready():
 	for name in ["TrapI","TrapO", "TrapMovingI", "TrapX", "TrapWalls", "TrapHex", 
 					"TrapHexO", "TrapBalls", "TrapTriangles", "TrapHalfHex"]:
 		tunnels.trap_scenes.append(load("res://Scenes/Trap_scenes/" + name + ".tscn"))
+	for name in ["Ladybug", "Worm"]:
+		tunnels.bug_scenes.append(load("res://Scenes/Characters/Bugs/" + name + ".tscn"))
+	#for name in []:
+		#tunnels.virus_scenes.append(load("res://Scenes/Characters/Viruses" + name + ".tscn"))
 	tunnels.create_first_level_traps()
 
 func _game_over():

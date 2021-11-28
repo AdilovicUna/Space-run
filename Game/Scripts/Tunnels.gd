@@ -1,7 +1,11 @@
 extends Spatial
 
+#NOTE: levels are numbered from 0
+
 # load traps
 var trap_scenes = []
+var bug_scenes = []
+var virus_scenes = []
 var rand = RandomNumberGenerator.new()
 var angle = 0
 
@@ -28,6 +32,27 @@ func create_first_level_traps():
 			break
 		create_one_trap(0, x) 
 
+func create_one_obstacle(level,x):
+	match level:
+		0:
+			create_one_trap(level, x)
+		1:
+			create_one_trap(level,x) if rand.randi_range(0,1) == 0 else create_one_bug(level,x)
+		2:
+			create_one_trap(level, x)
+			
+	 
+func create_one_bug(level,x):
+	# get the level we are making traps for
+	var tunnel = get_child(level)
+	
+	# pick a trap
+	var i = rand.randi_range(0, len(bug_scenes) - 1)
+	var bug = bug_scenes[i].instance()
+	bug.translation.x = x
+	
+	tunnel.add_child(bug)
+
 func create_one_trap(level,x):
 	# get the level we are making traps for
 	var tunnel = get_child(level)
@@ -45,15 +70,15 @@ func rotateTrap(trap):
 	angle = rand.randi_range(0,5) * (PI / 3)
 	trap.rotate_x(angle)
 
-func deleteTrapsUntilX(level,x):
+func deleteObsticleUntilX(level,x):
 	var tunnel = get_child(level)
 	var torus = true
-	for trap in tunnel.get_children():
+	for obsticle in tunnel.get_children():
 		if(torus):
 			torus = false
 		else:
-			if(trap.translation.x > x):
-				trap.queue_free()
+			if(obsticle.translation.x > x):
+				obsticle.queue_free()
 			else:
 				return;
 		
