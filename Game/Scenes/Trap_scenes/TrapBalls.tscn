@@ -138,6 +138,7 @@ tracks/9/keys = {
 albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 
 [node name="TrapBalls" type="KinematicBody"]
+collision_layer = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 13.0141, -5.46111 )

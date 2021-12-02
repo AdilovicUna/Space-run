@@ -1,6 +1,7 @@
 extends Spatial
 
 #NOTE: levels are numbered from 0
+onready var hans = get_node("../Hans")
 
 # load traps
 var trap_scenes = []
@@ -10,10 +11,13 @@ var rand = RandomNumberGenerator.new()
 var angle = 0
 
 func _physics_process(_delta):
+	#rotates all children of "traps"
 	if Input.is_action_pressed("right"):
-		rotate_object_local(Vector3.RIGHT,-PI/90)
+		var traps = get_child(hans.get_current_tunnel()).get_child(0)
+		traps.rotate_object_local(Vector3.RIGHT,-PI/90)
 	if Input.is_action_pressed("left"):
-		rotate_object_local(Vector3.LEFT,-PI/90)
+		var traps = get_child(hans.get_current_tunnel()).get_child(0)
+		traps.rotate_object_local(Vector3.LEFT,-PI/90)
 		
 func create_first_level_traps():
 	rand.randomize()
@@ -30,7 +34,7 @@ func create_first_level_traps():
 		# if not, break
 		if x < -1200:
 			break
-		create_one_trap(0, x) 
+		create_one_obstacle(0, x) 
 
 func create_one_obstacle(level,x):
 	match level:
@@ -41,44 +45,44 @@ func create_one_obstacle(level,x):
 		2:
 			create_one_trap(level, x)
 			
-	 
+func deleteObsticleUntilX(level,x):
+	var tunnel = get_child(level)
+	var torus = true
+	for child in tunnel.get_children():
+		for obsticle in child.get_children():
+			if(torus):
+				torus = false
+			else:
+				if(obsticle.translation.x > x):
+					obsticle.queue_free()
+				else:
+					return;
+		
 func create_one_bug(level,x):
 	# get the level we are making traps for
 	var tunnel = get_child(level)
-	
+	var bugs = tunnel.get_child(1)
+
 	# pick a trap
 	var i = rand.randi_range(0, len(bug_scenes) - 1)
 	var bug = bug_scenes[i].instance()
-	bug.translation.x = x
+	bug.translation.x = x - 2500
 	
-	tunnel.add_child(bug)
+	bugs.add_child(bug)
 
 func create_one_trap(level,x):
 	# get the level we are making traps for
 	var tunnel = get_child(level)
-	
+	var traps = tunnel.get_child(0)
 	# pick a trap
 	var i = rand.randi_range(0, len(trap_scenes) - 1)
 	var trap = trap_scenes[i].instance()
 	trap.translation.x = x
 	
-	tunnel.add_child(trap)
+	traps.add_child(trap)
 	rotateTrap(trap)
 
 func rotateTrap(trap):
 	# rotate the trap under some angle
 	angle = rand.randi_range(0,5) * (PI / 3)
 	trap.rotate_x(angle)
-
-func deleteObsticleUntilX(level,x):
-	var tunnel = get_child(level)
-	var torus = true
-	for obsticle in tunnel.get_children():
-		if(torus):
-			torus = false
-		else:
-			if(obsticle.translation.x > x):
-				obsticle.queue_free()
-			else:
-				return;
-		

@@ -14,6 +14,7 @@ points = PoolVector3Array( -0.341505, 0.194208, 0.8674, -0.34058, -0.2, 0.866591
 
 [node name="TrapTriangles" type="KinematicBody"]
 transform = Transform( -3.58426e-06, -1, 0, 19.0526, -1.41093e-07, 11, -11, 8.14603e-08, 19.0526, 0, 0, 0 )
+collision_layer = 2
 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]
 transform = Transform( 1, 4.44089e-16, 0, 0, 1, -9.51372e-20, -1.69407e-21, -4.44089e-16, 1, 0, 0, 0 )

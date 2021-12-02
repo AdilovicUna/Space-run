@@ -10,19 +10,21 @@ height = 0.955663
 
 [node name="Worm" type="KinematicBody"]
 transform = Transform( -3.25841e-07, 0, 2, 0, 2, 0, -2, 0, -3.25841e-07, 0, -17, 0 )
+collision_layer = 2
 
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Worm" parent="Pivot" instance=ExtResource( 1 )]
+transform = Transform( 0.984808, 0, -0.173648, 0, 1, 0, 0.173648, 0, 0.984808, -1, 0, 0 )
 
 [node name="Moving" type="AnimationPlayer" parent="Pivot/Worm"]
 autoplay = "WormAnimation"
 anims/WormAnimation = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 3.35659, 0, 0.963371, -5.0948 )
+transform = Transform( 0.988319, 0, -0.511542, 0, 1, 0, 0.152399, 0, 3.31738, -0.135056, 0.963371, -5.0948 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.06495, 0, 2.05552, -0.844901 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.06495, -1.02178, 2.05552, 0.0541292 )
 shape = SubResource( 2 )

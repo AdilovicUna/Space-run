@@ -30,6 +30,9 @@ var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
 var difference = 2500
 
+func get_current_tunnel():
+	return cur_tunnel
+
 func _physics_process(_delta):
 	# making tunnels (and ground) infinite by moving them forward
 	# after Hans passes them	
