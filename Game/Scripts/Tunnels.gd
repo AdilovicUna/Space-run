@@ -20,6 +20,7 @@ func _physics_process(_delta):
 		traps.rotate_object_local(Vector3.LEFT,-PI/90)
 		
 func create_first_level_traps():
+	"""	
 	rand.randomize()
 	# get the level we are making traps for
 	var tunnel = get_child(0)
@@ -35,7 +36,7 @@ func create_first_level_traps():
 		if x < -1200:
 			break
 		create_one_obstacle(0, x) 
-
+	"""
 func create_one_obstacle(level,x):
 	match level:
 		0:

@@ -95,9 +95,12 @@ func _physics_process(_delta):
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)	
 		#TESTING
-		if collision.collider is KinematicBody and !TESTING:	
-			main._game_over()
+		if collision.collider is KinematicBody and !TESTING:
+			if \"Worm\" in collision.collider.name:
+				print(\"dead\")
+			#main._game_over()
 			return
+		
 "
 
 [sub_resource type="CapsuleShape" id=2]

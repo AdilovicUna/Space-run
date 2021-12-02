@@ -14,28 +14,28 @@ collision_layer = 2
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Ladybug" parent="Pivot" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -9, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.11111, -7.55556, 0 )
 
 [node name="Flying" type="AnimationPlayer" parent="Pivot/Ladybug"]
 autoplay = "LadybugFlying"
 anims/LadybugFlying = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 2.00186, 0, 0, 0, 1.52957, 0.0907441, 0, -0.0704212, 1.97099, 7.99166, -5.60512, -0.124924 )
+transform = Transform( 2.00186, 0, 0, 0, 1.52957, 0.0907441, 0, -0.0704212, 1.97099, -7.00392, -4.38932, -0.173889 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="."]
-transform = Transform( 1.17684, 0.123142, 0.919842, -0.722744, 0.456634, 0.407151, -0.698349, -0.26507, 1.12872, 10.8622, -3.44576, 1.13016 )
+transform = Transform( 1.17684, 0.123142, 0.919842, -0.722744, 0.456634, 0.407151, -0.698349, -0.26507, 1.12872, -4.38843, -2.62682, 1.38214 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="."]
-transform = Transform( 1.0163, 0.0305123, -1.03794, 0.53529, 0.469636, 0.505792, 1.03711, -0.272295, 0.756048, 5.08209, -3.48223, 1.44413 )
+transform = Transform( 1.0163, 0.0305123, -1.03794, 0.53529, 0.469636, 0.505792, 1.03711, -0.272295, 0.756048, -10.1748, -2.53296, 1.18163 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="."]
-transform = Transform( 0.72316, -0.110386, -0.465114, 0.496864, 0.136997, 0.75774, -0.0551555, -0.213177, 0.727798, 6.42244, -3.51154, -0.724751 )
+transform = Transform( 0.72316, -0.110386, -0.465114, 0.496864, 0.136997, 0.75774, -0.0551555, -0.213177, 0.727798, -8.70863, -2.09976, -0.784654 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape5" type="CollisionShape" parent="."]
-transform = Transform( 0.755167, 0.0981909, 0.423631, -0.443862, 0.129398, 0.833259, 0.0747459, -0.223635, 0.668137, 9.52135, -3.45314, -0.72771 )
+transform = Transform( 0.755167, 0.0981909, 0.423631, -0.443862, 0.129398, 0.833259, 0.0747459, -0.223635, 0.668137, -5.61803, -2.15282, -0.790908 )
 shape = SubResource( 2 )
