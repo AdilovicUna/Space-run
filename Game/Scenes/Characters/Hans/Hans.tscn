@@ -8,8 +8,8 @@ script/source = "extends KinematicBody
 
 onready var main = get_parent()
 onready var ground = get_node(\"../Ground\")
-onready var tunnels = get_node(\"../Tunnels\")
-onready var tunnels_children = get_node(\"../Tunnels\").get_children()
+onready var tunnels = get_node(\"../Tunnels\") # Tunnels
+onready var tunnels_children = get_node(\"../Tunnels\").get_children() # lvl1, lvl2, lvl3
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
 
@@ -25,6 +25,7 @@ var next_tunnel = 1
 var cur_tunnel = 0
 #TESTING
 var speed = 35.0 if !TESTING else 50.0
+var bugs_speed = 20.0 if !TESTING else 0.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
@@ -98,7 +99,22 @@ func _physics_process(_delta):
 		if collision.collider is KinematicBody and !TESTING:
 			main._game_over()
 			return
-		
+			
+	if get_current_tunnel() == 1:
+		bugs_movement()
+
+func bugs_movement():
+	var velocity = Vector3(0,1,1) * bugs_speed
+	var torus = true
+	for obsticle in tunnels_children[1].get_children():
+		if torus:
+			torus = false
+			continue;
+		if not \"Trap\" in obsticle.name:
+			if obsticle.translation.y != 0 || obsticle.translation.z != 0:
+				obsticle.rotate_object_local(Vector3.RIGHT,-PI/180)
+				obsticle.move_and_slide(velocity)
+			
 "
 
 [sub_resource type="CapsuleShape" id=2]

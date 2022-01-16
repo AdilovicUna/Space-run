@@ -47,10 +47,10 @@ func create_one_obstacle(level,x):
 			
 func deleteObsticleUntilX(level,x):
 	var tunnel = get_child(level)
-	var torus = true
+	var light = true
 	for obsticle in tunnel.get_children():
-		if(torus):
-			torus = false
+		if(light):
+			light = false
 		else:
 			if(obsticle.translation.x + 20 > x):
 				obsticle.queue_free()
@@ -91,8 +91,8 @@ func rotateBug(bug,i):
 	
 func create_one_trap(level,x):
 	# get the level we are making traps for
-	var tunnel = get_child(level)
 	# pick a trap
+	var tunnel = get_child(level)
 	var i = rand.randi_range(0, len(trap_scenes) - 1)
 	var trap = trap_scenes[i].instance()
 	trap.translation.x = x

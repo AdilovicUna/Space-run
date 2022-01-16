@@ -9,13 +9,13 @@ height = 0.955663
 [sub_resource type="SphereShape" id=2]
 
 [node name="Worm" type="KinematicBody"]
-transform = Transform( -9.77524e-07, 0, 6, 0, 6, 0, -6, 0, -9.77524e-07, 0, -20, 0 )
+transform = Transform( -8.14603e-07, 0, 5, 0, 5, 0, -5, 0, -8.14603e-07, 0, -18, 0 )
 collision_layer = 2
+collision_mask = 5
 
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Worm" parent="Pivot" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
 [node name="Moving" type="AnimationPlayer" parent="Pivot/Worm"]
 autoplay = "WormAnimation"
