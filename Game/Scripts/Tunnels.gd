@@ -19,7 +19,7 @@ func _physics_process(_delta):
 	if Input.is_action_pressed("left"):
 		var tunnel = get_child(hans.get_current_tunnel())
 		tunnel.rotate_object_local(Vector3.LEFT,-PI/90)
-		
+	
 func create_first_level_traps():
 	rand.randomize()
 	# get the level we are making traps for
