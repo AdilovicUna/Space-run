@@ -21,6 +21,7 @@ func _physics_process(_delta):
 		tunnel.rotate_object_local(Vector3.LEFT,-PI/90)
 	
 func create_first_level_traps():
+	"""
 	rand.randomize()
 	# get the level we are making traps for
 	var tunnel = get_child(0)
@@ -35,7 +36,7 @@ func create_first_level_traps():
 		if x < -1200:
 			break
 		create_one_obstacle(0, x) 
-		
+	"""	
 func create_one_obstacle(level,x):
 	match level:
 		0:
@@ -43,20 +44,33 @@ func create_one_obstacle(level,x):
 		1:
 			create_one_trap(level,x) if rand.randi_range(0,1) == 0 else create_one_bug(level,x)
 		2:
-			create_one_trap(level, x)
+			create_one_trap(level,x) if rand.randi_range(0,1) == 0 else create_one_virus(level,x)
 			
 func deleteObsticleUntilX(level,x):
 	var tunnel = get_child(level)
-	var light = true
 	for obsticle in tunnel.get_children():
-		if(light):
-			light = false
-		else:
+		if not "light" in obsticle.name and not "torus" in obsticle.name:
 			if(obsticle.translation.x + 20 > x):
 				obsticle.queue_free()
 			else:
 				return;
-		
+	
+func create_one_trap(level,x):
+	# get the level we are making traps for
+	# pick a trap
+	var tunnel = get_child(level)
+	var i = rand.randi_range(0, len(trap_scenes) - 1)
+	var trap = trap_scenes[i].instance()
+	trap.translation.x = x
+	
+	tunnel.add_child(trap)
+	rotateTrap(trap)
+
+func rotateTrap(trap):
+	# rotate the trap under some angle
+	angle = rand.randi_range(0,5) * (PI / 3)
+	trap.rotate_x(angle)
+
 func create_one_bug(level,x):
 	# get the level we are making traps for
 	var tunnel = get_child(level)
@@ -75,7 +89,7 @@ func create_one_bug(level,x):
 	
 	tunnel.add_child(bug)
 	rotateBug(bug,i)
-
+	
 func translateBug(bug,i):
 	if(i < 3):	
 		bug.translation.y = bug_translations[i].x
@@ -89,18 +103,21 @@ func rotateBug(bug,i):
 	angle =  i * (PI / 3)	
 	bug.rotate_x(angle)
 	
-func create_one_trap(level,x):
+func create_one_virus(level,x):
 	# get the level we are making traps for
-	# pick a trap
 	var tunnel = get_child(level)
-	var i = rand.randi_range(0, len(trap_scenes) - 1)
-	var trap = trap_scenes[i].instance()
-	trap.translation.x = x
-	
-	tunnel.add_child(trap)
-	rotateTrap(trap)
 
-func rotateTrap(trap):
-	# rotate the trap under some angle
-	angle = rand.randi_range(0,5) * (PI / 3)
-	trap.rotate_x(angle)
+	# pick a trap
+	var i = rand.randi_range(0, len(virus_scenes) - 1)
+	var virus = virus_scenes[i].instance()
+	
+	# pick how many times we rotate the virus
+	# (needed for the tranlsation array, 
+	# otherwise virus wont be properly placed in the tunnel)
+	i = rand.randi_range(0,5)
+	
+	translateBug(virus,i)
+	virus.translation.x = x
+	
+	tunnel.add_child(virus)
+	rotateBug(virus,i)

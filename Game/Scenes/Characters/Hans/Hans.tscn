@@ -72,18 +72,11 @@ func _physics_process(_delta):
 		# b) bugs and viruses are longer than traps thus take more space along x-axis
 		# x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(170,190)
 		
-		# NEXT
-		# UNCOMMENT AFTER IMPLEMENTING VIRUSES
 		##choose a place for the next obsticle
 		## NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
 		## bugs and viruses are longer than traps thus take more space along x-axis
-		#x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(120,140)
-		
-		# CURRENT
-		# choose a place for the next obsticle
-		# NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
-		# bugs are longer than traps thus take more space along x-axis
-		x -= rand.randi_range(120,140) if next_tunnel == 1 else rand.randi_range(70,90)
+		x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(120,140)
+	
 	
 	# updating score 
 	score._on_Meter_Passed()
