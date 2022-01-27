@@ -14,9 +14,6 @@ func _ready():
 		tunnels.bug_scenes.append(load("res://Scenes/Characters/Bugs/" + name + ".tscn"))
 	for name in ["Bacteriophage", "Rotavirus"]:
 		tunnels.virus_scenes.append(load("res://Scenes/Characters/Viruses/" + name + ".tscn"))
-	print(tunnels.trap_scenes)
-	print(tunnels.bug_scenes)
-	print(tunnels.virus_scenes)
 	tunnels.create_first_level_traps()
 
 func _game_over():

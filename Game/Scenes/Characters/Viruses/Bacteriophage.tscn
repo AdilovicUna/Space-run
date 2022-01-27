@@ -9,7 +9,7 @@
 radius = 1.51437
 
 [node name="Bacteriophage" type="KinematicBody"]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, -16.6351, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -14, 0 )
 
 [node name="Pivot" type="Spatial" parent="."]
 
