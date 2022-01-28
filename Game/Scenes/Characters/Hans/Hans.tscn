@@ -25,7 +25,7 @@ var next_tunnel = 1
 var cur_tunnel = 0
 #TESTING
 var speed = 50.0 if !TESTING else 75.0
-var bugs_speed = 20.0 if !TESTING else 0.0
+var bugs_virus_speed = 25.0 if !TESTING else 0.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
@@ -92,12 +92,12 @@ func _physics_process(_delta):
 		if collision.collider is KinematicBody and !TESTING:
 			main._game_over()
 			return
-	
+			
 	if cur_tunnel != 0:
 		bug_virus_movement()
 
 func bug_virus_movement():
-	var velocity = Vector3(0,-1,-1) * bugs_speed
+	var velocity = Vector3(0,-1,-1) * bugs_virus_speed
 	var torus = true
 	for obsticle in tunnels_children[cur_tunnel].get_children():
 		if torus:
