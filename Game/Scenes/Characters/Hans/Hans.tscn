@@ -6,6 +6,8 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
+enum lvl {ONE, TWO, THREE}
+
 onready var main = get_parent()
 onready var ground = get_node(\"../Ground\")
 onready var tunnels = get_node(\"../Tunnels\") # Tunnels
@@ -20,9 +22,9 @@ var TESTING = false
 
 var rand = RandomNumberGenerator.new()
 
-var move_tunnel = 0
-var next_tunnel = 1
-var cur_tunnel = 0
+var move_tunnel = lvl.ONE
+var next_tunnel = lvl.TWO
+var curr_tunnel = lvl.ONE
 #TESTING
 var speed = 50.0 if !TESTING else 75.0
 var bugs_virus_speed = 25.0 if !TESTING else 0.0
@@ -32,80 +34,80 @@ var new_trap = 3650 # start producing traps for the next level at this point
 var difference = 2500
 
 func get_current_tunnel():
-	return cur_tunnel
+    return curr_tunnel
 
 func _physics_process(_delta):
-	# making tunnels (and ground) infinite by moving them forward
-	# after Hans passes them	
-	var tunnel = tunnels_children[move_tunnel]
-	if translation.x < tunnel.translation.x - 2000:				
-		tunnel.translation.x -= 7500    # move tunnel ahead (3x2500)
-		move_tunnel = (move_tunnel + 1) % tunnels_children.size()
-	if translation.x < ground.translation.x - 2000:
-		ground.translation.x -= 3000 # move ground ahead
-	
-	if translation.x < total_translation:
-		# update cur_tunnel Hans is running through
-		total_translation -= 2500
-		next_tunnel = (next_tunnel + 1) % tunnels_children.size()
-		cur_tunnel = (cur_tunnel + 1) % tunnels_children.size()
-		
-		rand.randomize()
-		# restart x
-		x = rand.randi_range(1120,1190)
-		
-		difference -= 2500
-	
-	tunnels.delete_obsticle_until_x(cur_tunnel,translation.x - difference + 50)
-	
-	# create a trap in the next tunnel every 50 meters
-	if translation.x < new_trap:
-		new_trap -= 50
-		if x > -1200:
-			tunnels.create_one_obstacle(next_tunnel,x)
-		
-		# FINAL
-		# UNCOMMENT AFTER IMPLEMENTING SHOOTING
-		# choose a place for the next obsticle
-		# NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
-		# a) we need more time to shoot down a bug or a virus
-		# b) bugs and viruses are longer than traps thus take more space along x-axis
-		# x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(170,190)
-		
-		##choose a place for the next obsticle
-		## NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
-		## bugs and viruses are longer than traps thus take more space along x-axis
-		x -= rand.randi_range(70,90) if next_tunnel == 0 else rand.randi_range(120,140)
-	
-	
-	# updating score 
-	score._on_Meter_Passed()
-	
-	# Hans's movement
-	var velocity = Vector3.LEFT * speed
-	move_and_slide(velocity)
-	
-	# End game if Hans touches the trap
-	for index in get_slide_count():
-		var collision = get_slide_collision(index)	
-		#TESTING
-		if collision.collider is KinematicBody and !TESTING:
-			main._game_over()
-			return
-			
-	if cur_tunnel != 0:
-		bug_virus_movement()
+    # making tunnels (and ground) infinite by moving them forward
+    # after Hans passes them	
+    var tunnel = tunnels_children[move_tunnel]
+    if translation.x < tunnel.translation.x - 2000:				
+        tunnel.translation.x -= 7500    # move tunnel ahead (3x2500)
+        move_tunnel = (move_tunnel + 1) % tunnels_children.size()
+    if translation.x < ground.translation.x - 2000:
+        ground.translation.x -= 3000 # move ground ahead
+    
+    if translation.x < total_translation:
+        # update cur_tunnel Hans is running through
+        total_translation -= 2500
+        next_tunnel = (next_tunnel + 1) % tunnels_children.size()
+        curr_tunnel = (curr_tunnel + 1) % tunnels_children.size()
+        
+        rand.randomize()
+        # restart x
+        x = rand.randi_range(1120,1190)
+        
+        difference -= 2500
+    
+    tunnels.delete_obsticle_until_x(curr_tunnel,translation.x - difference + 50)
+    
+    # create a trap in the next tunnel every 50 meters
+    if translation.x < new_trap:
+        new_trap -= 50
+        if x > -1200:
+            tunnels.create_one_obstacle(next_tunnel,x)
+        
+        # FINAL
+        # UNCOMMENT AFTER IMPLEMENTING SHOOTING
+        # choose a place for the next obsticle
+        # NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+        # a) we need more time to shoot down a bug or a virus
+        # b) bugs and viruses are longer than traps thus take more space along x-axis
+        # x -= rand.randi_range(70,90) if next_tunnel == lvl.ONE else rand.randi_range(170,190)
+        
+        ##choose a place for the next obsticle
+        ## NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+        ## bugs and viruses are longer than traps thus take more space along x-axis
+        x -= rand.randi_range(70,90) if next_tunnel == lvl.ONE else rand.randi_range(120,140)
+    
+    
+    # updating score 
+    score._on_Meter_Passed()
+    
+    # Hans's movement
+    var velocity = Vector3.LEFT * speed
+    velocity = move_and_slide(velocity)
+    
+    # End game if Hans touches the trap
+    for index in get_slide_count():
+        var collision = get_slide_collision(index)	
+        #TESTING
+        if collision.collider is KinematicBody and !TESTING:
+            main._game_over()
+            return
+            
+    if curr_tunnel != lvl.ONE:
+        bug_virus_movement()
 
 func bug_virus_movement():
-	var velocity = Vector3(0,-1,-1) * bugs_virus_speed
-	var torus = true
-	for obsticle in tunnels_children[cur_tunnel].get_children():
-		if torus:
-			torus = false
-			continue;
-		if not \"Trap\" in obsticle.name:
-			obsticle.move_and_slide(velocity)
-			
+    var velocity = Vector3(0,-1,-1) * bugs_virus_speed
+    var torus = true
+    for obsticle in tunnels_children[curr_tunnel].get_children():
+        if torus:
+            torus = false
+            continue;
+        if not \"Trap\" in obsticle.name:
+            obsticle.move_and_slide(velocity)
+            
 "
 
 [sub_resource type="CapsuleShape" id=2]
