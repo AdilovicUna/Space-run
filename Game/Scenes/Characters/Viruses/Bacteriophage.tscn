@@ -8,49 +8,49 @@
 [sub_resource type="CylinderShape" id=2]
 radius = 1.51437
 
-[node name="Bacteriophage" type="KinematicBody"]
+[node name="Pivot" type="Spatial"]
+
+[node name="Bacteriophage" type="KinematicBody" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -14, 0 )
 
-[node name="Pivot" type="Spatial" parent="."]
+[node name="Bacteriophage" parent="Bacteriophage" instance=ExtResource( 2 )]
 
-[node name="Bacteriophage" parent="Pivot" instance=ExtResource( 2 )]
-
-[node name="Walking" type="AnimationPlayer" parent="Pivot/Bacteriophage"]
+[node name="Walking" type="AnimationPlayer" parent="Bacteriophage/Bacteriophage"]
 autoplay = "walking"
 anims/walking = ExtResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
+[node name="CollisionShape" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 1, 0, 0, 0, 0.0325447, 0.99947, 0, -0.99947, 0.0325447, 0, 3.35073, 0.109106 )
 shape = SubResource( 1 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="."]
+[node name="CollisionShape2" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 1.9117, 0, -0.0673354, 0, 1, 0, 0.958642, 0, 0.134278, 3.23857, 2.07383, 1.23815 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape3" type="CollisionShape" parent="."]
+[node name="CollisionShape3" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 0.539543, 0, -0.145357, 0, 1, 0, 2.06941, 0, 0.0378977, 1.00474, 2.07383, 3.16655 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape4" type="CollisionShape" parent="."]
+[node name="CollisionShape4" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( -0.181627, 0, -0.149414, 0, 1, 0, 1.7507, 0, -0.015501, -0.573159, 2.07383, 3.37423 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape5" type="CollisionShape" parent="."]
+[node name="CollisionShape5" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( -2.02093, 0, -0.0491383, 0, 1, 0, 0.699574, 0, -0.141951, -3.01905, 2.07383, 1.5922 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape6" type="CollisionShape" parent="."]
+[node name="CollisionShape6" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 1.38597, 0, -0.0908391, 0, 1, 0, 1.05235, 0, 0.119637, -2.7193, 2.07383, -1.95416 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape7" type="CollisionShape" parent="."]
+[node name="CollisionShape7" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 0.301833, 0, -0.148007, 0, 1, 0, 1.74072, 0, 0.0256637, -0.647483, 2.07383, -3.69217 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape8" type="CollisionShape" parent="."]
+[node name="CollisionShape8" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( -0.157669, 0, -0.149807, 0, 1, 0, 2.13277, 0, -0.0110748, 0.507859, 2.07383, -3.4972 )
 shape = SubResource( 2 )
 
-[node name="CollisionShape9" type="CollisionShape" parent="."]
+[node name="CollisionShape9" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 1.47116, 0, 0.109026, 0, 1, 0, -1.55218, 0, 0.103335, 2.18548, 2.07383, -1.91638 )
 shape = SubResource( 2 )

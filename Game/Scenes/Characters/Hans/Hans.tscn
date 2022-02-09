@@ -27,11 +27,11 @@ var next_tunnel = lvl.TWO
 var curr_tunnel = lvl.ONE
 #TESTING
 var speed = 50.0 if !TESTING else 75.0
-var bugs_virus_speed = 25.0 if !TESTING else 0.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
 var difference = 2500
+var deviation = 0.01
 
 func get_current_tunnel():
     return curr_tunnel
@@ -58,7 +58,7 @@ func _physics_process(_delta):
         
         difference -= 2500
     
-    tunnels.delete_obsticle_until_x(curr_tunnel,translation.x - difference + 50)
+    tunnels.delete_obstacle_until_x(curr_tunnel,translation.x - difference + 50)
     
     # create a trap in the next tunnel every 50 meters
     if translation.x < new_trap:
@@ -68,14 +68,14 @@ func _physics_process(_delta):
         
         # FINAL
         # UNCOMMENT AFTER IMPLEMENTING SHOOTING
-        # choose a place for the next obsticle
-        # NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+        # choose a place for the next obstacle
+        # NOTE: level2 and level3 have bugs and viruses, so we want less obstacles 
         # a) we need more time to shoot down a bug or a virus
         # b) bugs and viruses are longer than traps thus take more space along x-axis
         # x -= rand.randi_range(70,90) if next_tunnel == lvl.ONE else rand.randi_range(170,190)
         
-        ##choose a place for the next obsticle
-        ## NOTE: level2 and level3 have bugs and viruses, so we want less obsticles 
+        ##choose a place for the next obstacle
+        ## NOTE: level2 and level3 have bugs and viruses, so we want less obstacles 
         ## bugs and viruses are longer than traps thus take more space along x-axis
         x -= rand.randi_range(70,90) if next_tunnel == lvl.ONE else rand.randi_range(120,140)
     
@@ -99,14 +99,21 @@ func _physics_process(_delta):
         bug_virus_movement()
 
 func bug_virus_movement():
-    var velocity = Vector3(0,-1,-1) * bugs_virus_speed
-    var torus = true
-    for obsticle in tunnels_children[curr_tunnel].get_children():
-        if torus:
-            torus = false
+    for obstacle in tunnels_children[curr_tunnel].get_children():
+        if \"Trap\" in obstacle.name or \"torus\" in obstacle.name:
             continue;
-        if not \"Trap\" in obsticle.name:
-            obsticle.move_and_slide(velocity)
+            
+        var tunnel_rot = tunnels_children[curr_tunnel].rotation.x + PI
+        var obstacle_rot = obstacle.rotation.x + PI
+        
+        if (-1) * deviation > tunnel_rot + obstacle_rot  or tunnel_rot + obstacle_rot > deviation:
+        #if tunnel_rot != obstacle_rot:
+            var dec = fmod(abs(obstacle_rot + tunnel_rot),2 * PI) 
+            var inc = abs(2 * PI - fmod(tunnel_rot + obstacle_rot, 2* PI))
+            if dec > inc:
+                obstacle.rotate_x(0.01)
+            else:
+                obstacle.rotate_x(-0.01)                
             
 "
 

@@ -66,7 +66,7 @@ collision_layer = 4
 material = SubResource( 1 )
 
 [node name="Hans" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3750, -32, 0 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3765.85, -32, 0 )
 collision_mask = 6
 
 [node name="CameraPivot" type="Spatial" parent="Hans"]

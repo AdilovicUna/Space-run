@@ -250,86 +250,38 @@ tracks/34/imported = true
 tracks/34/enabled = true
 tracks/34/keys = PoolRealArray( 0, 1, 0, 0, 0, 4.65661e-10, -2.84217e-14, 1.32349e-23, 1, 1, 1, 1, 0.0666667, 1, 0.00162497, -0.00164938, 0.00458656, 9.31322e-10, -2.84217e-14, 2.64698e-23, 1, 1, 1, 1, 0.2, 1, 0.00779984, -0.00791764, 0.0220155, 4.65661e-10, -2.84217e-14, 1.32349e-23, 1, 1, 1, 1, 0.266667, 1, 0.00851483, -0.00864315, 0.0240336, 4.65661e-10, -2.84217e-14, 1.32349e-23, 1, 1, 1, 1, 0.333333, 1, 0.00649987, -0.00659776, 0.0183463, 4.65661e-10, -2.84217e-14, 1.32349e-23, 1, 1, 1, 1, 0.4, 1, 0.00311994, -0.00316691, 0.00880621, 9.31322e-10, -2.84217e-14, -1.11022e-16, 1, 1, 1, 1, 0.466667, 1, 0.00051999, -0.000527859, 0.00146767, 9.31322e-10, -2.84217e-14, 2.64698e-23, 1, 1, 1, 1, 0.5, 1, 0, 0, 0, 4.65661e-10, -2.84217e-14, 1.32349e-23, 1, 1, 1, 1 )
 tracks/35/type = "value"
-tracks/35/path = NodePath("../../CollisionShape3:translation")
+tracks/35/path = NodePath(".:translation")
 tracks/35/interp = 1
 tracks/35/loop_wrap = true
 tracks/35/imported = false
 tracks/35/enabled = true
 tracks/35/keys = {
-"times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
 "update": 0,
-"values": [ Vector3( -2.88282, 5.47891, 1.44413 ), Vector3( -2.88282, 4.89487, 1.44413 ) ]
+"values": [  ]
 }
 tracks/36/type = "value"
-tracks/36/path = NodePath("../../CollisionShape2:translation")
+tracks/36/path = NodePath("../CollisionShape2:translation")
 tracks/36/interp = 1
 tracks/36/loop_wrap = true
 tracks/36/imported = false
 tracks/36/enabled = true
 tracks/36/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 2.8973, 5.51538, 1.13016 ), Vector3( 2.8973, 4.93134, 1.13016 ) ]
+"values": [ Vector3( 2.8973, 5.62942, 1.25353 ), Vector3( 2.8973, 5.10968, 1.46848 ) ]
 }
 tracks/37/type = "value"
-tracks/37/path = NodePath("../..:translation")
+tracks/37/path = NodePath("../CollisionShape3:translation")
 tracks/37/interp = 1
 tracks/37/loop_wrap = true
 tracks/37/imported = false
-tracks/37/enabled = false
+tracks/37/enabled = true
 tracks/37/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [  ]
-}
-tracks/38/type = "value"
-tracks/38/path = NodePath(".:translation")
-tracks/38/interp = 1
-tracks/38/loop_wrap = true
-tracks/38/imported = false
-tracks/38/enabled = true
-tracks/38/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/39/type = "value"
-tracks/39/path = NodePath("../../CollisionShape:translation")
-tracks/39/interp = 1
-tracks/39/loop_wrap = true
-tracks/39/imported = false
-tracks/39/enabled = true
-tracks/39/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/40/type = "value"
-tracks/40/path = NodePath("../../CollisionShape4:translation")
-tracks/40/interp = 1
-tracks/40/loop_wrap = true
-tracks/40/imported = false
-tracks/40/enabled = true
-tracks/40/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
-}
-tracks/41/type = "value"
-tracks/41/path = NodePath("../../CollisionShape5:translation")
-tracks/41/interp = 1
-tracks/41/loop_wrap = true
-tracks/41/imported = false
-tracks/41/enabled = true
-tracks/41/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 0,
-"values": [  ]
+"values": [ Vector3( -3.01487, 5.52505, 1.43165 ), Vector3( -3.06066, 5.16135, 1.5474 ) ]
 }
