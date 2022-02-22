@@ -8,7 +8,7 @@ onready var end = get_node("UI/End")
 func _ready():
     for name in ["TrapI","TrapO", "TrapMovingI", "TrapX", "TrapWalls", "TrapHex", 
                     "TrapHexO", "TrapBalls", "TrapTriangles", "TrapHalfHex"]:
-        tunnels.trap_scenes.append(load("res://Scenes/Trap_scenes/" + name + ".tscn"))
+        tunnels.trap_scenes.append(load("res://Scenes/Traps/" + name + ".tscn"))
     for name in ["Worm", "LadybugFlying", "LadybugWalking"]:
         tunnels.bug_scenes.append(load("res://Scenes/Characters/Bugs/" + name + ".tscn"))
     for name in ["Bacteriophage", "Rotavirus"]:

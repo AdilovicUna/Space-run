@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scripts/Bullets/BulletOne.gd" type="Script" id=1]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.176471, 0.882353, 0.188235, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.176471, 0.882353, 0.188235, 1 )
+
+[node name="BulletOne" type="Spatial"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
+script = ExtResource( 1 )
+
+[node name="CSGCombiner" type="CSGCombiner" parent="."]
+
+[node name="CSGBox" type="CSGBox" parent="CSGCombiner"]
+transform = Transform( -1.94364e-07, -0.2, 0, 1.193, -3.25841e-08, 0, 0, 0, 0.2, 0, 0, 0 )
+material = SubResource( 1 )
+
+[node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox"]
+transform = Transform( 0.340846, -7.72122e-07, 0.122655, 6.31776e-07, 0.999999, -9.53593e-08, -2.18211, 5.16174e-06, 0.681692, 0.536212, -4.16954e-07, 2.50068 )
+material = SubResource( 2 )
