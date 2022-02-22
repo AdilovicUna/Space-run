@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Characters/Viruses/Rotavirus/Rotavirus.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Bugs and Viruses/Rotavirus.gd" type="Script" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Moving"
@@ -54,24 +55,74 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector3( 11.8544, 1.40236, 1.29383 ), Vector3( 11.854, 1.4, 1.294 ), Vector3( 11.854, 1, 1.294 ), Vector3( 11.854, 1, 1.294 ), Vector3( 11.854, 1.4, 1.294 ), Vector3( 11.8544, 1.40236, 1.29383 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("../CollisionShape:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 4.01204, 0 ), Vector3( 0, 4.01204, 0 ), Vector3( 0, 4.33629, 0 ), Vector3( 0, 4.4691, 0 ), Vector3( 0, 4.33629, 0 ), Vector3( 0, 4.01204, 0 ), Vector3( 0, 4.01204, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../CollisionShape2:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 5.357, 2.70296, 4.07661 ), Vector3( 5.357, 2.70296, 4.07661 ), Vector3( 5.357, 2.89228, 4.07661 ), Vector3( 5.357, 2.84495, 4.07661 ), Vector3( 5.357, 2.89228, 4.07661 ), Vector3( 5.357, 2.70296, 4.07661 ), Vector3( 5.357, 2.70296, 4.07661 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("../CollisionShape3:translation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 6.715, 4.72295, -4.07188 ), Vector3( 6.715, 4.4796, -4.07188 ), Vector3( 6.715, 4.60163, -4.07188 ), Vector3( 6.715, 5.23841, -4.18952 ), Vector3( 6.715, 4.60163, -4.07188 ), Vector3( 6.715, 4.4796, -4.07188 ), Vector3( 6.715, 4.72295, -4.07188 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("../CollisionShape4:translation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 11.9333, 4.63463, 1.15177 ), Vector3( 11.9333, 4.63463, 1.15177 ), Vector3( 11.9333, 4.63463, 1.15177 ), Vector3( 11.8723, 4.80098, 1.15177 ), Vector3( 11.9333, 4.63463, 1.15177 ), Vector3( 11.9333, 4.63463, 1.15177 ), Vector3( 11.9333, 4.63463, 1.15177 ) ]
+}
 
 [sub_resource type="SphereShape" id=2]
 
 [node name="Pivot" type="Spatial"]
+script = ExtResource( 2 )
 
 [node name="Rotavirus" type="KinematicBody" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -24, 0 )
 
 [node name="Rotavirus" parent="Rotavirus" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0185317, 0 )
 
 [node name="Rotavirus2" parent="Rotavirus/Rotavirus" instance=ExtResource( 1 )]
-transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 5.543, 0, 4.03821 )
+transform = Transform( 0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 5.543, -0.0370634, 4.03819 )
 
 [node name="Rotavirus3" parent="Rotavirus/Rotavirus" instance=ExtResource( 1 )]
-transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 6.73616, 0, -4.22075 )
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 6.73615, -0.0555951, -4.22077 )
 
 [node name="Rotavirus4" parent="Rotavirus/Rotavirus" instance=ExtResource( 1 )]
-transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 11.8544, 1.40236, 1.29383 )
+transform = Transform( 0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 11.8544, 1.40214, 1.29385 )
 
 [node name="Moving" type="AnimationPlayer" parent="Rotavirus/Rotavirus"]
 autoplay = "Moving"
@@ -79,15 +130,15 @@ playback_speed = 0.5
 anims/Moving = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Rotavirus"]
-transform = Transform( 2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 4.16892, 0 )
+transform = Transform( 2.7, 0, 0, 0, 2.7, 0, 0, 0, 2.7, 0, 4.01204, 0 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Rotavirus"]
-transform = Transform( 1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, 5.357, 2.88585, 4.202 )
+transform = Transform( 1.89, 0, 0, 0, 1.89, 0, 0, 0, 1.89, 5.357, 2.70296, 4.07661 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape3" type="CollisionShape" parent="Rotavirus"]
-transform = Transform( 3.24, 0, 0, 0, 3.24, 0, 0, 0, 3.24, 6.715, 4.61377, -3.999 )
+transform = Transform( 3.24, 0, 0, 0, 3.24, 0, 0, 0, 3.24, 6.715, 4.7004, -4.07188 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape4" type="CollisionShape" parent="Rotavirus"]

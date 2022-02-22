@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/Viruses/Bacteriophage/walking.tres" type="Animation" id=1]
 [ext_resource path="res://Characters/Viruses/Bacteriophage/Bacteriophage.glb" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Bugs and Viruses/Bacteriophage.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -9,6 +10,7 @@
 radius = 1.51437
 
 [node name="Pivot" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="Bacteriophage" type="KinematicBody" parent="."]
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -14, 0 )

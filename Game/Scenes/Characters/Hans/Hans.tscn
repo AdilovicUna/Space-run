@@ -15,6 +15,7 @@ onready var tunnels = get_node(\"../Tunnels\") # Tunnels
 onready var tunnels_children = get_node(\"../Tunnels\").get_children() # lvl1, lvl2, lvl3
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
+onready var level = get_node(\"../UI/Level\")
 
 #every piece of code that is changed by this line has the 
 #\"TESTING\" 
@@ -32,6 +33,7 @@ var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
 var difference = 2500
+var show_level = 0
 
 func get_current_tunnel():
     return curr_tunnel
@@ -46,18 +48,37 @@ func _physics_process(_delta):
     if translation.x < ground.translation.x - 2000:
         ground.translation.x -= 3000 # move ground ahead
     
+    # the game just started
+    if show_level == 0:
+         # show which level we are approaching
+        show_level = translation.x
+        level.update_level()
+        level.show()
+    
     if translation.x < total_translation:
         # update cur_tunnel Hans is running through
         total_translation -= 2500
         next_tunnel = (next_tunnel + 1) % tunnels_children.size()
         curr_tunnel = (curr_tunnel + 1) % tunnels_children.size()
         
+        # show which level we are approaching
+        show_level = translation.x
+        level.update_level()
+        level.show()
+        # increase speed after a full lap
+        if(curr_tunnel == lvl.ONE):
+            speed += 15.0
+            
         rand.randomize()
         # restart x
         x = rand.randi_range(1120,1190)
         
         difference -= 2500
     
+    # Hans entered the new tunnel, hide the level label
+    if level.visible and abs(translation.x - show_level) > 75:
+        level.hide()        
+        
     tunnels.delete_obstacle_until_x(curr_tunnel,translation.x - difference + 50)
     
     # create a trap in the next tunnel every 50 meters

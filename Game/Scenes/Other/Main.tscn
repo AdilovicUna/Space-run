@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Tunnels/level1.tres" type="Material" id=1]
 [ext_resource path="res://Tunnels/level2.tres" type="Material" id=2]
@@ -9,8 +9,9 @@
 [ext_resource path="res://Scripts/Tunnels.gd" type="Script" id=7]
 [ext_resource path="res://Scripts/Main.gd" type="Script" id=8]
 [ext_resource path="res://Other/fonts/BASKVILL.TTF" type="DynamicFontData" id=9]
-[ext_resource path="res://Scenes/Other/End.gd" type="Script" id=10]
+[ext_resource path="res://Scripts/End.gd" type="Script" id=10]
 [ext_resource path="res://Other/fonts/Montserrat-Medium.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Scripts/Level.gd" type="Script" id=12]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -24,6 +25,16 @@ size = 40
 outline_size = 1
 use_filter = true
 font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 75
+outline_size = 2
+outline_color = Color( 0.0823529, 0.560784, 0.74902, 1 )
+use_filter = true
+font_data = ExtResource( 11 )
+
+[sub_resource type="Theme" id=15]
+default_font = SubResource( 14 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 40
@@ -315,6 +326,27 @@ custom_colors/font_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Score: 0.0"
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level" type="Label" parent="UI"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -383.0
+margin_top = -61.5
+margin_right = 383.0
+margin_bottom = 61.5
+theme = SubResource( 15 )
+custom_colors/font_color = Color( 0.780392, 0.913725, 0.937255, 1 )
+custom_colors/font_outline_modulate = Color( 0.160784, 0.0509804, 0.729412, 1 )
+text = "Level 0"
+align = 1
+valign = 1
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

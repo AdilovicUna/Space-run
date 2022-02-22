@@ -1,13 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/Bugs/Ladybug/ladybug.glb" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Bugs/Ladybug/LadybugFlying.tres" type="Animation" id=2]
+[ext_resource path="res://Scripts/Bugs and Viruses/LadybugFlying.gd" type="Script" id=3]
 
 [sub_resource type="CapsuleShape" id=1]
 
 [sub_resource type="CapsuleShape" id=2]
 
 [node name="Pivot" type="Spatial"]
+script = ExtResource( 3 )
 
 [node name="Ladybug" type="KinematicBody" parent="."]
 transform = Transform( -4.88762e-07, 0, -3, 0, 3, 0, 3, 0, -4.88762e-07, 0, -20, 0 )

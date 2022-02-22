@@ -37,7 +37,7 @@ func create_first_level_traps():
         if x < -1200:
             break
         create_one_obstacle(level, x) 
-        
+ 
 func create_one_obstacle(level,x):
     var scene  = pick_scene(level)   
     # get the level we are making traps for
@@ -83,10 +83,11 @@ func bug_virus_movement(curr_tunnel):
         var obstacle_rot = obstacle.rotation.x + PI
         
         if (-1) * deviation > tunnel_rot + obstacle_rot  or tunnel_rot + obstacle_rot > deviation:
-        #if tunnel_rot != obstacle_rot:
             var dec = fmod(abs(obstacle_rot + tunnel_rot),2 * PI) 
             var inc = abs(2 * PI - fmod(tunnel_rot + obstacle_rot, 2* PI))
+            # speed for every instance is generated randomly
+            # so obstacles of the same species will do not necessarily have the same speed
             if dec > inc:
-                obstacle.rotate_x(0.01)
+                obstacle.rotate_x(obstacle.speed)
             else:
-                obstacle.rotate_x(-0.01)      
+                obstacle.rotate_x(-obstacle.speed)      
