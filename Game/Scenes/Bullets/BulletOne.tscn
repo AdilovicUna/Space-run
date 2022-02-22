@@ -9,7 +9,6 @@ albedo_color = Color( 0.176471, 0.882353, 0.188235, 1 )
 albedo_color = Color( 0.176471, 0.882353, 0.188235, 1 )
 
 [node name="BulletOne" type="Spatial"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 script = ExtResource( 1 )
 
 [node name="CSGCombiner" type="CSGCombiner" parent="."]

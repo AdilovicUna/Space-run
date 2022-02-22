@@ -13,5 +13,4 @@ func _physics_process(delta):
     timer += delta
     
     if timer >= queue_free_time:
-        hans.bullets_in_air -= 1
         queue_free()

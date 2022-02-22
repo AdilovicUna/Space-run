@@ -13,7 +13,7 @@ export(PackedScene) var BulletZero
 export(PackedScene) var BulletOne
 export var bullets_in_air = 0
 
-const max_bullets_in_air = 30
+const max_bullets_per_button_press = 8
 
 enum lvl {ONE, TWO, THREE}
 
@@ -38,9 +38,8 @@ var new_trap = 3650 # start producing traps for the next level at this point
 var difference = 2500
 var show_level = 0 # used to measure how long level lable should be displayed
 var isShootingButtonPressed = false # indicates wheather Hans should shoot
+var can_shoot = true
 
-func get_current_tunnel():
-    return curr_tunnel
 
 func _physics_process(_delta):
     # making tunnels (and ground) infinite by moving them forward
@@ -119,7 +118,10 @@ func _physics_process(_delta):
     
     if isShootingButtonPressed:
         shoot()
-    
+
+func get_current_tunnel():
+    return curr_tunnel
+  
 func switch_animation():
     # toggle between Hans shooting and just running
     if Input.is_action_pressed(\"shoot\"):
@@ -127,11 +129,14 @@ func switch_animation():
         get_node(\"Pivot/Hans/Movement\").play(\"HansShooting\")
     else:
         isShootingButtonPressed = false
+        bullets_in_air = 0        
         get_node(\"Pivot/Hans/Movement\").play(\"HansRunning\") 
 
 func shoot():
-    var new_bullet = null
-    if bullets_in_air < max_bullets_in_air:
+    if bullets_in_air < max_bullets_per_button_press and can_shoot:
+        
+        var new_bullet = null
+        
         if rand.randi_range(0,1) == 0:
             new_bullet = BulletZero.instance()
         else:
@@ -143,6 +148,13 @@ func shoot():
         scene_root[0].add_child(new_bullet)
         
         bullets_in_air += 1
+        can_shoot = false
+        
+        $shooting_timer.start()        
+
+
+func _on_shooting_timer_timeout():
+    can_shoot = true
 "
 
 [sub_resource type="CapsuleShape" id=2]
@@ -167,7 +179,12 @@ transform = Transform( 2.98112, 0, 0, 0, -0.07764, 4.00904, 0, -2.51225, -0.1826
 shape = SubResource( 2 )
 
 [node name="Muzzle" type="Position3D" parent="."]
-transform = Transform( -8.14603e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -8.14603e-08, -2.19321, 7.48418, 3.44992 )
+transform = Transform( -1.53095e-07, 5.57222e-08, 1, 0.34202, 0.939693, 0, -0.939693, 0.34202, -1.62921e-07, -2.19321, 7.48418, 3.44992 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="shooting_timer" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+[connection signal="timeout" from="shooting_timer" to="." method="_on_shooting_timer_timeout"]
