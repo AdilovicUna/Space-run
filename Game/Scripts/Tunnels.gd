@@ -1,6 +1,6 @@
 extends Spatial
 
-onready var hans = get_node("../Hans")
+onready var hans = get_node_or_null("../Hans")
 
 # load traps
 var trap_scenes = []
@@ -8,6 +8,7 @@ var bug_scenes = []
 var virus_scenes = []
 var rand = RandomNumberGenerator.new()
 var angle = 0	
+var deviation = 0.01
 
 func _physics_process(_delta):
     #rotates all children of "traps"
@@ -17,11 +18,10 @@ func _physics_process(_delta):
     if Input.is_action_pressed("left"):
         var tunnel = get_child(hans.get_current_tunnel())
         tunnel.rotate_object_local(Vector3.LEFT,-PI/90)
-    if Input.is_action_pressed("shoot"):
-        hans.get_node("Pivot/Hans/Movement").play("HansShooting")
-    else:
-        hans.get_node("Pivot/Hans/Movement").play("HansRunning")        
-    
+    if not hans == null: # if it is not instanced we can't call the function       
+        hans.switch_animation()
+ 
+
 func create_first_level_traps():
     rand.randomize()
     # get the level we are making traps for
@@ -72,3 +72,21 @@ func delete_obstacle_until_x(level,x):
                 obstacle.queue_free()
             else:
                 return;
+                
+func bug_virus_movement(curr_tunnel):
+    var tunnels = get_children()
+    for obstacle in tunnels[curr_tunnel].get_children():
+        if "Trap" in obstacle.name or "torus" in obstacle.name:
+            continue;
+            
+        var tunnel_rot = tunnels[curr_tunnel].rotation.x + PI
+        var obstacle_rot = obstacle.rotation.x + PI
+        
+        if (-1) * deviation > tunnel_rot + obstacle_rot  or tunnel_rot + obstacle_rot > deviation:
+        #if tunnel_rot != obstacle_rot:
+            var dec = fmod(abs(obstacle_rot + tunnel_rot),2 * PI) 
+            var inc = abs(2 * PI - fmod(tunnel_rot + obstacle_rot, 2* PI))
+            if dec > inc:
+                obstacle.rotate_x(0.01)
+            else:
+                obstacle.rotate_x(-0.01)      

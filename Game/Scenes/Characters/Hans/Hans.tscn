@@ -32,7 +32,6 @@ var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
 var difference = 2500
-var deviation = 0.01
 
 func get_current_tunnel():
     return curr_tunnel
@@ -97,25 +96,16 @@ func _physics_process(_delta):
             return
             
     if curr_tunnel != lvl.ONE:
-        bug_virus_movement()
+        tunnels.bug_virus_movement(curr_tunnel)
 
-func bug_virus_movement():
-    for obstacle in tunnels_children[curr_tunnel].get_children():
-        if \"Trap\" in obstacle.name or \"torus\" in obstacle.name:
-            continue;
-            
-        var tunnel_rot = tunnels_children[curr_tunnel].rotation.x + PI
-        var obstacle_rot = obstacle.rotation.x + PI
-        
-        if (-1) * deviation > tunnel_rot + obstacle_rot  or tunnel_rot + obstacle_rot > deviation:
-        #if tunnel_rot != obstacle_rot:
-            var dec = fmod(abs(obstacle_rot + tunnel_rot),2 * PI) 
-            var inc = abs(2 * PI - fmod(tunnel_rot + obstacle_rot, 2* PI))
-            if dec > inc:
-                obstacle.rotate_x(0.01)
-            else:
-                obstacle.rotate_x(-0.01)                
-            
+    
+func switch_animation():
+    # toggle between Hans shooting and just running
+    if Input.is_action_pressed(\"shoot\"):
+        get_node(\"Pivot/Hans/Movement\").play(\"HansShooting\")
+    else:
+        get_node(\"Pivot/Hans/Movement\").play(\"HansRunning\") 
+          
 "
 
 [sub_resource type="CapsuleShape" id=2]
