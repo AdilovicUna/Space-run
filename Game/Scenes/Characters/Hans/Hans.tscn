@@ -11,7 +11,6 @@ script/source = "extends KinematicBody
 
 export(PackedScene) var BulletZero
 export(PackedScene) var BulletOne
-export var bullets_in_air = 0
 
 const max_bullets_per_button_press = 8
 
@@ -39,7 +38,7 @@ var difference = 2500
 var show_level = 0 # used to measure how long level lable should be displayed
 var isShootingButtonPressed = false # indicates wheather Hans should shoot
 var can_shoot = true
-
+var bullets_in_air = 0
 
 func _physics_process(_delta):
     # making tunnels (and ground) infinite by moving them forward

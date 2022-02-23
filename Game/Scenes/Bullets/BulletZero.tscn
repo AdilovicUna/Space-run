@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Bullets/BulletZero.gd" type="Script" id=1]
 
@@ -7,6 +7,8 @@ albedo_color = Color( 0.176471, 0.882353, 0.188235, 1 )
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.176471, 0.882353, 0.188235, 1 )
+
+[sub_resource type="SphereShape" id=3]
 
 [node name="BulletZero" type="Spatial"]
 script = ExtResource( 1 )
@@ -24,3 +26,10 @@ transform = Transform( 0.8, -1.77916e-06, 0, 7.11663e-07, 2, 0, 0, 0, 0.7, -8.09
 operation = 2
 sides = 50
 material = SubResource( 2 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 0.374135, 0, 0, 0, 1.47496, 0, 0, 0, 1.11587, 0, -0.0129077, 0 )
+shape = SubResource( 3 )
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

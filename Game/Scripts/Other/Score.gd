@@ -8,6 +8,11 @@ func _on_Meter_Passed():
         score += 0.02
         text = "Score: %.1f" % score
 
+func _on_Shooting_Obstacle():
+    if not game_over:
+        score += 10
+        text = "Score: %.1f" % score
+
 func _display_Final_Score():
     game_over = true
     text = "Final Score: %.1f" % score
