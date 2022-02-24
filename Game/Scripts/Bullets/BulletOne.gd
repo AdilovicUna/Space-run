@@ -7,7 +7,8 @@ const queue_free_time = 3
 var timer = 0
 
 func _physics_process(delta):
-    global_translate(Vector3.LEFT * speed * delta)
+    var real_forward = global_transform.basis.x.normalized()
+    global_translate(real_forward * speed * delta)
     
     timer += delta
     if timer >= queue_free_time:
@@ -19,7 +20,6 @@ func _on_Area_body_entered(body):
         
     if body is KinematicBody and not "Trap" in body.name :
         score._on_Shooting_Obstacle()
-        print(body.name)
         #print(body.hit)
         #body.hit += 1
         #if body.hit == 8:

@@ -178,7 +178,7 @@ transform = Transform( 2.98112, 0, 0, 0, -0.07764, 4.00904, 0, -2.51225, -0.1826
 shape = SubResource( 2 )
 
 [node name="Muzzle" type="Position3D" parent="."]
-transform = Transform( -1.53095e-07, 5.57222e-08, 1, 0.34202, 0.939693, 0, -0.939693, 0.34202, -1.62921e-07, -2.19321, 7.48418, 3.44992 )
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.19326, 7.48417, 3.45 )
 __meta__ = {
 "_editor_description_": ""
 }
