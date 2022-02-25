@@ -23,6 +23,7 @@ onready var tunnels_children = get_node(\"../Tunnels\").get_children() # lvl1, l
 onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
 onready var level = get_node(\"../UI/Level\")
+onready var battery = get_node(\"../UI/Battery\")
 
 var rand = RandomNumberGenerator.new()
 
@@ -39,6 +40,7 @@ var show_level = 0 # used to measure how long level lable should be displayed
 var isShootingButtonPressed = false # indicates wheather Hans should shoot
 var can_shoot = true
 var bullets_in_air = 0
+var energy_token_exists = false
 
 func _physics_process(_delta):
     # making tunnels (and ground) infinite by moving them forward
@@ -90,11 +92,7 @@ func _physics_process(_delta):
             tunnels.create_one_obstacle(next_tunnel,x)
             
         # choose a place for the next obstacle
-        # NOTE: level2 and level3 have bugs and viruses, so we want less obstacles 
-        # a) we need more time to shoot down a bug or a virus
-        # b) bugs and viruses are longer than traps thus take more space along x-axis
-        # x -= rand.randi_range(70,90) if next_tunnel == lvl.ONE else rand.randi_range(170,190)
-        x -= rand.randi_range(70,90) if next_tunnel == lvl.ONE else rand.randi_range(120,140)
+        x -= rand.randi_range(70,90)
     
     # updating score 
     score._on_Meter_Passed()
@@ -103,10 +101,16 @@ func _physics_process(_delta):
     var velocity = Vector3.LEFT * speed
     velocity = move_and_slide(velocity)
     
-    # End game if Hans touches the trap
     for index in get_slide_count():
-        var collision = get_slide_collision(index)	
-        if collision.collider is KinematicBody:
+        var collision = get_slide_collision(index)
+        
+        # increase battery in Hans picks up an energy token
+        if \"Token\" in collision.collider.name:
+            battery.value = 100
+            collision.collider.queue_free()
+            
+        # End game if Hans touches the trap
+        elif collision.collider is KinematicBody:
             main._game_over()
             return
     
@@ -149,7 +153,10 @@ func shoot():
         bullets_in_air += 1
         can_shoot = false
         
-        $shooting_timer.start()        
+        # Hans looses 1% battery for every bullet
+        battery.decrease_value()
+        
+        $Shooting_timer.start()        
 
 
 func _on_shooting_timer_timeout():
@@ -183,7 +190,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="shooting_timer" type="Timer" parent="."]
+[node name="Shooting_timer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
-[connection signal="timeout" from="shooting_timer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="timeout" from="Shooting_timer" to="." method="_on_shooting_timer_timeout"]

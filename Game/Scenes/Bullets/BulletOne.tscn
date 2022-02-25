@@ -21,7 +21,7 @@ transform = Transform( -1.94364e-07, -0.2, 0, 1.193, -3.25841e-08, 0, 0, 0, 0.2,
 material = SubResource( 1 )
 
 [node name="CSGBox2" type="CSGBox" parent="CSGCombiner/CSGBox"]
-transform = Transform( 0.340846, -7.72122e-07, 0.122655, 6.31776e-07, 0.999999, -9.53593e-08, -2.18211, 5.16174e-06, 0.681692, 0.536212, -4.16954e-07, 2.50068 )
+transform = Transform( 0.336557, -7.6937e-07, -0.123979, 6.35944e-07, 0.999999, 1.44325e-07, 2.20567, -5.17687e-06, 0.673114, 0.538526, -4.19202e-07, -2.53265 )
 material = SubResource( 2 )
 
 [node name="Area" type="Area" parent="."]

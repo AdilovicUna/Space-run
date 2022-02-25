@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.913725, 0.8, 0.054902, 1 )
+
+[sub_resource type="SpatialMaterial" id=2]
+albedo_color = Color( 0.92549, 0.8, 0.117647, 1 )
+metallic = 1.0
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.882353, 0.870588, 0.101961, 1 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.882353, 0.870588, 0.101961, 1 )
+
+[sub_resource type="SpatialMaterial" id=5]
+albedo_color = Color( 0.882353, 0.870588, 0.101961, 1 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "TokenRotation"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Token:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 90, 0 ), Vector3( 0, 180, 0 ), Vector3( 0, 270, 0 ), Vector3( 0, 360, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Area/CollisionShape:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 90 ), Vector3( 0, 90, 90 ), Vector3( 0, 180, 90 ), Vector3( 0, 270, 90 ), Vector3( 0, 360, 90 ) ]
+}
+
+[sub_resource type="CylinderShape" id=7]
+
+[node name="EnergyToken" type="Spatial"]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -10, 0 )
+
+[node name="Token" type="CSGCombiner" parent="."]
+transform = Transform( -0.415815, 0, 0.909449, 0, 1, 0, -0.909449, 0, -0.415815, 0, 0, 0 )
+use_collision = true
+collision_layer = 2
+
+[node name="InnerCircle" type="CSGCylinder" parent="Token"]
+transform = Transform( -4.15258e-08, -0.03, 0, 0.95, -1.31134e-09, 0, 0, 0, 0.95, 0, 0, 0 )
+sides = 25
+material = SubResource( 1 )
+
+[node name="Ring" type="CSGCylinder" parent="Token"]
+transform = Transform( -4.37114e-08, -0.1, 0, 1, -4.37114e-09, 0, 0, 7.45058e-09, 1, -0.00234824, 0, 0 )
+sides = 45
+material = SubResource( 2 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Token/Ring"]
+transform = Transform( 0.95, 7.59393e-14, 0, -8.52651e-14, 1.2, -4.76837e-07, 0, -3.72529e-09, 0.95, 0, 0, 0 )
+operation = 2
+sides = 45
+
+[node name="LightningBolt" type="CSGBox" parent="Token"]
+transform = Transform( -0.0878889, 0, -7.68349e-09, 3.53223e-09, 0.182948, -0.040404, 7.36926e-09, -0.0744657, -0.0842946, 0, 0.277606, 0 )
+material = SubResource( 3 )
+
+[node name="CSGBox2" type="CSGBox" parent="Token/LightningBolt"]
+transform = Transform( 1, -1.3869e-07, 5.80104e-08, 3.81078e-08, 0.357223, -0.435902, 5.80105e-08, 1.58643, 0.336439, -8.10456e-08, -1.0849, 0.927053 )
+material = SubResource( 4 )
+
+[node name="CSGCylinder3" type="CSGCylinder" parent="Token/LightningBolt"]
+transform = Transform( -6.96923e-07, -1.99313, 1.69736e-07, -1.66534, 1.51352e-07, -0.037403, -0.0521525, -2.0996e-07, -1.24239, 0.0262238, -2.03845, 1.70449 )
+sides = 3
+material = SubResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "TokenRotation"
+anims/TokenRotation = SubResource( 6 )
+
+[node name="Area" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 6.77448e-08, 0.0312643, 0.909449, 1, -1.22497e-08, 0, 1.48168e-07, 0.0683796, -0.415815, 0, 0, 0 )
+shape = SubResource( 7 )

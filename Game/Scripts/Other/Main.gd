@@ -4,20 +4,31 @@ onready var hans = get_node("Hans")
 onready var tunnels = get_node("Tunnels")
 onready var score = get_node("UI/Score")
 onready var end = get_node("UI/End")
+onready var battery = get_node("UI/Battery")
+onready var timer = get_node("UI/Battery/DropTimer")
+onready var pause = get_node("PauseAndResume/Pause")
+onready var pause_popup = get_node("PauseAndResume/Pause_popup")
 
 func _ready():
     for name in ["TrapI","TrapO", "TrapMovingI", "TrapX", "TrapWalls", "TrapHex", 
                     "TrapHexO", "TrapBalls", "TrapTriangles", "TrapHalfHex"]:
         tunnels.trap_scenes.append(load("res://Scenes/Traps/" + name + ".tscn"))
+        
     for name in ["Worm", "LadybugFlying", "LadybugWalking"]:
         tunnels.bug_scenes.append(load("res://Scenes/Characters/Bugs/" + name + ".tscn"))
-    for name in ["Bacteriophage", "Rotavirus"]:
+        
+    for name in ["Rotavirus", "Bacteriophage"]:
         tunnels.virus_scenes.append(load("res://Scenes/Characters/Viruses/" + name + ".tscn"))
+        
+    tunnels.token_scenes.append(load("res://Scenes/Tokens/EnergyToken.tscn"))
+    
     tunnels.create_first_level_traps()
 
 func _game_over():
-    get_tree().paused = true
+    get_tree().paused = true    
     end.show()
+    battery.hide()
+    timer.stop()
     score._display_Final_Score()
     var end_children = end.get_children()
 
@@ -31,13 +42,17 @@ func _game_over():
 
 
 func _on_Resume_pressed():
-    $PauseAndResume/Pause.show()
-    $UI/Score.show()
-    $PauseAndResume/Pause_popup.hide()
+    pause.show()
+    score.show()
+    battery.show()
+    timer.start()    
+    pause_popup.hide()
     get_tree().paused = false
 
 func _on_Pause_pressed():
-    $PauseAndResume/Pause_popup.show()
-    $PauseAndResume/Pause.hide()
-    $UI/Score.hide()
+    pause_popup.show()
+    pause.hide()
+    score.hide()
+    battery.hide()
+    timer.stop()    
     get_tree().paused = true

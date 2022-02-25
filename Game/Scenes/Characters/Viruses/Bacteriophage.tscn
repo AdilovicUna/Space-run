@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Viruses/Bacteriophage/walking.tres" type="Animation" id=1]
 [ext_resource path="res://Characters/Viruses/Bacteriophage/Bacteriophage.glb" type="PackedScene" id=2]
@@ -8,6 +8,8 @@
 
 [sub_resource type="CylinderShape" id=2]
 radius = 1.51437
+
+[sub_resource type="CylinderShape" id=3]
 
 [node name="Pivot" type="Spatial"]
 script = ExtResource( 3 )
@@ -42,7 +44,7 @@ transform = Transform( -2.02093, 0, -0.0491383, 0, 1, 0, 0.699574, 0, -0.141951,
 shape = SubResource( 2 )
 
 [node name="CollisionShape6" type="CollisionShape" parent="Bacteriophage"]
-transform = Transform( 1.38597, 0, -0.0908391, 0, 1, 0, 1.05235, 0, 0.119637, -2.7193, 2.07383, -1.95416 )
+transform = Transform( 1.50242, 0, -0.0757992, 0, 1, 0, 0.878117, 0, 0.129689, -2.83862, 2.07383, -1.75001 )
 shape = SubResource( 2 )
 
 [node name="CollisionShape7" type="CollisionShape" parent="Bacteriophage"]
@@ -56,3 +58,7 @@ shape = SubResource( 2 )
 [node name="CollisionShape9" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 1.47116, 0, 0.109026, 0, 1, 0, -1.55218, 0, 0.103335, 2.18548, 2.07383, -1.91638 )
 shape = SubResource( 2 )
+
+[node name="CollisionShape10" type="CollisionShape" parent="Bacteriophage"]
+transform = Transform( 0.847828, 0, 0, 0, 1.99475, 0, 0, 0, 0.809478, 0, 2.14096, 0 )
+shape = SubResource( 3 )
