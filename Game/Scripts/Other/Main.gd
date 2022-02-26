@@ -4,12 +4,25 @@ onready var hans = get_node("Hans")
 onready var tunnels = get_node("Tunnels")
 onready var score = get_node("UI/Score")
 onready var end = get_node("UI/End")
+onready var help = get_node("UI/Help")
 onready var battery = get_node("UI/Battery")
 onready var timer = get_node("UI/Battery/DropTimer")
 onready var pause = get_node("PauseAndResume/Pause")
 onready var pause_popup = get_node("PauseAndResume/Pause_popup")
 
+var curr_layer = 1
+
 func _ready():
+    _show_first_help_layer()
+
+func _start():
+    help.hide() 
+    score.show()
+    pause.show()
+    battery.show()
+    timer.start()
+    get_tree().paused = false 
+        
     for name in ["TrapI","TrapO", "TrapMovingI", "TrapX", "TrapWalls", "TrapHex", 
                     "TrapHexO", "TrapBalls", "TrapTriangles", "TrapHalfHex"]:
         tunnels.trap_scenes.append(load("res://Scenes/Traps/" + name + ".tscn"))
@@ -24,6 +37,26 @@ func _ready():
     
     tunnels.create_first_level_traps()
 
+func _show_first_help_layer():
+    get_tree().paused = true        
+    score.hide()
+    pause.hide()
+    battery.hide()
+    timer.stop()
+    help.show()
+    
+    var layer = help.get_child(1)
+    layer.show()
+
+func _show_help_layer():
+    if curr_layer == 11:
+        $UI/Help/Continue.hide()
+    else:
+        $UI/Help/Continue.show()
+        
+    var layer = help.get_child(curr_layer)
+    layer.show()
+        
 func _game_over():
     get_tree().paused = true    
     end.show()
@@ -56,3 +89,15 @@ func _on_Pause_pressed():
     battery.hide()
     timer.stop()    
     get_tree().paused = true
+
+func _on_Continue_pressed():
+    help.get_child(curr_layer).hide()
+    curr_layer += 1
+    _show_help_layer()
+
+func _on_Start_pressed():
+    _start()
+
+
+func _on_Skip_pressed():
+    _start()
