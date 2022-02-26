@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gradient.jpg-ef09b442e17e303ae151dc508e79412e.stex"
+path="res://.import/token.png-f4490c740893a37bc4cdafed11ab5e72.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/energyBar/gradient.jpg"
-dest_files=[ "res://.import/gradient.jpg-ef09b442e17e303ae151dc508e79412e.stex" ]
+source_file="res://Textures/help/token.png"
+dest_files=[ "res://.import/token.png-f4490c740893a37bc4cdafed11ab5e72.stex" ]
 
 [params]
 

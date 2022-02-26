@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Tunnels/level1.tres" type="Material" id=1]
 [ext_resource path="res://Tunnels/level2.tres" type="Material" id=2]
@@ -20,6 +20,12 @@
 [ext_resource path="res://Textures/help/space.jpg" type="Texture" id=18]
 [ext_resource path="res://Textures/help/movement.png" type="Texture" id=19]
 [ext_resource path="res://Textures/help/sick.png" type="Texture" id=20]
+[ext_resource path="res://Textures/help/walkingLadybug.png" type="Texture" id=21]
+[ext_resource path="res://Textures/help/worm.png" type="Texture" id=22]
+[ext_resource path="res://Textures/help/flyingLadybug.png" type="Texture" id=23]
+[ext_resource path="res://Textures/help/bacteriophage.png" type="Texture" id=24]
+[ext_resource path="res://Textures/help/token.png" type="Texture" id=25]
+[ext_resource path="res://Textures/help/rotavirus.png" type="Texture" id=26]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -53,15 +59,6 @@ font_data = ExtResource( 9 )
 [sub_resource type="Theme" id=7]
 default_font = SubResource( 6 )
 
-[sub_resource type="StyleBoxFlat" id=16]
-bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
-
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
-
-[sub_resource type="StyleBoxFlat" id=18]
-bg_color = Color( 0.411765, 0.764706, 0.941176, 0.439216 )
-
 [sub_resource type="DynamicFont" id=8]
 size = 35
 outline_color = Color( 0.945098, 0.988235, 1, 1 )
@@ -71,28 +68,37 @@ font_data = ExtResource( 11 )
 [sub_resource type="Theme" id=9]
 default_font = SubResource( 8 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.666667 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.411765, 0.764706, 0.941176, 0.439216 )
+
+[sub_resource type="DynamicFont" id=13]
 size = 30
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="Theme" id=11]
-default_font = SubResource( 10 )
+[sub_resource type="Theme" id=14]
+default_font = SubResource( 13 )
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=15]
 size = 30
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="Theme" id=13]
-default_font = SubResource( 12 )
+[sub_resource type="Theme" id=16]
+default_font = SubResource( 15 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=17]
 size = 40
 font_data = ExtResource( 11 )
 
-[sub_resource type="Theme" id=15]
-default_font = SubResource( 14 )
+[sub_resource type="Theme" id=18]
+default_font = SubResource( 17 )
 
 [sub_resource type="DynamicFont" id=19]
 font_data = ExtResource( 11 )
@@ -436,7 +442,6 @@ wait_time = 0.5
 autostart = true
 
 [node name="Help" type="ColorRect" parent="UI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.721569, 0.909804, 0.952941, 0.996078 )
@@ -444,29 +449,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Continue" type="Button" parent="UI/Help"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 334.0
-margin_top = -64.0
-margin_right = 512.0
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
-custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
-custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
-custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
-text = "Continue"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="layer1" type="Control" parent="UI/Help"]
-visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+light_mask = 3
+margin_bottom = 14.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -478,36 +463,35 @@ margin_right = 366.0
 margin_bottom = 600.0
 texture = ExtResource( 14 )
 
-[node name="Text1" type="RichTextLabel" parent="UI/Help/layer1"]
+[node name="Text1" type="Label" parent="UI/Help/layer1"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 335.0
-margin_top = 222.0
-margin_right = 843.0
-margin_bottom = 371.0
+anchor_left = 0.357
+anchor_top = 0.377
+anchor_right = 0.843
+anchor_bottom = 0.602
+margin_left = 203.0
+margin_top = 173.222
+margin_right = 989.0
+margin_bottom = 412.072
 theme = SubResource( 9 )
-custom_colors/selection_color = Color( 0, 0, 0, 1 )
 text = "Hello! My name is Hans!
 I am here to give you a quick guide to this game..."
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Skip" type="Button" parent="UI/Help/layer1"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 652.0
-margin_top = 496.0
-margin_right = 820.0
-margin_bottom = 555.0
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
+margin_left = 672.0
+margin_top = 522.0
+margin_right = 840.0
+margin_bottom = 581.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
 custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
@@ -518,8 +502,10 @@ __meta__ = {
 
 [node name="layer2" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1024.0
+margin_bottom = -600.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -527,90 +513,94 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="UI/Help/layer2"]
 modulate = Color( 1, 1, 1, 0.690196 )
-margin_left = 214.0
-margin_top = 224.0
-margin_right = 832.0
-margin_bottom = 475.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 206.0
+margin_top = 225.0
+margin_right = 824.0
+margin_bottom = 476.0
 texture = ExtResource( 19 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text2" type="RichTextLabel" parent="UI/Help/layer2"]
+[node name="Text2" type="Label" parent="UI/Help/layer2"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 201.0
-margin_top = 41.0
-margin_right = 810.0
-margin_bottom = 179.0
-theme = SubResource( 11 )
+margin_left = 206.0
+margin_top = 80.0
+margin_right = 820.0
+margin_bottom = 200.0
+theme = SubResource( 14 )
 text = "To move arround and avoid the traps, press left and right arrow keys, or A and D, as shown on the picture below:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+autowrap = true
 
 [node name="layer3" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+margin_bottom = 16.0
 rect_pivot_offset = Vector2( -454.404, 319 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="TextureRect" type="TextureRect" parent="UI/Help/layer3"]
-margin_left = 214.0
-margin_top = 224.0
-margin_right = 832.0
-margin_bottom = 483.0
-texture = ExtResource( 18 )
-
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer3"]
-modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 201.0
-margin_top = 86.0
-margin_right = 820.0
-margin_bottom = 204.0
-theme = SubResource( 13 )
+margin_left = 206.0
+margin_top = 217.0
+margin_right = 824.0
+margin_bottom = 476.0
+texture = ExtResource( 18 )
+
+[node name="Text3" type="Label" parent="UI/Help/layer3"]
+modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 208.5
+margin_top = 80.0
+margin_right = 808.5
+margin_bottom = 159.0
+theme = SubResource( 16 )
 text = "To shoot any bugs or viruses on your way, press space:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
+autowrap = true
 
 [node name="layer4" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer4"]
+[node name="Text3" type="Label" parent="UI/Help/layer4"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 201.0
-margin_top = 86.0
-margin_right = 808.0
-margin_bottom = 228.0
-theme = SubResource( 13 )
+margin_left = 224.0
+margin_top = 230.0
+margin_right = 831.0
+margin_bottom = 372.0
+theme = SubResource( 16 )
 text = "As you maybe noticed, I am a computer! So watch out! My battery life will go down while playing."
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Battery" type="TextureProgress" parent="UI/Help/layer4"]
-anchor_top = 0.17
-anchor_right = 0.909
-anchor_bottom = 0.68
-margin_left = 930.0
-margin_top = 223.2
-margin_right = 968.64
-margin_bottom = 352.8
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 948.5
+margin_top = 225.0
+margin_right = 1023.5
+margin_bottom = 375.0
 value = 75.0
 texture_under = ExtResource( 13 )
 texture_over = ExtResource( 15 )
@@ -643,42 +633,52 @@ __meta__ = {
 
 [node name="TextureRect" type="TextureRect" parent="UI/Help/layer4"]
 modulate = Color( 1, 1, 1, 0.835294 )
-margin_left = 774.0
-margin_top = 264.0
-margin_right = 874.0
-margin_bottom = 364.0
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 845.5
+margin_top = 254.5
+margin_right = 945.5
+margin_bottom = 354.5
 texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="layer5" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 0.012
+anchor_bottom = 0.027
+margin_right = 11.712
+margin_bottom = -0.200001
 rect_pivot_offset = Vector2( -454.404, 319 )
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer5"]
+[node name="Text3" type="Label" parent="UI/Help/layer5"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 145.0
-margin_top = 244.0
-margin_right = 843.0
-margin_bottom = 299.0
-theme = SubResource( 13 )
+margin_left = 149.278
+margin_top = 266.234
+margin_right = 847.278
+margin_bottom = 321.234
+theme = SubResource( 16 )
 text = "Beware, I require some extra energy to shoot!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Battery" type="TextureProgress" parent="UI/Help/layer5"]
-anchor_top = 0.17
-anchor_right = 0.909
-anchor_bottom = 0.68
-margin_left = 930.0
-margin_top = 223.2
-margin_right = 968.64
-margin_bottom = 352.8
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 925.0
+margin_top = 217.0
+margin_right = 1000.0
+margin_bottom = 367.0
 value = 75.0
 texture_under = ExtResource( 13 )
 texture_over = ExtResource( 15 )
@@ -711,34 +711,34 @@ __meta__ = {
 
 [node name="layer6" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
 rect_pivot_offset = Vector2( -454.404, 319 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer6"]
+[node name="Text3" type="Label" parent="UI/Help/layer6"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 145.0
-margin_top = 228.0
-margin_right = 843.0
-margin_bottom = 319.0
-theme = SubResource( 13 )
+margin_left = 249.0
+margin_top = 254.5
+margin_right = 797.0
+margin_bottom = 345.5
+theme = SubResource( 16 )
 text = "To increase my battery life, pick up some energy tokens on the way!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap = true
 
 [node name="Battery" type="TextureProgress" parent="UI/Help/layer6"]
-anchor_top = 0.17
-anchor_right = 0.909
-anchor_bottom = 0.68
-margin_left = 930.0
-margin_top = 223.2
-margin_right = 968.64
-margin_bottom = 352.8
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 949.0
+margin_top = 225.0
+margin_right = 1024.0
+margin_bottom = 375.0
 value = 100.0
 texture_under = ExtResource( 13 )
 texture_over = ExtResource( 15 )
@@ -769,45 +769,77 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="pointing_arrow" type="TextureRect" parent="UI/Help/layer6"]
+margin_left = 334.579
+margin_top = 519.104
+margin_right = 434.579
+margin_bottom = 619.104
+rect_rotation = 180.0
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointing_arrow2" type="TextureRect" parent="UI/Help/layer6"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 845.5
+margin_top = 254.5
+margin_right = 945.5
+margin_bottom = 354.5
+texture = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="token" type="TextureRect" parent="UI/Help/layer6"]
+margin_left = 24.0
+margin_top = 371.0
+margin_right = 224.0
+margin_bottom = 571.0
+texture = ExtResource( 25 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="layer7" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 
 [node name="TextureRect" type="TextureRect" parent="UI/Help/layer7"]
-margin_left = 58.0
-margin_top = 160.0
-margin_right = 158.0
-margin_bottom = 260.0
+margin_left = 40.0
+margin_top = 159.0
+margin_right = 140.0
+margin_bottom = 259.0
 rect_rotation = -90.0
 texture = ExtResource( 17 )
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer7"]
+[node name="Text3" type="Label" parent="UI/Help/layer7"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 201.0
-margin_top = 164.0
-margin_right = 820.0
-margin_bottom = 407.0
-theme = SubResource( 13 )
+margin_left = 67.5
+margin_top = 178.5
+margin_right = 956.5
+margin_bottom = 421.5
+theme = SubResource( 16 )
 text = "To increase the score, keep me alive for as long as possible!
 
 Shooting some bugs and viruses might help as well ;)"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Score" type="Label" parent="UI/Help/layer7"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = 4.0
+anchor_right = 1.0
+margin_left = 24.0
 margin_top = 14.0
-margin_right = 980.0
-margin_bottom = 61.0
+margin_right = -24.0
+margin_bottom = 50.0
 custom_colors/font_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
 text = "Score: 3.14"
@@ -817,93 +849,186 @@ __meta__ = {
 
 [node name="layer8" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 0.012
+anchor_bottom = 0.055
+margin_right = 11.712
+margin_bottom = -3.8147e-06
 rect_pivot_offset = Vector2( -454.404, 319 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer8"]
+[node name="Text3" type="Label" parent="UI/Help/layer8"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 265.0
-margin_top = 231.0
-margin_right = 808.0
-margin_bottom = 355.0
-theme = SubResource( 13 )
-text = "Touching bugs will make me loose energy...."
+margin_left = 166.5
+margin_top = 221.5
+margin_right = 833.5
+margin_bottom = 345.5
+theme = SubResource( 16 )
+text = "Bugs will decrease my battery life...."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="worm" type="TextureRect" parent="UI/Help/layer8"]
+margin_left = 178.5
+margin_top = 178.5
+margin_right = 456.5
+margin_bottom = 384.5
+rect_scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="worm2" type="TextureRect" parent="UI/Help/layer8"]
+margin_left = 755.0
+margin_top = 368.0
+margin_right = 1033.0
+margin_bottom = 508.0
+rect_scale = Vector2( 1.2, 1.2 )
+texture = ExtResource( 22 )
+flip_h = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="walkingLadybug" type="TextureRect" parent="UI/Help/layer8"]
+margin_left = 24.0
+margin_top = 448.0
+margin_right = 274.0
+margin_bottom = 625.0
+rect_scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="flyingLadybug" type="TextureRect" parent="UI/Help/layer8"]
+margin_left = 786.0
+margin_top = 48.0
+margin_right = 986.0
+margin_bottom = 189.0
+texture = ExtResource( 23 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="layer9" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 0.023
+anchor_bottom = 0.04
+margin_right = -23.552
+margin_bottom = 24.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="UI/Help/layer9"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 margin_left = 412.0
-margin_top = 61.0
+margin_top = 69.6602
 margin_right = 607.0
-margin_bottom = 211.0
+margin_bottom = 219.66
 texture = ExtResource( 20 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer9"]
+[node name="Text3" type="Label" parent="UI/Help/layer9"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 265.0
-margin_top = 231.0
-margin_right = 808.0
-margin_bottom = 355.0
-theme = SubResource( 13 )
+margin_left = 208.5
+margin_top = 224.5
+margin_right = 820.5
+margin_bottom = 348.5
+theme = SubResource( 16 )
 text = "Please, be careful, some viruses will make me sick for a while :("
+align = 1
+valign = 1
+autowrap = true
+
+[node name="rotavirus" type="TextureRect" parent="UI/Help/layer9"]
+margin_left = 129.0
+margin_top = 352.0
+margin_right = 432.0
+margin_bottom = 572.0
+texture = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="layer10" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 0.012
+margin_right = 11.712
+margin_bottom = 16.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer10"]
+[node name="Text3" type="Label" parent="UI/Help/layer10"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 236.0
-margin_top = 210.0
-margin_right = 774.0
-margin_bottom = 332.0
-theme = SubResource( 13 )
-text = "The spider-like virus will make the game end immediately!"
+margin_left = 55.5
+margin_top = 240.0
+margin_right = 936.5
+margin_bottom = 360.0
+theme = SubResource( 16 )
+text = "Be careful not to touch the spider-like virus! The game will end immediately."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bacteriophage" type="TextureRect" parent="UI/Help/layer10"]
+margin_left = 85.4797
+margin_top = 230.0
+margin_right = 485.48
+margin_bottom = 387.0
+rect_rotation = 44.9999
+texture = ExtResource( 24 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="bacteriophage2" type="TextureRect" parent="UI/Help/layer10"]
+margin_left = 986.0
+margin_top = 136.525
+margin_right = 1386.0
+margin_bottom = 293.525
+rect_rotation = 177.0
+texture = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="layer11" type="Control" parent="UI/Help"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 0.021
+anchor_bottom = 0.08
+margin_right = 20.496
+margin_bottom = 2.0
 rect_pivot_offset = Vector2( -454.404, 319 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -914,35 +1039,34 @@ margin_right = 366.0
 margin_bottom = 600.0
 texture = ExtResource( 14 )
 
-[node name="Text3" type="RichTextLabel" parent="UI/Help/layer11"]
+[node name="Text3" type="Label" parent="UI/Help/layer11"]
 modulate = Color( 0.027451, 0.219608, 0.376471, 0.866667 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 457.0
-margin_top = 231.0
-margin_right = 754.0
-margin_bottom = 355.0
-theme = SubResource( 13 )
+margin_left = 391.0
+margin_top = 175.0
+margin_right = 688.0
+margin_bottom = 299.0
+theme = SubResource( 16 )
 text = "That is all from me.
 Have fun playing!"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+align = 1
+valign = 1
 
 [node name="Start" type="Button" parent="UI/Help/layer11"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 457.0
-margin_top = 344.0
-margin_right = 724.0
-margin_bottom = 408.0
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
+margin_left = 411.0
+margin_top = 312.0
+margin_right = 678.0
+margin_bottom = 376.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
 custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
@@ -951,11 +1075,51 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Continue" type="Button" parent="UI/Help"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 333.5
+margin_top = -64.0
+margin_right = 505.5
+margin_bottom = -4.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
+text = "Continue"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Previous" type="Button" parent="UI/Help"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 160.0
+margin_top = -64.0
+margin_right = 332.0
+margin_bottom = -4.0
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
+custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
+custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
+text = "Previous"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="PauseAndResume" type="Control" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = SubResource( 15 )
+theme = SubResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -1005,9 +1169,9 @@ margin_left = -160.0
 margin_top = -216.0
 margin_right = 160.0
 margin_bottom = -152.0
-custom_styles/hover = SubResource( 16 )
-custom_styles/pressed = SubResource( 17 )
-custom_styles/normal = SubResource( 18 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/normal = SubResource( 12 )
 custom_colors/font_color = Color( 0.980392, 0.980392, 0.980392, 1 )
 custom_colors/font_color_hover = Color( 0.784314, 0.831373, 0.980392, 1 )
 custom_colors/font_color_pressed = Color( 0.321569, 0.388235, 0.733333, 1 )
@@ -1034,8 +1198,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="timeout" from="UI/Battery/DropTimer" to="UI/Battery" method="_on_DropTimer_timeout"]
-[connection signal="pressed" from="UI/Help/Continue" to="." method="_on_Continue_pressed"]
 [connection signal="pressed" from="UI/Help/layer1/Skip" to="." method="_on_Skip_pressed"]
 [connection signal="pressed" from="UI/Help/layer11/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="UI/Help/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="UI/Help/Previous" to="." method="_on_Previous_pressed"]
 [connection signal="pressed" from="PauseAndResume/Pause_popup/Resume" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="PauseAndResume/Pause" to="." method="_on_Pause_pressed"]

@@ -5,15 +5,22 @@ onready var tunnels = get_node("Tunnels")
 onready var score = get_node("UI/Score")
 onready var end = get_node("UI/End")
 onready var help = get_node("UI/Help")
+onready var cont = get_node("UI/Help/Continue")
+onready var prev = get_node("UI/Help/Previous")
 onready var battery = get_node("UI/Battery")
 onready var timer = get_node("UI/Battery/DropTimer")
 onready var pause = get_node("PauseAndResume/Pause")
 onready var pause_popup = get_node("PauseAndResume/Pause_popup")
 
-var curr_layer = 1
+var show_help = true
+var curr_layer = 0
 
 func _ready():
-    _show_first_help_layer()
+    print(show_help)
+    if show_help:
+        _show_first_help_layer()
+    else:
+        _start()
 
 func _start():
     help.hide() 
@@ -44,15 +51,18 @@ func _show_first_help_layer():
     battery.hide()
     timer.stop()
     help.show()
+    prev.hide()
     
-    var layer = help.get_child(1)
+    var layer = help.get_child(curr_layer)
     layer.show()
 
 func _show_help_layer():
-    if curr_layer == 11:
-        $UI/Help/Continue.hide()
+    if curr_layer == 10:
+        cont.hide()
     else:
-        $UI/Help/Continue.show()
+        cont.show()
+        
+    prev.show()    
         
     var layer = help.get_child(curr_layer)
     layer.show()
@@ -101,3 +111,12 @@ func _on_Start_pressed():
 
 func _on_Skip_pressed():
     _start()
+
+
+func _on_Previous_pressed():
+    help.get_child(curr_layer).hide()
+    curr_layer -= 1
+    if curr_layer == 0:
+        _show_first_help_layer()
+    else:
+        _show_help_layer()
