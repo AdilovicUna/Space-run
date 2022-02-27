@@ -475,12 +475,12 @@ anchor_left = 0.357
 anchor_top = 0.377
 anchor_right = 0.843
 anchor_bottom = 0.602
-margin_left = 203.0
-margin_top = 173.222
-margin_right = 989.0
-margin_bottom = 412.072
+margin_left = 249.0
+margin_top = 183.722
+margin_right = 941.0
+margin_bottom = 403.572
 theme = SubResource( 9 )
-text = "Hello! My name is Hans!
+text = "Hi! I'm Hans!
 I am here to give you a quick guide to this game..."
 align = 1
 valign = 1
@@ -543,7 +543,7 @@ margin_top = 80.0
 margin_right = 820.0
 margin_bottom = 200.0
 theme = SubResource( 14 )
-text = "To move arround and avoid the traps, press left and right arrow keys, or A and D, as shown on the picture below:"
+text = "To move arround and avoid the traps, press left and right arrow keys, or A and D, whichever you prefer..."
 align = 1
 autowrap = true
 
@@ -575,7 +575,7 @@ margin_top = 80.0
 margin_right = 808.5
 margin_bottom = 159.0
 theme = SubResource( 16 )
-text = "To shoot any bugs or viruses on your way, press space:"
+text = "In case you wanna shoot some stuff, press space:"
 align = 1
 valign = 1
 autowrap = true
@@ -590,15 +590,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 224.0
+margin_left = 203.0
 margin_top = 230.0
-margin_right = 831.0
+margin_right = 810.0
 margin_bottom = 372.0
 theme = SubResource( 16 )
-text = "As you maybe noticed, I am a computer! So watch out! My battery life will go down while playing."
+text = "I guess you noticed I am part computer, so my battery life will go down as I run..."
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Battery" type="TextureProgress" parent="UI/Help/layer4"]
 anchor_left = 1.0
@@ -673,7 +676,7 @@ margin_top = 266.234
 margin_right = 847.278
 margin_bottom = 321.234
 theme = SubResource( 16 )
-text = "Beware, I require some extra energy to shoot!"
+text = "I also need some extra energy to shoot."
 align = 1
 valign = 1
 autowrap = true
@@ -730,13 +733,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 249.0
-margin_top = 254.5
-margin_right = 797.0
-margin_bottom = 345.5
+margin_left = 224.0
+margin_top = 248.0
+margin_right = 772.0
+margin_bottom = 339.0
 theme = SubResource( 16 )
-text = "To increase my battery life, pick up some energy tokens on the way!"
+text = "To increase my battery life, pick up  energy tokens along the way."
+align = 1
+valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Battery" type="TextureProgress" parent="UI/Help/layer6"]
 anchor_left = 1.0
@@ -830,14 +838,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 67.5
-margin_top = 178.5
-margin_right = 956.5
-margin_bottom = 421.5
+margin_left = 68.0
+margin_top = 179.0
+margin_right = 968.0
+margin_bottom = 426.0
 theme = SubResource( 16 )
 text = "To increase the score, keep me alive for as long as possible!
 
-Shooting some bugs and viruses might help as well ;)"
+Shooting some bugs and viruses will also help with the score.
+(personally, I'm a pacifist, but the choice is yours)"
 align = 1
 valign = 1
 autowrap = true
@@ -872,12 +881,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 166.5
-margin_top = 221.5
-margin_right = 833.5
-margin_bottom = 345.5
+margin_left = 160.0
+margin_top = 238.5
+margin_right = 883.0
+margin_bottom = 362.5
 theme = SubResource( 16 )
-text = "Bugs will decrease my battery life...."
+text = "Dealing with bugs decreases my battery life, so try to avoid touching them, would you?"
 align = 1
 valign = 1
 autowrap = true
@@ -886,10 +895,10 @@ __meta__ = {
 }
 
 [node name="worm" type="TextureRect" parent="UI/Help/layer8"]
-margin_left = 178.5
+margin_left = 366.0
 margin_top = 178.5
-margin_right = 456.5
-margin_bottom = 384.5
+margin_right = 644.0
+margin_bottom = 314.5
 rect_scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 22 )
 __meta__ = {
@@ -965,16 +974,16 @@ margin_top = 224.5
 margin_right = 820.5
 margin_bottom = 348.5
 theme = SubResource( 16 )
-text = "Please, be careful, some viruses will make me sick for a while :("
+text = "And please, be careful, some viruses will make me sick for a while :("
 align = 1
 valign = 1
 autowrap = true
 
 [node name="rotavirus" type="TextureRect" parent="UI/Help/layer9"]
-margin_left = 129.0
-margin_top = 352.0
-margin_right = 432.0
-margin_bottom = 572.0
+margin_left = 67.5
+margin_top = 362.0
+margin_right = 370.5
+margin_bottom = 582.0
 texture = ExtResource( 26 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1001,7 +1010,7 @@ margin_top = 240.0
 margin_right = 936.5
 margin_bottom = 360.0
 theme = SubResource( 16 )
-text = "Be careful not to touch the spider-like virus! The game will end immediately."
+text = "Oh, one more thing, spider-like viruses immediately end the game."
 align = 1
 valign = 1
 autowrap = true
@@ -1053,12 +1062,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 391.0
+margin_left = 345.0
 margin_top = 175.0
-margin_right = 688.0
+margin_right = 760.0
 margin_bottom = 299.0
 theme = SubResource( 16 )
-text = "That is all from me.
+text = "Okay, that is all from me.
 Have fun playing!"
 align = 1
 valign = 1
@@ -1068,10 +1077,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 411.0
-margin_top = 312.0
-margin_right = 678.0
-margin_bottom = 376.0
+margin_left = 410.0
+margin_top = 284.0
+margin_right = 688.0
+margin_bottom = 375.0
 custom_styles/hover = SubResource( 10 )
 custom_styles/pressed = SubResource( 11 )
 custom_styles/normal = SubResource( 12 )
