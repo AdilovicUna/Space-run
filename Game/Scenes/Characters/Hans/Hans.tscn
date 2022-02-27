@@ -24,6 +24,7 @@ onready var score = get_node(\"../UI/Score\")
 onready var end = get_node(\"../UI/End\")
 onready var level = get_node(\"../UI/Level\")
 onready var battery = get_node(\"../UI/Battery\")
+onready var sick = get_node(\"../UI/Sick\")
 
 var rand = RandomNumberGenerator.new()
 
@@ -43,41 +44,15 @@ var bullets_in_air = 0
 var energy_token_exists = false
 
 func _physics_process(_delta):
-    # making tunnels (and ground) infinite by moving them forward
-    # after Hans passes them	
-    var tunnel = tunnels_children[move_tunnel]
-    if translation.x < tunnel.translation.x - 2000:				
-        tunnel.translation.x -= 7500    # move tunnel ahead (3x2500)
-        move_tunnel = (move_tunnel + 1) % tunnels_children.size()
-    if translation.x < ground.translation.x - 2000:
-        ground.translation.x -= 3000 # move ground ahead
-    
     # the game just started
     if show_level == 0:
-         # show which level we are approaching
-        show_level = translation.x
-        level.update_level()
-        level.show()
+        show_level_label()
+        
+    translate_tunnel_and_groud()
     
-    if translation.x < total_translation:
-        # update cur_tunnel Hans is running through
-        total_translation -= 2500
-        next_tunnel = (next_tunnel + 1) % tunnels_children.size()
-        curr_tunnel = (curr_tunnel + 1) % tunnels_children.size()
-        
-        # show which level we are approaching
-        show_level = translation.x
-        level.update_level()
-        level.show()
-        # increase speed after a full lap
-        if(curr_tunnel == lvl.ONE):
-            speed += 15.0
-            
-        rand.randomize()
-        # restart x
-        x = rand.randi_range(1120,1190)
-        
-        difference -= 2500
+    # we passed one tunnel
+    if translation.x < total_translation: 
+        update_curr_tunnel()
     
     # Hans entered the new tunnel, hide the level label
     if level.visible and abs(translation.x - show_level) > 75:
@@ -87,12 +62,7 @@ func _physics_process(_delta):
     
     # create a trap in the next tunnel every 50 meters
     if translation.x < new_trap:
-        new_trap -= 50
-        if x > -1200:
-            tunnels.create_one_obstacle(next_tunnel,x)
-            
-        # choose a place for the next obstacle
-        x -= rand.randi_range(70,90)
+        create_new_trap()
     
     # updating score 
     score._on_Meter_Passed()
@@ -101,18 +71,7 @@ func _physics_process(_delta):
     var velocity = Vector3.LEFT * speed
     velocity = move_and_slide(velocity)
     
-    for index in get_slide_count():
-        var collision = get_slide_collision(index)
-        
-        # increase battery in Hans picks up an energy token
-        if \"Token\" in collision.collider.name:
-            battery.value = 100
-            collision.collider.queue_free()
-            
-        # End game if Hans touches the trap
-        elif collision.collider is KinematicBody:
-            main._game_over()
-            return
+    check_collisions()
     
     # bugs and viruses need to move torwards Hans
     # but not in the first tunnel    
@@ -121,6 +80,74 @@ func _physics_process(_delta):
     
     if isShootingButtonPressed:
         shoot()
+
+func check_collisions():
+    for index in get_slide_count():
+        var collision = get_slide_collision(index)
+             
+        if collision.collider is KinematicBody:
+            # increase battery in Hans picks up an energy token
+            if \"Token\" in collision.collider.name:
+                battery.value = 100
+            # decrease battery if Hans touches a bug
+            elif curr_tunnel == lvl.TWO and not \"Trap\" in collision.collider.name:
+                battery.value -= 25
+            # make Hans sick if he touches rotavirus
+            elif \"Rotavirus\" in collision.collider.name and not sick.visible:
+                sick.show()
+                $Sick_timer.start()
+            # End game if Hans touches the trap or bacteriophage virus  
+            # or a trap
+            # or rotavirus while he is sick                                           
+            else:
+                main._game_over()
+                return   
+            collision.collider.queue_free()
+            return
+
+func create_new_trap():
+    new_trap -= 50
+    if x > -1200:
+        tunnels.create_one_obstacle(next_tunnel,x)
+        
+    # choose a place for the next obstacle
+    x -= rand.randi_range(70,90)
+
+func update_curr_tunnel():
+    # update cur_tunnel Hans is running through
+    total_translation -= 2500
+    next_tunnel = (next_tunnel + 1) % tunnels_children.size()
+    curr_tunnel = (curr_tunnel + 1) % tunnels_children.size()
+    
+    show_level_label()
+    
+    # increase speed after a full lap
+    if(curr_tunnel == lvl.ONE):
+        speed += 15.0
+        
+    rand.randomize()
+    
+    # restart x
+    x = rand.randi_range(1120,1190)
+    
+    difference -= 2500
+
+func show_level_label():
+    #show which level we are approaching
+    show_level = translation.x
+    level.update_level()
+    level.show()
+    
+
+func translate_tunnel_and_groud():
+    # making tunnels (and ground) infinite by moving them forward
+    # after Hans passes them	
+    var tunnel = tunnels_children[move_tunnel]
+    if translation.x < tunnel.translation.x - 2000:				
+        tunnel.translation.x -= 7500    # move tunnel ahead (3x2500)
+        move_tunnel = (move_tunnel + 1) % tunnels_children.size()
+    if translation.x < ground.translation.x - 2000:
+        ground.translation.x -= 3000 # move ground ahead
 
 func get_current_tunnel():
     return curr_tunnel
@@ -161,6 +188,10 @@ func shoot():
 
 func _on_shooting_timer_timeout():
     can_shoot = true
+
+
+func _on_Sick_timer_timeout():
+    sick.hide()
 "
 
 [sub_resource type="CapsuleShape" id=2]
@@ -193,4 +224,9 @@ __meta__ = {
 [node name="Shooting_timer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="Sick_timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
 [connection signal="timeout" from="Shooting_timer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="timeout" from="Sick_timer" to="." method="_on_Sick_timer_timeout"]

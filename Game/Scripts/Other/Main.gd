@@ -16,7 +16,6 @@ var show_help = true
 var curr_layer = 0
 
 func _ready():
-    print(show_help)
     if show_help:
         _show_first_help_layer()
     else:

@@ -11,6 +11,7 @@ var token_scenes = []
 var rand = RandomNumberGenerator.new()
 var angle = 0	
 var deviation = 0.01
+var obstacle_number = 0
 
 func _physics_process(_delta):
     #rotates all children of "traps"
@@ -66,13 +67,15 @@ func pick_obstacle(scene):
     return rand.randi_range(0, len(scene) - 1)
 
 func pick_scene(level,scene = trap_scenes):
-    if rand.randf_range(0,1) < 0.1:
+    if rand.randf_range(0,1) < 0.1 or obstacle_number >= 10:
+        obstacle_number = 0
         return token_scenes
     var r = rand.randi_range(0,1)
     if level == hans.lvl.TWO and r == 0:
         scene = bug_scenes
     elif level == hans.lvl.THREE and r == 0 :
         scene = virus_scenes
+    obstacle_number += 1
     return scene
     
 func rotate_obstacle(obstacle):
@@ -93,7 +96,7 @@ func bug_virus_movement(curr_tunnel):
     var tunnels = get_children()
     for obstacle in tunnels[curr_tunnel].get_children():
         # we only move bugs
-        if "Trap" in obstacle.name or "torus" in obstacle.name:
+        if "Trap" in obstacle.name or "torus" in obstacle.name or "Token" in obstacle.name:
             continue;
         
         # obstacles start moving torwards Hans only when he gets close enough
