@@ -94,15 +94,15 @@ func check_collisions():
         if collision.collider is KinematicBody:
             # increase battery in Hans picks up an energy token
             if \"Token\" in collision.collider.name:
-                $pickUpTokenSound.play()
+                $Sounds/pickUpTokenSound.play()
                 battery.value = 100
             # decrease battery if Hans touches a bug
             elif curr_tunnel == lvl.TWO and not \"Trap\" in collision.collider.name:
-                $bugSqishSound.play()
+                $Sounds/bugSqishSound.play()
                 battery.value -= 25
             # make Hans sick if he touches rotavirus
             elif \"Rotavirus\" in collision.collider.name and not sick.visible:
-                $coughingSound.play()
+                $Sounds/coughingSound.play()
                 sick.show()
                 $Sick_timer.start()
             # End game if Hans touches the trap or bacteriophage virus  
@@ -175,8 +175,7 @@ func shoot():
     if bullets_in_air < max_bullets_per_button_press and can_shoot:
         
         # play shooting sound
-        $shootSound.stream.loop = false
-        $shootSound.play()
+        $Sounds/shootSound.play()
         
         # create bullet instance
         var new_bullet = null
@@ -244,19 +243,21 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="getSomethingShotSound" type="AudioStreamPlayer" parent="."]
+[node name="Sounds" type="Spatial" parent="."]
+
+[node name="ShootSomethingDownSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 7 )
 
-[node name="shootSound" type="AudioStreamPlayer" parent="."]
+[node name="shootSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 6 )
 
-[node name="pickUpTokenSound" type="AudioStreamPlayer" parent="."]
+[node name="pickUpTokenSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 8 )
 
-[node name="bugSqishSound" type="AudioStreamPlayer" parent="."]
+[node name="bugSqishSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 10 )
 
-[node name="coughingSound" type="AudioStreamPlayer" parent="."]
+[node name="coughingSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource( 9 )
 [connection signal="timeout" from="Shooting_timer" to="." method="_on_shooting_timer_timeout"]
 [connection signal="timeout" from="Sick_timer" to="." method="_on_Sick_timer_timeout"]

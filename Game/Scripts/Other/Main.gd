@@ -25,10 +25,10 @@ func disable_sound_loops():
     $UI/Help/layer1/Skip/clickSound.stream.loop = false
     $UI/Help/layer11/Start/clickSound.stream.loop = false
     $UI/Help/Previous/clickSound.stream.loop = false
-    hans.get_node("shootSound").stream.loop = false
+    hans.get_node("Sounds/shootSound").stream.loop = false
 
 func _start():
-    $menuBackgroundSound.stop()    
+    $Sounds/menuBackgroundSound.stop()    
     help.hide() 
     score.show()
     pause.show()
@@ -49,10 +49,10 @@ func _start():
     tunnels.token_scenes.append(load("res://Scenes/Tokens/EnergyToken.tscn"))
     
     tunnels.create_first_level_traps()
-    $gameBackgroundSound.play()
+    $Sounds/gameBackgroundSound.play()
 
 func _show_first_help_layer():    
-    $gameBackgroundSound.stop()
+    $Sounds/gameBackgroundSound.stop()
     get_tree().paused = true        
     score.hide()
     pause.hide()
@@ -63,7 +63,7 @@ func _show_first_help_layer():
     
     var layer = help.get_child(curr_layer)
     layer.show()
-    $menuBackgroundSound.play()
+    $Sounds/menuBackgroundSound.play()
 
 func _show_help_layer():
     if curr_layer == 10:
@@ -77,8 +77,8 @@ func _show_help_layer():
     layer.show()
         
 func _game_over():
-    $backgroundSound.stop()
-    $gameOverSound.play()	
+    $Sounds/gameBackgroundSound.stop()
+    $Sounds/gameOverSound.play()	
     get_tree().paused = true    
     end.show()
     battery.hide()
@@ -96,8 +96,8 @@ func _game_over():
 
 
 func _on_Resume_pressed():
-    $menuBackgroundSound.stop()
-    $gameBackgroundSound.stream_paused = false
+    $Sounds/menuBackgroundSound.stop()
+    $Sounds/gameBackgroundSound.stream_paused = false
     $PauseAndResume/Pause_popup/Resume/clickSound.play()
     pause.show()
     score.show()
@@ -107,8 +107,8 @@ func _on_Resume_pressed():
     get_tree().paused = false
 
 func _on_Pause_pressed():
-    $gameBackgroundSound.stream_paused = true
-    $menuBackgroundSound.play()    
+    $Sounds/gameBackgroundSound.stream_paused = true
+    $Sounds/menuBackgroundSound.play()    
     $PauseAndResume/Pause/clickSound.play()
     pause_popup.show()
     pause.hide()
