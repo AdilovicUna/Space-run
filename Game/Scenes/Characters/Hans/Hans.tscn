@@ -1,10 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Characters/Hans/Hans.gltf" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Hans/HansRunning.tres" type="Animation" id=2]
 [ext_resource path="res://Characters/Hans/HansShooting.tres" type="Animation" id=3]
 [ext_resource path="res://Scenes/Bullets/BulletZero.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scenes/Bullets/BulletOne.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sounds/shoot.ogg" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/shoot_something.wav" type="AudioStream" id=7]
+[ext_resource path="res://Sounds/token.wav" type="AudioStream" id=8]
+[ext_resource path="res://Sounds/coughing.wav" type="AudioStream" id=9]
+[ext_resource path="res://Sounds/bug_sqish.wav" type="AudioStream" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
@@ -32,7 +37,7 @@ var move_tunnel = lvl.ONE
 var next_tunnel = lvl.TWO
 var curr_tunnel = lvl.ONE
 
-var speed = 50.0
+var speed = 55.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point
@@ -44,6 +49,7 @@ var bullets_in_air = 0
 var energy_token_exists = false
 
 func _physics_process(_delta):
+    
     # the game just started
     if show_level == 0:
         show_level_label()
@@ -88,18 +94,21 @@ func check_collisions():
         if collision.collider is KinematicBody:
             # increase battery in Hans picks up an energy token
             if \"Token\" in collision.collider.name:
+                $pickUpTokenSound.play()
                 battery.value = 100
             # decrease battery if Hans touches a bug
             elif curr_tunnel == lvl.TWO and not \"Trap\" in collision.collider.name:
+                $bugSqishSound.play()
                 battery.value -= 25
             # make Hans sick if he touches rotavirus
             elif \"Rotavirus\" in collision.collider.name and not sick.visible:
+                $coughingSound.play()
                 sick.show()
                 $Sick_timer.start()
             # End game if Hans touches the trap or bacteriophage virus  
             # or a trap
             # or rotavirus while he is sick                                           
-            else:
+            else:	
                 main._game_over()
                 return   
             collision.collider.queue_free()
@@ -165,13 +174,18 @@ func switch_animation():
 func shoot():
     if bullets_in_air < max_bullets_per_button_press and can_shoot:
         
+        # play shooting sound
+        $shootSound.stream.loop = false
+        $shootSound.play()
+        
+        # create bullet instance
         var new_bullet = null
         
         if rand.randi_range(0,1) == 0:
             new_bullet = BulletZero.instance()
         else:
             new_bullet = BulletOne.instance()
-            
+       
         new_bullet.global_transform = $Muzzle.global_transform
         
         var scene_root = get_tree().get_root().get_children()
@@ -192,6 +206,7 @@ func _on_shooting_timer_timeout():
 
 func _on_Sick_timer_timeout():
     sick.hide()
+
 "
 
 [sub_resource type="CapsuleShape" id=2]
@@ -228,5 +243,20 @@ one_shot = true
 [node name="Sick_timer" type="Timer" parent="."]
 wait_time = 10.0
 one_shot = true
+
+[node name="getSomethingShotSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+
+[node name="shootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="pickUpTokenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="bugSqishSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="coughingSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 [connection signal="timeout" from="Shooting_timer" to="." method="_on_shooting_timer_timeout"]
 [connection signal="timeout" from="Sick_timer" to="." method="_on_Sick_timer_timeout"]

@@ -28,7 +28,6 @@ anims/walking = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Bacteriophage"]
 transform = Transform( 1, 0, 0, 0, 0.0325447, 0.99947, 0, -0.99947, 0.0325447, 0, 3.35073, 0.109106 )
-visible = false
 shape = SubResource( 1 )
 
 [node name="CollisionShape2" type="CollisionShape" parent="Bacteriophage"]

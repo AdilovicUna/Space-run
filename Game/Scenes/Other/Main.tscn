@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Tunnels/level1.tres" type="Material" id=1]
 [ext_resource path="res://Tunnels/level2.tres" type="Material" id=2]
@@ -26,6 +26,10 @@
 [ext_resource path="res://Textures/help/bacteriophage.png" type="Texture" id=24]
 [ext_resource path="res://Textures/help/token.png" type="Texture" id=25]
 [ext_resource path="res://Textures/help/rotavirus.png" type="Texture" id=26]
+[ext_resource path="res://Sounds/click.ogg" type="AudioStream" id=27]
+[ext_resource path="res://Sounds/game_over.wav" type="AudioStream" id=28]
+[ext_resource path="res://Sounds/background.ogg" type="AudioStream" id=29]
+[ext_resource path="res://Sounds/menu_music.ogg" type="AudioStream" id=30]
 
 [sub_resource type="SpatialMaterial" id=1]
 
@@ -502,6 +506,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="clickSound" type="AudioStreamPlayer" parent="UI/Help/layer1/Skip"]
+stream = ExtResource( 27 )
+
 [node name="layer2" type="Control" parent="UI/Help"]
 visible = false
 anchor_right = 1.0
@@ -514,7 +521,6 @@ __meta__ = {
 }
 
 [node name="TextureRect" type="TextureRect" parent="UI/Help/layer2"]
-modulate = Color( 1, 1, 1, 0.690196 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1077,6 +1083,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="clickSound" type="AudioStreamPlayer" parent="UI/Help/layer11/Start"]
+stream = ExtResource( 27 )
+
 [node name="Continue" type="Button" parent="UI/Help"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1097,6 +1106,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="clickSound" type="AudioStreamPlayer" parent="UI/Help/Continue"]
+stream = ExtResource( 27 )
+
 [node name="Previous" type="Button" parent="UI/Help"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -1116,6 +1128,9 @@ text = "Previous"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="clickSound" type="AudioStreamPlayer" parent="UI/Help/Previous"]
+stream = ExtResource( 27 )
 
 [node name="Sick" type="TextureRect" parent="UI"]
 visible = false
@@ -1196,6 +1211,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="clickSound" type="AudioStreamPlayer" parent="PauseAndResume/Pause_popup/Resume"]
+stream = ExtResource( 27 )
+
 [node name="Pause" type="Button" parent="PauseAndResume"]
 margin_left = 968.0
 margin_top = 16.0
@@ -1213,6 +1231,21 @@ text = "||"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="clickSound" type="AudioStreamPlayer" parent="PauseAndResume/Pause"]
+stream = ExtResource( 27 )
+
+[node name="gameOverSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 28 )
+
+[node name="gameBackgroundSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 29 )
+
+[node name="menuBackgroundSound" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 30 )
 [connection signal="timeout" from="UI/Battery/DropTimer" to="UI/Battery" method="_on_DropTimer_timeout"]
 [connection signal="pressed" from="UI/Help/layer1/Skip" to="." method="_on_Skip_pressed"]
 [connection signal="pressed" from="UI/Help/layer11/Start" to="." method="_on_Start_pressed"]

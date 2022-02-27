@@ -7,6 +7,5 @@ func _unhandled_input(event):
     if event.is_action_pressed("ui_accept") and $TryAgain.visible:
         var hans = get_node("../../Hans")
         hans.free()
-        main.show_help = false
         var _result = get_tree().reload_current_scene()
         get_tree().paused = false

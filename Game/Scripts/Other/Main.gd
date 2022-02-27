@@ -12,23 +12,30 @@ onready var timer = get_node("UI/Battery/DropTimer")
 onready var pause = get_node("PauseAndResume/Pause")
 onready var pause_popup = get_node("PauseAndResume/Pause_popup")
 
-var show_help = true
 var curr_layer = 0
 
 func _ready():
-    if show_help:
-        _show_first_help_layer()
-    else:
-        _start()
+    disable_sound_loops()
+    _show_first_help_layer()
+
+func disable_sound_loops():
+    $PauseAndResume/Pause_popup/Resume/clickSound.stream.loop = false
+    $PauseAndResume/Pause/clickSound.stream.loop = false
+    $UI/Help/Continue/clickSound.stream.loop = false
+    $UI/Help/layer1/Skip/clickSound.stream.loop = false
+    $UI/Help/layer11/Start/clickSound.stream.loop = false
+    $UI/Help/Previous/clickSound.stream.loop = false
+    hans.get_node("shootSound").stream.loop = false
 
 func _start():
+    $menuBackgroundSound.stop()    
     help.hide() 
     score.show()
     pause.show()
     battery.show()
     timer.start()
     get_tree().paused = false 
-        
+    
     for name in ["TrapI","TrapO", "TrapMovingI", "TrapX", "TrapWalls", "TrapHex", 
                     "TrapHexO", "TrapBalls", "TrapTriangles", "TrapHalfHex"]:
         tunnels.trap_scenes.append(load("res://Scenes/Traps/" + name + ".tscn"))
@@ -42,8 +49,10 @@ func _start():
     tunnels.token_scenes.append(load("res://Scenes/Tokens/EnergyToken.tscn"))
     
     tunnels.create_first_level_traps()
+    $gameBackgroundSound.play()
 
-func _show_first_help_layer():
+func _show_first_help_layer():    
+    $gameBackgroundSound.stop()
     get_tree().paused = true        
     score.hide()
     pause.hide()
@@ -54,6 +63,7 @@ func _show_first_help_layer():
     
     var layer = help.get_child(curr_layer)
     layer.show()
+    $menuBackgroundSound.play()
 
 func _show_help_layer():
     if curr_layer == 10:
@@ -67,6 +77,8 @@ func _show_help_layer():
     layer.show()
         
 func _game_over():
+    $backgroundSound.stop()
+    $gameOverSound.play()	
     get_tree().paused = true    
     end.show()
     battery.hide()
@@ -84,6 +96,9 @@ func _game_over():
 
 
 func _on_Resume_pressed():
+    $menuBackgroundSound.stop()
+    $gameBackgroundSound.stream_paused = false
+    $PauseAndResume/Pause_popup/Resume/clickSound.play()
     pause.show()
     score.show()
     battery.show()
@@ -92,6 +107,9 @@ func _on_Resume_pressed():
     get_tree().paused = false
 
 func _on_Pause_pressed():
+    $gameBackgroundSound.stream_paused = true
+    $menuBackgroundSound.play()    
+    $PauseAndResume/Pause/clickSound.play()
     pause_popup.show()
     pause.hide()
     score.hide()
@@ -100,19 +118,24 @@ func _on_Pause_pressed():
     get_tree().paused = true
 
 func _on_Continue_pressed():
+    $UI/Help/Continue/clickSound.play()
     help.get_child(curr_layer).hide()
     curr_layer += 1
     _show_help_layer()
 
-func _on_Start_pressed():
+
+func _on_Skip_pressed():
+    $UI/Help/layer1/Skip/clickSound.play()
     _start()
 
 
-func _on_Skip_pressed():
+func _on_Start_pressed():
+    $UI/Help/layer11/Start/clickSound.play()
     _start()
 
 
 func _on_Previous_pressed():
+    $UI/Help/Previous/clickSound.play()
     help.get_child(curr_layer).hide()
     curr_layer -= 1
     if curr_layer == 0:

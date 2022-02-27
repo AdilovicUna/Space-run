@@ -1,6 +1,7 @@
 extends Spatial
 
 export var speed = 100
+onready var sound = get_node("../Hans/getSomethingShotSound")
 onready var score = get_node("../UI/Score")
 
 const queue_free_time = 3
@@ -29,6 +30,7 @@ func _on_Area_body_entered(body):
         #body.hit += 1
         #if body.hit == 8:
             #body.hit = 0
+        sound.play()
         body.queue_free()
                 
         # increase score by 10
