@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Characters/Viruses/Bacteriophage/walking.tres" type="Animation" id=1]
 [ext_resource path="res://Characters/Viruses/Bacteriophage/Bacteriophage.glb" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Bugs and Viruses/Bacteriophage.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Bugs and Viruses/BacteriophageKinematic.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -19,6 +20,7 @@ script = ExtResource( 3 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -15.5615, 0 )
 collision_layer = 2
 collision_mask = 5
+script = ExtResource( 4 )
 
 [node name="Bacteriophage" parent="Bacteriophage" instance=ExtResource( 2 )]
 

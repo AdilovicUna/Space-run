@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Characters/Bugs/Ladybug/LadybugWalking.glb" type="PackedScene" id=1]
 [ext_resource path="res://Characters/Bugs/Ladybug/LadybugWalking.tres" type="Animation" id=2]
 [ext_resource path="res://Scripts/Bugs and Viruses/LadybugWalking.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Bugs and Viruses/LadybugWalkingKinematic.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -15,6 +16,7 @@ script = ExtResource( 3 )
 transform = Transform( -4.88762e-07, 0, -3, 0, 3, 0, 3, 0, -4.88762e-07, 0, -21, 0 )
 collision_layer = 2
 collision_mask = 5
+script = ExtResource( 4 )
 
 [node name="LadybugWalking" parent="LadybugWalking" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, -2.84217e-14, 0, 1, 0, 2.84217e-14, 0, 1, 0, 0, 0 )

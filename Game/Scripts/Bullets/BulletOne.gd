@@ -7,12 +7,9 @@ onready var score = get_node("../UI/Score")
 const queue_free_time = 3
 var timer = 0
 
-var hit = 0
-
 func _physics_process(delta):
     # give bullet speed and direction
-    var real_forward = global_transform.basis.x.normalized()
-    global_translate(real_forward * speed * delta)
+    global_translate(Vector3.LEFT * speed * delta)
     
     # remove the bullet form the scene after certian time
     timer += delta
@@ -27,11 +24,11 @@ func _on_Area_body_entered(body):
     if body is KinematicBody and not "Trap" in body.name and not "Token" in body.name:
         # remove the hit obstacle
         #print(body.hit)
-        #body.hit += 1
-        #if body.hit == 8:
-            #body.hit = 0
-        sound.play()
-        body.queue_free()
+        body.hit += 1
+        if body.hit == 8:
+            body.hit = 0
+            sound.play()
+            body.queue_free()
                 
         # increase score by 10
         score._on_Shooting_Obstacle()

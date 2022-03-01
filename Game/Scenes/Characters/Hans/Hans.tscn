@@ -37,7 +37,7 @@ var move_tunnel = lvl.ONE
 var next_tunnel = lvl.TWO
 var curr_tunnel = lvl.ONE
 
-var speed = 55.0
+var speed = 50.0
 var total_translation = 1250 # original entrence to the level2 tunnel
 var x = rand.randi_range(1120,1190) # first trap for the next level will be here
 var new_trap = 3650 # start producing traps for the next level at this point

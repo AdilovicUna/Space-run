@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Characters/Viruses/Rotavirus/Rotavirus.glb" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Bugs and Viruses/Rotavirus.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/Bugs and Viruses/RotavirusKinematic.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Moving"
@@ -113,6 +114,7 @@ script = ExtResource( 2 )
 transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -20, 0 )
 collision_layer = 2
 collision_mask = 5
+script = ExtResource( 3 )
 
 [node name="Rotavirus" parent="Rotavirus" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0185317, 0 )

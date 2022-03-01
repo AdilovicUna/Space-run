@@ -6,5 +6,3 @@ extends Spatial
 # with a step of 0.001
 # (rand_range would give us numbers such as 0.083425)
 export(float) var speed = (randi()%13+8) / 1000.0
-
-export(int) var hit = 0
