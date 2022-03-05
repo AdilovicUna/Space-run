@@ -1,6 +1,6 @@
 extends Node
 
-onready var hans = get_node("Hans")
+onready var hans = get_node("Hans") 
 onready var tunnels = get_node("Tunnels")
 onready var score = get_node("UI/Score")
 onready var end = get_node("UI/End")

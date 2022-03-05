@@ -184,11 +184,9 @@ func shoot():
             new_bullet = BulletZero.instance()
         else:
             new_bullet = BulletOne.instance()
-       
-        new_bullet.global_transform = $Muzzle.global_transform
         
-        var scene_root = get_tree().get_root().get_children()
-        scene_root[0].add_child(new_bullet)
+        tunnels_children[curr_tunnel].add_child(new_bullet)
+        new_bullet.global_transform = $Muzzle.global_transform
         
         bullets_in_air += 1
         can_shoot = false
@@ -219,6 +217,7 @@ BulletOne = ExtResource( 5 )
 [node name="Pivot" type="Spatial" parent="."]
 
 [node name="Hans" parent="Pivot" instance=ExtResource( 1 )]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 0, 0, 0 )
 
 [node name="Movement" type="AnimationPlayer" parent="Pivot/Hans"]
 autoplay = "HansRunning"
@@ -226,11 +225,11 @@ anims/HansRunning = ExtResource( 2 )
 anims/HansShooting = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 2.98112, 0, 0, 0, -0.07764, 4.00904, 0, -2.51225, -0.182664, 0, 6.87551, 1.04777 )
+transform = Transform( 3.68179, 0, 0, 0, -1.28575e-07, 4.3087, 0, -2.94145, -1.88339e-07, -0.726137, 6.87551, 0.281527 )
 shape = SubResource( 2 )
 
 [node name="Muzzle" type="Position3D" parent="."]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.19326, 7.48417, 3.45 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 7.5, -2.2 )
 __meta__ = {
 "_editor_description_": ""
 }

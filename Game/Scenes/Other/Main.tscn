@@ -129,14 +129,14 @@ collision_layer = 4
 material = SubResource( 1 )
 
 [node name="Hans" parent="." instance=ExtResource( 4 )]
-transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, 3750, -32, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3750, -32, 0 )
 collision_mask = 6
 
 [node name="CameraPivot" type="Spatial" parent="Hans"]
-transform = Transform( 0.5, -2.40383e-09, -3.54703e-11, 2.40383e-09, 0.499782, 0.0147546, -3.54703e-11, -0.0147546, 0.499782, -9.95693e-07, 10.1862, -6.11108 )
+transform = Transform( -8.14603e-08, -0.0505281, -0.49744, 0, 0.49744, -0.0505281, 0.5, -8.23208e-09, -8.10433e-08, 5.5, 9.8, 0 )
 
 [node name="Camera" type="Camera" parent="Hans/CameraPivot"]
-transform = Transform( -2, 3.75003e-07, -4.04612e-07, 2.98925e-07, 1.96953, 0.347808, 4.63662e-07, 0.347808, -1.96953, -3.54834e-06, 11.652, -21.7798 )
+transform = Transform( -2, 3.67062e-07, -4.05914e-07, 3.02237e-07, 1.97751, 0.299066, 4.56238e-07, 0.299066, -1.97751, -3.57267e-06, 13.1091, -21.9302 )
 far = 500.0
 
 [node name="Tunnels" type="Spatial" parent="."]

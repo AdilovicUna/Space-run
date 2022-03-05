@@ -86,7 +86,7 @@ func rotate_obstacle(obstacle):
 func delete_obstacle_until_x(level,x):
     var tunnel = get_child(level)
     for obstacle in tunnel.get_children():
-        if not "light" in obstacle.name and not "torus" in obstacle.name:
+        if not "light" in obstacle.name and not "torus" in obstacle.name and not "Bullet" in obstacle.name:
             if obstacle.translation.x > x:
                 obstacle.queue_free()
             else:

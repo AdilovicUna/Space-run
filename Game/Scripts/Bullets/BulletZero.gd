@@ -1,8 +1,8 @@
 extends Spatial
 
 export var speed = 100
-onready var sound = get_node("../Hans/Sounds/ShootSomethingDownSound")
-onready var score = get_node("../UI/Score")
+onready var sound = get_node("/root/Main/Hans/Sounds/ShootSomethingDownSound")
+onready var score = get_node("/root/Main/UI/Score")
 
 const queue_free_time = 3
 var timer = 0
