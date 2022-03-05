@@ -25,7 +25,7 @@ func _on_Area_body_entered(body):
         # remove the hit obstacle
         #print(body.hit)
         body.hit += 1
-        if body.hit == 8:
+        if body.hit == 3:
             body.hit = 0
             sound.play()
             body.queue_free()

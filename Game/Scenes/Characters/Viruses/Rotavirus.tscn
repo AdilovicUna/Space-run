@@ -108,10 +108,11 @@ tracks/7/keys = {
 [sub_resource type="SphereShape" id=2]
 
 [node name="Pivot" type="Spatial"]
+transform = Transform( 1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="Rotavirus" type="KinematicBody" parent="."]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -20, 0 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -19, 0 )
 collision_layer = 2
 collision_mask = 5
 script = ExtResource( 3 )

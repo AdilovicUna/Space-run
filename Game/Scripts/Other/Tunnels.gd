@@ -39,7 +39,7 @@ func create_first_level_traps():
         if x < -1200:
             break
         create_one_obstacle(level, x) 
- 
+
 func create_one_obstacle(level,x):
     # pick which kind of obstacle will be added
     var scene  = pick_scene(level)   

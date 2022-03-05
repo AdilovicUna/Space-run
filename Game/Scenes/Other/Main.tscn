@@ -133,10 +133,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3750, -32, 0 )
 collision_mask = 6
 
 [node name="CameraPivot" type="Spatial" parent="Hans"]
-transform = Transform( -8.14603e-08, -0.0505281, -0.49744, 0, 0.49744, -0.0505281, 0.5, -8.23208e-09, -8.10433e-08, 5.5, 9.8, 0 )
+transform = Transform( -8.14603e-08, -0.0376112, 0.498583, 0, 0.498583, 0.0376112, -0.5, 6.12764e-09, -8.12295e-08, 19.0264, 15.4876, 0.0523834 )
 
 [node name="Camera" type="Camera" parent="Hans/CameraPivot"]
-transform = Transform( -2, 3.67062e-07, -4.05914e-07, 3.02237e-07, 1.97751, 0.299066, 4.56238e-07, 0.299066, -1.97751, -3.57267e-06, 13.1091, -21.9302 )
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 far = 500.0
 
 [node name="Tunnels" type="Spatial" parent="."]

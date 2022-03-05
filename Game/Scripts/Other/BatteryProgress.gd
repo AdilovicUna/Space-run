@@ -12,3 +12,6 @@ func decrease_value():
     if value == 0:
         main._game_over()
         return
+        
+func update_timer():
+    $DropTimer.wait_time -= 0.02

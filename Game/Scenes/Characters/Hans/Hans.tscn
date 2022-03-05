@@ -133,6 +133,8 @@ func update_curr_tunnel():
     # increase speed after a full lap
     if(curr_tunnel == lvl.ONE):
         speed += 15.0
+        battery.update_timer()
+        print(speed)
         
     rand.randomize()
     
@@ -186,7 +188,7 @@ func shoot():
             new_bullet = BulletOne.instance()
         
         tunnels_children[curr_tunnel].add_child(new_bullet)
-        new_bullet.global_transform = $Muzzle.global_transform
+        new_bullet.global_transform = $Pivot/Hans/Muzzle.global_transform
         
         bullets_in_air += 1
         can_shoot = false
@@ -224,15 +226,15 @@ autoplay = "HansRunning"
 anims/HansRunning = ExtResource( 2 )
 anims/HansShooting = ExtResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 3.68179, 0, 0, 0, -1.28575e-07, 4.3087, 0, -2.94145, -1.88339e-07, -0.726137, 6.87551, 0.281527 )
-shape = SubResource( 2 )
-
-[node name="Muzzle" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 7.5, -2.2 )
+[node name="Muzzle" type="Position3D" parent="Pivot/Hans"]
+transform = Transform( -1.62921e-07, 0, -1, 0, 1, 0, 1, 0, -1.62921e-07, -2.19326, 7.48417, 3.45 )
 __meta__ = {
 "_editor_description_": ""
 }
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 3.01833, 0, 0, 0, -1.28575e-07, 3.87158, 0, -2.94145, -1.69232e-07, -0.726137, 6.64664, 0.281527 )
+shape = SubResource( 2 )
 
 [node name="Shooting_timer" type="Timer" parent="."]
 wait_time = 0.15

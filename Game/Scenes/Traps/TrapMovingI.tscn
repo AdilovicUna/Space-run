@@ -7,7 +7,7 @@ albedo_color = Color( 0.411765, 0.764706, 0.941176, 0.909804 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Sliding"
-length = 0.8
+length = 1.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("CSGBox:translation")
@@ -16,10 +16,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 2, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, -2, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 2, 0 ) ]
+"values": [ Vector3( 0, 1.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -0.5, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, -1.5, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, -0.5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 1.5, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("CollisionShape:translation")
@@ -28,10 +28,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 2, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, -2, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 2, 0 ) ]
+"values": [ Vector3( 0, 1.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, -0.5, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, -1.5, 0 ), Vector3( 0, -1, 0 ), Vector3( 0, -0.5, 0 ), Vector3( 0, 0, 0 ), Vector3( 0, 0.5, 0 ), Vector3( 0, 1, 0 ), Vector3( 0, 1.5, 0 ) ]
 }
 
 [node name="TrapMovingI" type="KinematicBody"]
@@ -39,12 +39,12 @@ transform = Transform( 5.30863e-13, 6.51683e-07, 1, 20, -6.51683e-07, -1.20846e-
 collision_layer = 2
 
 [node name="CSGBox" type="CSGBox" parent="."]
-transform = Transform( 1, -7.10543e-15, 0, 5.68434e-14, 1, 0, -1.6263e-19, -1.13687e-13, 1, 0, 2, 0 )
+transform = Transform( 1, -7.10543e-15, 0, 5.68434e-14, 1, 0, -1.6263e-19, -1.13687e-13, 1, 0, -1.45928, 0 )
 collision_layer = 2
 material = SubResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45928, 0 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
