@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Game"
+config/name="Space-run"
 run/main_scene="res://Scenes/Other/Main.tscn"
 config/icon="res://Other/icon.png"
 
