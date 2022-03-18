@@ -1,13 +1,13 @@
 # Space-run
-A variation on the Tunnel Rush game with some extra features. For detailed explanation of the game, look into "./Documentation/Game_specifications.pdf".
+A variation on the Tunnel Rush game with some extra features. For detailed explanation of the game, look into [title]https://github.com/AdilovicUna/Space-run/blob/master/Documentation/Game_specifications.pdf.
 
-# Installation
+## Installation
 
-## Requirements:
+**Requirements:**
   - Inno Setup Compiler 6.2.0
   - script from  "./SetUp/installationScript.iss".
-
-## Steps to take:
+  - 
+**Steps to take:**
   - Clone this repository
   - Open the Inno Setup Compiler
   - From there open the script
