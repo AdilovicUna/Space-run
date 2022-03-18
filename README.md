@@ -7,7 +7,6 @@ A variation on the Tunnel Rush game with some extra features. For detailed expla
 
   - [Godot Engine](https://godotengine.org)(version v3.2.3.stable)
   - [Inno Setup Compiler](https://jrsoftware.org/isdl.php) (version 6.2.0)
-  - [installationScript.iss](https://github.com/AdilovicUna/Space-run/blob/master/Setup/installationScript.iss)
   
 **How to install?**
 
@@ -20,7 +19,7 @@ A variation on the Tunnel Rush game with some extra features. For detailed expla
         - From Add... choose your operating system and Export project
         - Save the executable in "./Space-run/Setup/"
   3.  Open the Inno Setup Compiler
-        - From here open the script
+        - From here open [installationScript.iss](https://github.com/AdilovicUna/Space-run/blob/master/Setup/installationScript.iss)
         - Change "OutputDir" variable to where you want the installer to be added
         - Click Build -> Compile (this will create "Space-run SetUp.exe" in "OutputDir")
         - Navigate to that file and open it
