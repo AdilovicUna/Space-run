@@ -1,5 +1,5 @@
 # Space-run
-A variation on the Tunnel Rush game with some extra features. For detailed explanation of the game, look into [title]https://github.com/AdilovicUna/Space-run/blob/master/Documentation/Game_specifications.pdf.
+A variation on the Tunnel Rush game with some extra features. For detailed explanation of the game, look into [title](https://github.com/AdilovicUna/Space-run/blob/master/Documentation/Game_specifications.pdf).
 
 ## Installation
 
