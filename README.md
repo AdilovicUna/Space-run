@@ -16,7 +16,7 @@ A variation on the Tunnel Rush game with some extra features. For detailed expla
         - Navigate to the "./Space-run/Game" and import “project.godot”.
         - Open the project
         - Go to Project -> Export
-        - From Add... choose your operating system and Export project
+        - From Add choose your operating system and Export project
         - Save the executable in "./Space-run/Setup/"
   3.  Open the Inno Setup Compiler
         - From here open [installationScript.iss](https://github.com/AdilovicUna/Space-run/blob/master/Setup/installationScript.iss)
