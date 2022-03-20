@@ -2,15 +2,19 @@
 The media files in this directory come from the following sources, and are provided under the following licenses:
 
 background.ogg:
-   https://www.chosic.com/free-music/all/
+   https://www.chosic.com/download-audio/24795/
    Creative Commons CC0 Public Domain (https://creativecommons.org/publicdomain/zero/1.0/)
 
-shoot.ogg, click.ogg:
-   https://kenney.nl/ (specific URL)
+shoot.ogg:
+   https://kenney.nl/assets/sci-fi-sounds
+   Creative Commons CC0 Public Domain (https://creativecommons.org/publicdomain/zero/1.0/)
+
+click.ogg:
+   https://kenney.nl/assets/ui-audio
    Creative Commons CC0 Public Domain (https://creativecommons.org/publicdomain/zero/1.0/)
 
 coughing.wav, game_over.wav, bug_squish.wav, menu_music.ogg, shoot_something.wav, token.wav:
-   https://mixkit.co/ (specific URL)
+   https://mixkit.co/
    Mixkit Sound Effects Free License (https://mixkit.co/license/#sfxFree)
 
 ====
