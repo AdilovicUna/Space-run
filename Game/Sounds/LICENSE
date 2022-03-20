@@ -1,3 +1,13 @@
-Background music: Music: https://www.chosic.com/free-music/all/
-Shooting sound and click: https://creativecommons.org/publicdomain/zero/1.0/
-Other: https://mixkit.co/license/#sfxFree
+== LICENSE ==
+The media files in this directory come from the following sources, and are provided under the following licenses:
+
+background.ogg:
+   https://www.chosic.com/free-music/all/
+   Creative Commons CC0 Public Domain (https://creativecommons.org/publicdomain/zero/1.0/)
+
+shoot.ogg, click.ogg:
+   Creative Commons CC0 Public Domain (https://creativecommons.org/publicdomain/zero/1.0/)
+
+coughing.wav, game_over.wav, bug_squish.wav, menu_music.ogg, shoot_something.wav, token.wav:
+   https://mixkit.co/(specific URL)
+   Mixkit Sound Effects Free License (https://mixkit.co/license/#sfxFree)
